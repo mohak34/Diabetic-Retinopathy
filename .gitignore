@@ -11,3 +11,6 @@ dist/
 .env/
 venv/
 
+#files
+PhaseMap.md
+Workflow.md

@@ -1,0 +1,159 @@
+# Base configuration for DR Multi-task Project
+project:
+  name: "DR-EfficientNetV2-MultiTask"
+  version: "0.1.0"
+  description: "Multi-task DR grading and lesion segmentation"
+
+# Data configuration
+data:
+  base_path: "data"
+  datasets:
+    aptos2019:
+      path: "data/raw/aptos2019"
+      images: "train_images"
+      labels: "train.csv"
+      num_classes: 5
+    idrid:
+      path: "data/raw/idrid"
+      images: "images"
+      masks: "masks"
+      segmentation_classes: ["MA", "HE", "EX", "SE"] # Microaneurysms, Hemorrhages, Exudates, Soft Exudates
+    messidor2:
+      path: "data/raw/messidor2"
+      images: "images"
+      labels: "labels.csv"
+
+  preprocessing:
+    image_size: [224, 224]
+    clahe:
+      clip_limit: 2.0
+      tile_grid_size: [8, 8]
+    ben_graham:
+      sigma: 10
+    normalization:
+      mean: [0.485, 0.456, 0.406] # ImageNet stats
+      std: [0.229, 0.224, 0.225]
+
+  augmentation:
+    train:
+      rotation_limit: 15
+      horizontal_flip: 0.5
+      vertical_flip: 0.5
+      brightness_limit: 0.2
+      contrast_limit: 0.2
+      hue_shift_limit: 10
+      sat_shift_limit: 15
+    validation:
+      normalize_only: true
+
+  splits:
+    train_ratio: 0.7
+    val_ratio: 0.2
+    test_ratio: 0.1
+    stratify: true
+    random_seed: 42
+
+# Model configuration
+model:
+  backbone:
+    name: "efficientnetv2_s"
+    pretrained: true
+    freeze_early_layers: false
+
+  classification_head:
+    num_classes: 5
+    dropout: 0.3
+    hidden_dim: 256
+
+  segmentation_head:
+    num_classes: 1 # Binary segmentation (lesion/no lesion)
+    decoder_channels: [256, 128, 64, 32]
+    dropout: 0.2
+
+# Training configuration
+training:
+  progressive:
+    phase1:
+      epochs: 5
+      classification_weight: 1.0
+      segmentation_weight: 0.0
+      description: "Classification warmup"
+    phase2:
+      epochs: 15
+      classification_weight: 1.0
+      segmentation_weight_start: 0.1
+      segmentation_weight_end: 0.5
+      description: "Gradual multi-task introduction"
+    phase3:
+      epochs: 10
+      classification_weight: 1.0
+      segmentation_weight: 0.5
+      description: "Joint optimization"
+
+  optimizer:
+    name: "AdamW"
+    lr: 1e-4
+    weight_decay: 1e-2
+    betas: [0.9, 0.999]
+
+  scheduler:
+    name: "CosineAnnealingLR"
+    T_max: 30
+    eta_min: 1e-6
+
+  mixed_precision: true
+  gradient_accumulation_steps: 4 # Effective batch size = batch_size * gradient_accumulation_steps
+  max_grad_norm: 1.0
+
+  early_stopping:
+    patience: 5
+    monitor: "val_combined_score"
+    mode: "max"
+
+# Hardware configuration
+hardware:
+  device: "cuda"
+  batch_size: 4 # Optimized for RTX 3080 8GB
+  num_workers: 2
+  pin_memory: true
+  prefetch_factor: 2
+
+# Logging and monitoring
+logging:
+  tensorboard:
+    log_dir: "results/logs"
+    log_every_n_steps: 50
+
+  wandb:
+    enabled: false # Set to true if using W&B
+    project: "dr-multitask"
+    entity: null
+
+  checkpoints:
+    save_dir: "results/models"
+    save_every_n_epochs: 5
+    save_best: true
+    monitor: "val_combined_score"
+
+# Evaluation metrics
+metrics:
+  classification:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "quadratic_weighted_kappa"
+    - "auc_roc"
+
+  segmentation:
+    - "dice_coefficient"
+    - "iou"
+    - "pixel_accuracy"
+    - "sensitivity"
+    - "specificity"
+
+# Reproducibility
+reproducibility:
+  seed: 42
+  deterministic: true
+  benchmark: false # Set to true if input sizes are fixed
