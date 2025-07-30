@@ -10,7 +10,10 @@ dist/
 *.egg-info/
 .env/
 venv/
+.venv/
+dataset/
 
 #files
 PhaseMap.md
 Workflow.md
+Phase2.md

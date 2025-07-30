@@ -6,20 +6,20 @@ project:
 
 # Data configuration
 data:
-  base_path: "data"
+  base_path: "dataset"
   datasets:
     aptos2019:
-      path: "data/raw/aptos2019"
+      path: "dataset/raw/aptos2019"
       images: "train_images"
       labels: "train.csv"
       num_classes: 5
     idrid:
-      path: "data/raw/idrid"
+      path: "dataset/raw/idrid"
       images: "images"
       masks: "masks"
       segmentation_classes: ["MA", "HE", "EX", "SE"] # Microaneurysms, Hemorrhages, Exudates, Soft Exudates
     messidor2:
-      path: "data/raw/messidor2"
+      path: "dataset/raw/messidor2"
       images: "images"
       labels: "labels.csv"
 

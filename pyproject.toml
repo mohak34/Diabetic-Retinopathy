@@ -1,12 +1,27 @@
 [project]
 name = "diabetic-retinopathy"
 version = "0.1.0"
-description = "Add your description here"
+description = "EfficientNetV2-S Multi-Task DR Grading & Lesion Segmentation Project"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = "==3.13.5"
 dependencies = [
+    "albumentations>=2.0.8",
+    "ipykernel>=6.30.0",
     "matplotlib>=3.10.3",
+    "numpy>=2.1.2",
+    "opencv-python>=4.12.0.88",
     "pandas>=2.3.1",
-    "pip>=25.1.1",
+    "pillow>=11.0.0",
+    "plotly>=6.2.0",
+    "pyyaml>=6.0.2",
+    "scikit-image>=0.25.2",
+    "scikit-learn>=1.7.1",
+    "scipy>=1.16.1",
     "seaborn>=0.13.2",
+    "tensorboard>=2.20.0",
+    "torch>=2.7.1",
+    "torchaudio>=2.7.1",
+    "torchmetrics>=1.8.0",
+    "torchvision>=0.22.1",
+    "tqdm>=4.67.1",
 ]
