@@ -49,10 +49,7 @@ uv run python main.py
 - Correlation analysis between different severity grades
 - Data quality assessment and outlier detection
 
-**Key Files**:
 
-- `count_images.py`: Dataset statistics and validation
-- Analysis notebooks in `notebooks/` directory
 
 #### Phase 2.2: Data Augmentation and Dataset Classes
 
@@ -185,13 +182,6 @@ src/
 - **Validation**: Class proportions preserved across splits
 - **Reproducibility**: Fixed random state (42) for consistent results
 
-### Hardware Optimization
-
-- **Target GPU**: RTX 3080 Mobile (8GB VRAM)
-- **Batch Size**: 4 (optimal for memory constraints)
-- **Workers**: 2 (CPU core utilization)
-- **Memory**: Pin memory enabled, persistent workers for efficiency
-
 ## Dependencies
 
 Core dependencies managed through `pyproject.toml`:
@@ -203,17 +193,6 @@ Core dependencies managed through `pyproject.toml`:
 - NumPy: Numerical computations
 - Scikit-learn: Data splitting and metrics
 - Pandas: Data manipulation
-
-## Next Phase: Model Implementation
-
-Phase 2.3 will implement:
-
-- EfficientNetV2-S backbone architecture
-- Multi-task learning heads for grading and segmentation
-- Transfer learning from ImageNet pretrained weights
-- Model compilation and optimization for training
-
-The data pipeline is now complete and ready for model training with robust augmentation, balanced sampling, and optimized loading for the target hardware configuration.
 
 ## Setup and Installation
 
