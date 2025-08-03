@@ -70,7 +70,7 @@ class DataOrganizer:
         for subdir in subdirs:
             (self.processed_path / subdir).mkdir(parents=True, exist_ok=True)
         
-        print(f"✓ Created processed data structure at: {self.processed_path}")
+        print(f"OK Created processed data structure at: {self.processed_path}")
     
     def _process_segmentation_data(self) -> Dict:
         """Process A. Segmentation dataset"""
@@ -81,7 +81,7 @@ class DataOrganizer:
         masks_path = seg_path / "2. All Segmentation Groundtruths"
         
         if not seg_path.exists():
-            print("❌ A. Segmentation folder not found!")
+            print("ERROR A. Segmentation folder not found!")
             return {'status': 'failed', 'reason': 'folder_not_found'}
         
         # Analyze dataset structure
@@ -96,22 +96,22 @@ class DataOrganizer:
         if images_path.exists() and masks_path.exists():
             result['pairs'] = self._find_image_mask_pairs(images_path, masks_path)
         
-        print(f"✓ Found {len(result.get('pairs', []))} image-mask pairs")
-        print(f"✓ Total images: {result['images']['count']}")
-        print(f"✓ Total masks: {result['masks']['count']}")
+        print(f"OK Found {len(result.get('pairs', []))} image-mask pairs")
+        print(f"OK Total images: {result['images']['count']}")
+        print(f"OK Total masks: {result['masks']['count']}")
         
         return result
     
     def _process_grading_data(self) -> Dict:
         """Process B. Disease Grading dataset"""
-        print("\n📊 Processing B. Disease Grading Dataset...")
+        print("\nProcessing Processing B. Disease Grading Dataset...")
         
         grading_path = self.base_path / "B. Disease Grading"
         images_path = grading_path / "1. Original Images"
         labels_path = grading_path / "2. Groundtruths"
         
         if not grading_path.exists():
-            print("❌ B. Disease Grading folder not found!")
+            print("ERROR B. Disease Grading folder not found!")
             return {'status': 'failed', 'reason': 'folder_not_found'}
         
         result = {
@@ -125,8 +125,8 @@ class DataOrganizer:
         if labels_path.exists():
             result['grade_distribution'] = self._analyze_grade_distribution(labels_path)
         
-        print(f"✓ Total images: {result['images']['count']}")
-        print(f"✓ Grade distribution: {result['grade_distribution']}")
+        print(f"OK Total images: {result['images']['count']}")
+        print(f"OK Grade distribution: {result['grade_distribution']}")
         
         return result
     
@@ -139,7 +139,7 @@ class DataOrganizer:
         boxes_path = loc_path / "2. Groundtruths"
         
         if not loc_path.exists():
-            print("❌ C. Localization folder not found!")
+            print("ERROR C. Localization folder not found!")
             return {'status': 'failed', 'reason': 'folder_not_found'}
         
         result = {
@@ -153,14 +153,14 @@ class DataOrganizer:
         if images_path.exists() and boxes_path.exists():
             result['bbox_pairs'] = self._find_image_bbox_pairs(images_path, boxes_path)
         
-        print(f"✓ Found {len(result.get('bbox_pairs', []))} image-annotation pairs")
-        print(f"✓ Total images: {result['images']['count']}")
+        print(f"OK Found {len(result.get('bbox_pairs', []))} image-annotation pairs")
+        print(f"OK Total images: {result['images']['count']}")
         
         return result
     
     def _process_aptos_data(self) -> Dict:
         """Process APTOS 2019 dataset"""
-        print("\n🏆 Processing APTOS 2019 Dataset...")
+        print("\nProcessing Processing APTOS 2019 Dataset...")
         
         aptos_path = self.base_path / "aptos2019-blindness-detection"
         train_images_path = aptos_path / "train_images"
@@ -168,7 +168,7 @@ class DataOrganizer:
         train_csv = aptos_path / "train.csv"
         
         if not aptos_path.exists():
-            print("❌ APTOS 2019 folder not found!")
+            print("ERROR APTOS 2019 folder not found!")
             return {'status': 'failed', 'reason': 'folder_not_found'}
         
         result = {
@@ -193,10 +193,10 @@ class DataOrganizer:
                 grade_counts = df['diagnosis'].value_counts().to_dict()
                 result['grade_distribution'] = grade_counts
         
-        print(f"✓ Train images: {result['train_images']['count']}")
-        print(f"✓ Test images: {result['test_images']['count']}")
-        print(f"✓ Train labels: {result['train_labels'].get('count', 0)}")
-        print(f"✓ Grade distribution: {result['grade_distribution']}")
+        print(f"OK Train images: {result['train_images']['count']}")
+        print(f"OK Test images: {result['test_images']['count']}")
+        print(f"OK Train labels: {result['train_labels'].get('count', 0)}")
+        print(f"OK Grade distribution: {result['grade_distribution']}")
         
         return result
     
@@ -380,7 +380,7 @@ class DataOrganizer:
         
         for dataset_name, data in self.results.items():
             if data.get('status') == 'success':
-                print(f"\n✅ {dataset_name.upper()}:")
+                print(f"\nOK {dataset_name.upper()}:")
                 
                 if dataset_name == 'segmentation':
                     img_count = data.get('images', {}).get('count', 0)
@@ -414,9 +414,9 @@ class DataOrganizer:
                     print(f"   Grade distribution: {data.get('grade_distribution', {})}")
                     total_images += train_count + test_count
             else:
-                print(f"\n❌ {dataset_name.upper()}: {data.get('reason', 'failed')}")
+                print(f"\nERROR {dataset_name.upper()}: {data.get('reason', 'failed')}")
         
-        print(f"\n📊 TOTALS:")
+        print(f"\nProcessing TOTALS:")
         print(f"   Total images: {total_images:,}")
         print(f"   Total masks: {total_masks:,}")
         print(f"   Valid image-mask pairs: {total_pairs:,}")
@@ -426,7 +426,7 @@ class DataOrganizer:
         with open(results_file, 'w') as f:
             json.dump(self.results, f, indent=2, default=str)
         
-        print(f"\n💾 Results saved to: {results_file}")
+        print(f"\nResults Results saved to: {results_file}")
 
 def main():
     """Main function to run data organization"""

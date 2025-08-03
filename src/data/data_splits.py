@@ -439,7 +439,7 @@ def create_all_splits(
     splitter = DataSplitter(random_state=random_state)
     
     # 1. APTOS 2019 classification splits
-    print("\n🔄 Creating APTOS 2019 splits...")
+    print("\nCreating Creating APTOS 2019 splits...")
     aptos_images_dir = processed_path / "aptos2019" / "images"
     # Try processed labels first, then original
     aptos_labels_path = processed_path / "aptos2019" / "train_labels.csv"
@@ -459,12 +459,12 @@ def create_all_splits(
             str(splits_path / "aptos2019_splits.json"),
             "APTOS 2019"
         )
-        print(f"✅ APTOS 2019 splits saved")
+        print(f"OK APTOS 2019 splits saved")
     else:
-        print(f"❌ APTOS 2019 data not found")
+        print(f"ERROR APTOS 2019 data not found")
     
     # 2. IDRiD Disease Grading splits
-    print("\n🔄 Creating IDRiD Disease Grading splits...")
+    print("\nCreating Creating IDRiD Disease Grading splits...")
     grading_images_dir = processed_path / "grading" / "images"
     
     # Try processed labels first, then original
@@ -491,12 +491,12 @@ def create_all_splits(
             str(splits_path / "idrid_grading_splits.json"),
             "IDRiD Disease Grading"
         )
-        print(f"✅ IDRiD Disease Grading splits saved")
+        print(f"OK IDRiD Disease Grading splits saved")
     else:
-        print(f"❌ IDRiD Disease Grading data not found")
+        print(f"ERROR IDRiD Disease Grading data not found")
     
     # 3. IDRiD Segmentation splits
-    print("\n🔄 Creating IDRiD Segmentation splits...")
+    print("\nCreating Creating IDRiD Segmentation splits...")
     
     # Load segmentation pairs from organization results
     org_results_path = processed_path / "organization_results.json"
@@ -521,11 +521,11 @@ def create_all_splits(
                 str(splits_path / "idrid_segmentation_splits.json"),
                 "IDRiD Segmentation"
             )
-            print(f"✅ IDRiD Segmentation splits saved")
+            print(f"OK IDRiD Segmentation splits saved")
         else:
-            print(f"❌ IDRiD Segmentation data not found in organization results")
+            print(f"ERROR IDRiD Segmentation data not found in organization results")
     else:
-        print(f"❌ Organization results not found")
+        print(f"ERROR Organization results not found")
     
     print(f"\nAll splits saved to: {splits_path}")
 

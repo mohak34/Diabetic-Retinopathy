@@ -1,0 +1,82 @@
+benchmark: false
+checkpoints:
+  keep_top_k: 3
+  monitor: combined_score
+  save_best: true
+  save_dir: experiments/diabetic_retinopathy_phase4_v1/checkpoints
+  save_every_n_epochs: 5
+deterministic: true
+dice_smooth: 1.0e-05
+early_stopping:
+  min_delta: 0.001
+  mode: max
+  monitor: combined_score
+  patience: 15
+experiment_name: diabetic_retinopathy_phase4_v1
+focal_gamma: 2.0
+gradient_accumulation_steps: 4
+hardware:
+  batch_size: 4
+  device: cuda
+  num_workers: 4
+  persistent_workers: true
+  pin_memory: true
+  prefetch_factor: 2
+image_size: 512
+logging:
+  log_every_n_steps: 50
+  save_plots: true
+  tensorboard_log_dir: experiments/diabetic_retinopathy_phase4_v1/logs
+  wandb_enabled: false
+  wandb_entity: null
+  wandb_project: diabetic-retinopathy
+max_grad_norm: 1.0
+mixed_precision: true
+model:
+  backbone_name: tf_efficientnetv2_b0
+  dropout: 0.2
+  freeze_early_layers: false
+  num_classes: 5
+  pretrained: true
+  use_advanced_decoder: false
+  use_skip_connections: true
+optimizer:
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  lr: 0.001
+  name: AdamW
+  weight_decay: 0.01
+phase1:
+  classification_weight: 1.0
+  description: Focus on classification task only
+  epochs: 1
+  segmentation_weight: 0.0
+  segmentation_weight_end: null
+  segmentation_weight_start: null
+phase2:
+  classification_weight: 1.0
+  description: Gradually introduce segmentation task
+  epochs: 1
+  segmentation_weight: 0.5
+  segmentation_weight_end: 0.5
+  segmentation_weight_start: 0.0
+phase3:
+  classification_weight: 1.0
+  description: Full multi-task optimization
+  epochs: 1
+  segmentation_weight: 0.8
+  segmentation_weight_end: null
+  segmentation_weight_start: null
+scheduler:
+  T_max: 50
+  eta_min: 1e-6
+  factor: 0.5
+  gamma: 0.1
+  name: CosineAnnealingLR
+  patience: 10
+  step_size: 30
+  threshold: 0.0001
+seed: 42
+val_every_n_epochs: 2

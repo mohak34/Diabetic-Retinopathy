@@ -43,7 +43,7 @@ def create_aptos_splits(processed_dir: str, splits_dir: str, val_size: float = 0
     labels_list = metadata['labels']['labels']
     
     if len(image_files) != len(labels_list):
-        print(f"⚠️ Mismatch: {len(image_files)} images vs {len(labels_list)} labels")
+        print(f"WARNING Mismatch: {len(image_files)} images vs {len(labels_list)} labels")
     
     # Create image_id to label mapping
     image_labels = {}
@@ -244,7 +244,7 @@ def create_segmentation_splits(processed_dir: str, splits_dir: str, val_size: fl
         if mask_path.exists():
             processed_pairs.append((str(img_path), str(mask_path)))
         else:
-            print(f"⚠️ Missing mask for {img_file}")
+            print(f"WARNING Missing mask for {img_file}")
     
     if not processed_pairs:
         print("Could not find processed segmentation pairs")

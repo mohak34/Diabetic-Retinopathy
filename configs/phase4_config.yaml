@@ -1,0 +1,322 @@
+# Phase 4: Advanced Multi-Task Training Configuration
+# Complete configuration for diabetic retinopathy detection and segmentation
+
+# Experiment Configuration
+experiment_name: "diabetic_retinopathy_phase4_v1"
+experiment_description: "Phase 4 advanced multi-task training with progressive learning strategy"
+experiment_tags:
+  ["phase4", "multi-task", "progressive-training", "diabetic-retinopathy"]
+
+# Model Configuration
+model:
+  backbone_name: "tf_efficientnetv2_b0" # Options: tf_efficientnetv2_b0, tf_efficientnetv2_b1, efficientnet_b0, etc.
+  num_classes: 5 # DR severity levels: 0-4
+  pretrained: true
+  use_skip_connections: true
+  use_advanced_decoder: true
+  freeze_early_layers: false
+  dropout_rate: 0.2
+
+# Progressive Training Configuration
+phase1:
+  name: "classification_only"
+  epochs: 15
+  description: "Focus on classification task only"
+  classification_weight: 1.0
+  segmentation_weight: 0.0
+  freeze_segmentation_head: true
+
+phase2:
+  name: "segmentation_warmup"
+  epochs: 10
+  description: "Gradually introduce segmentation task"
+  classification_weight: 1.0
+  segmentation_weight_start: 0.0
+  segmentation_weight_end: 0.5
+  freeze_segmentation_head: false
+
+phase3:
+  name: "multi_task_optimization"
+  epochs: 25
+  description: "Full multi-task optimization"
+  classification_weight: 1.0
+  segmentation_weight: 0.8
+  enable_advanced_augmentation: true
+
+# Total training configuration
+total_epochs: 50 # Sum of phase epochs
+val_every_n_epochs: 2
+save_every_n_epochs: 5
+
+# Segmentation Weight Progression
+segmentation_weight_max: 0.8
+segmentation_weight_warmup_epochs: 10
+segmentation_weight_schedule: "linear" # Options: linear, cosine, exponential
+
+# Optimizer Configuration
+optimizer:
+  name: "AdamW"
+  lr: 0.001
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  eps: 0.00000001 # 1e-8 in decimal format
+  amsgrad: false
+
+# Learning Rate Scheduler
+scheduler:
+  name: "CosineAnnealingLR"
+  T_max: 50 # Total epochs
+  eta_min: 1e-6
+  # Alternative: ReduceLROnPlateau
+  # patience: 5
+  # factor: 0.5
+  # threshold: 0.001
+
+# Loss Function Configuration
+loss:
+  focal_gamma: 2.0
+  focal_alpha: null # Auto-computed class weights
+  dice_smooth: 1e-6
+  classification_loss: "focal" # Options: focal, cross_entropy, label_smoothing
+  segmentation_loss: "dice" # Options: dice, focal, combined
+
+# Data Configuration
+data:
+  image_size: [512, 512]
+  channels: 3
+  normalize: true
+  mean: [0.485, 0.456, 0.406] # ImageNet stats
+  std: [0.229, 0.224, 0.225]
+
+# Data Augmentation
+augmentation:
+  horizontal_flip: 0.5
+  vertical_flip: 0.2
+  rotation_degrees: 15
+  brightness: 0.2
+  contrast: 0.2
+  saturation: 0.2
+  hue: 0.1
+  gaussian_noise: 0.02
+  cutout_prob: 0.3
+  cutout_size: 32
+  mixup_alpha: 0.2
+  cutmix_alpha: 1.0
+
+# Hardware Configuration
+hardware:
+  device: "cuda" # auto, cpu, cuda
+  batch_size: 16
+  num_workers: 4
+  pin_memory: true
+  mixed_precision: true
+  gradient_accumulation_steps: 2
+  max_grad_norm: 1.0
+
+# Effective batch size = batch_size * gradient_accumulation_steps = 32
+
+# Early Stopping Configuration
+early_stopping:
+  patience: 15
+  min_delta: 0.001
+  monitor: "combined_score"
+  mode: "max"
+
+# Checkpointing Configuration
+checkpoints:
+  save_dir: "checkpoints"
+  save_best: true
+  save_every_n_epochs: 5
+  keep_top_k: 3
+  monitor: "combined_score"
+  mode: "max"
+  save_optimizer: true
+  save_scheduler: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  save_plots: true
+  plot_every_n_epochs: 5
+  tensorboard_log_dir: "logs/tensorboard"
+  log_every_n_steps: 100
+
+  # Weights & Biases (optional)
+  wandb_enabled: false
+  wandb_project: "diabetic-retinopathy"
+  wandb_entity: null
+  wandb_tags: ["phase4", "multi-task"]
+
+# Metrics Configuration
+metrics:
+  classification_metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "kappa" # Quadratic weighted kappa
+    - "auc"
+    - "confusion_matrix"
+
+  segmentation_metrics:
+    - "dice"
+    - "iou"
+    - "pixel_accuracy"
+    - "hausdorff_distance"
+
+  combined_metrics:
+    - "combined_score" # Weighted combination
+    - "clinical_relevance"
+
+  # Metric weights for combined score
+  metric_weights:
+    classification_weight: 0.6
+    segmentation_weight: 0.4
+
+# Reproducibility Configuration
+reproducibility:
+  seed: 42
+  deterministic: true
+  benchmark: false # Set to true for consistent input sizes
+
+# Memory Management
+memory:
+  clear_cache_every_n_steps: 100
+  pin_memory: true
+  non_blocking: true
+
+# Validation Configuration
+validation:
+  split_ratio: 0.2
+  stratified: true
+  cross_validation: false
+  cv_folds: 5
+
+# Test Configuration
+test:
+  batch_size: 32 # Can be larger than training
+  tta_enabled: false # Test Time Augmentation
+  tta_transforms: 4
+
+# Model Export Configuration
+export:
+  save_onnx: false
+  save_torchscript: false
+  quantization: false
+
+# Hyperparameter Search Configuration (for optimization mode)
+hyperparameter_search:
+  enabled: false
+  method: "optuna" # optuna, ray, grid
+  n_trials: 50
+  timeout_hours: 24
+
+  # Parameter spaces
+  search_space:
+    lr: [1e-5, 1e-2, "log"]
+    batch_size: [8, 16, 24, 32]
+    weight_decay: [1e-6, 1e-2, "log"]
+    focal_gamma: [0.0, 3.0]
+    dice_smooth: [1e-6, 1e-1, "log"]
+
+    # Architecture choices
+    backbone_name:
+      ["tf_efficientnetv2_b0", "tf_efficientnetv2_b1", "efficientnet_b0"]
+
+    # Training strategy
+    phase1_epochs: [10, 20]
+    phase2_epochs: [5, 15]
+    phase3_epochs: [15, 35]
+    segmentation_weight_max: [0.5, 1.0]
+
+# Clinical Validation Configuration
+clinical_validation:
+  enabled: false
+  severity_thresholds: [0.5, 1.5, 2.5, 3.5] # DR grade thresholds
+  referral_threshold: 2 # Grades >= 2 need referral
+  sensitivity_target: 0.9 # High sensitivity for screening
+  specificity_target: 0.8
+
+# Advanced Features
+advanced:
+  # Curriculum learning
+  curriculum_learning: false
+  curriculum_schedule: "linear"
+
+  # Knowledge distillation
+  knowledge_distillation: false
+  teacher_model_path: null
+  distillation_alpha: 0.7
+  distillation_temperature: 4.0
+
+  # Self-supervised pre-training
+  self_supervised: false
+  ssl_method: "simclr"
+  ssl_epochs: 50
+
+  # Model ensembling
+  ensemble_enabled: false
+  ensemble_models: 3
+  ensemble_method: "averaging" # averaging, voting
+
+# Environment Configuration
+environment:
+  python_version: "3.8+"
+  pytorch_version: "1.12+"
+  cuda_version: "11.3+"
+  required_packages:
+    - "torch>=1.12.0"
+    - "torchvision>=0.13.0"
+    - "numpy>=1.21.0"
+    - "opencv-python>=4.5.0"
+    - "pillow>=8.3.0"
+    - "matplotlib>=3.5.0"
+    - "seaborn>=0.11.0"
+    - "scikit-learn>=1.1.0"
+    - "tqdm>=4.64.0"
+    - "tensorboard>=2.9.0"
+    - "pyyaml>=6.0"
+
+  optional_packages:
+    - "optuna>=3.0.0" # For hyperparameter optimization
+    - "ray[tune]>=2.0.0" # Alternative optimization
+    - "wandb>=0.12.0" # Experiment tracking
+    - "albumentations>=1.2.0" # Advanced augmentations
+
+# Resource Requirements
+resources:
+  min_gpu_memory_gb: 8
+  recommended_gpu_memory_gb: 12
+  min_cpu_cores: 4
+  min_ram_gb: 16
+  estimated_training_time_hours: 6
+
+# Quality Assurance
+qa:
+  run_smoke_test: true
+  validate_data_loaders: true
+  check_gpu_memory: true
+  verify_reproducibility: true
+  test_checkpointing: true
+
+# Documentation
+documentation:
+  config_version: "4.0"
+  last_updated: "2024-01-15"
+  maintainer: "AI Research Team"
+  description: |
+    Phase 4 configuration for advanced multi-task diabetic retinopathy detection.
+    Features progressive training, comprehensive metrics, and robust experimentation.
+
+    Training Strategy:
+    1. Phase 1 (15 epochs): Classification-only training to establish strong feature representations
+    2. Phase 2 (10 epochs): Gradual introduction of segmentation task with progressive weighting
+    3. Phase 3 (25 epochs): Full multi-task optimization with advanced augmentations
+
+    Key Features:
+    - GPU-optimized training with mixed precision
+    - Progressive segmentation weight scheduling
+    - Comprehensive metrics collection including clinical relevance
+    - Robust checkpointing and resuming
+    - Optional hyperparameter optimization
+    - Real-time monitoring with TensorBoard/W&B

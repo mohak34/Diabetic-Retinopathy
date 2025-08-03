@@ -13,7 +13,10 @@ venv/
 .venv/
 dataset/
 
-#files
+# Documentation and test files
+readme/
+
+# Existing files
 PhaseMap.md
 Workflow.md
 Phase2.md

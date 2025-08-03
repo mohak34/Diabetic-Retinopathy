@@ -415,7 +415,7 @@ def create_all_dataloaders(
     all_dataloaders = {}
     
     # 1. APTOS 2019 DataLoaders
-    print("\n🔄 Creating APTOS 2019 DataLoaders...")
+    print("\nCreating Creating APTOS 2019 DataLoaders...")
     aptos_images_dir = processed_path / "aptos2019" / "images"
     aptos_labels_path = processed_path.parent / "aptos2019-blindness-detection" / "train.csv"
     aptos_splits_path = splits_path / "aptos2019_splits.json"
@@ -458,7 +458,7 @@ def create_all_dataloaders(
         print(f"IDRiD Disease Grading dataset/splits not found")
     
     # 3. IDRiD Segmentation DataLoaders
-    print("\n🔄 Creating IDRiD Segmentation DataLoaders...")
+    print("\nCreating Creating IDRiD Segmentation DataLoaders...")
     segmentation_splits_path = splits_path / "idrid_segmentation_splits.json"
     
     if segmentation_splits_path.exists():
@@ -549,4 +549,4 @@ if __name__ == "__main__":
     
     # Print memory estimates
     memory_est = estimate_memory_usage(batch_size=4, image_size=512)
-    print(f"\n💾 Memory estimate for batch_size=4: {memory_est['total_mb']:.1f} MB")
+    print(f"\nResults Memory estimate for batch_size=4: {memory_est['total_mb']:.1f} MB")

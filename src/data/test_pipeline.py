@@ -38,7 +38,7 @@ from src.data.data_splits import create_all_splits
 
 def test_transforms_pipeline():
     """Test different transform pipelines."""
-    print("\n🔍 Testing Transform Pipelines...")
+    print("\nTesting Testing Transform Pipelines...")
     
     # Test all transform types
     transform_types = [
@@ -51,7 +51,7 @@ def test_transforms_pipeline():
     for task, split in transform_types:
         try:
             transform = get_transforms(task, split, image_size=512)
-            print(f"✅ {task} {split} transforms: OK")
+            print(f"OK {task} {split} transforms: OK")
             
             # Test with dummy data
             dummy_image = np.random.randint(0, 255, (512, 512, 3), dtype=np.uint8)
@@ -66,7 +66,7 @@ def test_transforms_pipeline():
                 print(f"   - Image shape: {result['image'].shape}")
                 
         except Exception as e:
-            print(f"❌ {task} {split} transforms: {e}")
+            print(f"ERROR {task} {split} transforms: {e}")
 
 def test_dataset_loading():
     """Test dataset loading and basic functionality."""
@@ -88,7 +88,7 @@ def test_dataset_loading():
                 transform=transform
             )
             
-            print(f"✅ APTOS dataset: {len(dataset)} samples")
+            print(f"OK APTOS dataset: {len(dataset)} samples")
             
             # Test loading a sample
             if len(dataset) > 0:
@@ -96,9 +96,9 @@ def test_dataset_loading():
                 print(f"   - Sample shape: {image.shape}, label: {label}")
                 
         except Exception as e:
-            print(f"❌ APTOS dataset: {e}")
+            print(f"ERROR APTOS dataset: {e}")
     else:
-        print("⏭️ APTOS dataset: Data not found")
+        print("SKIP APTOS dataset: Data not found")
     
     # Test segmentation dataset
     splits_dir = Path(processed_dir).parent / "data" / "splits"
@@ -126,7 +126,7 @@ def test_dataset_loading():
                     image_mask_pairs=pairs
                 )
                 
-                print(f"✅ Segmentation dataset: {len(dataset)} pairs")
+                print(f"OK Segmentation dataset: {len(dataset)} pairs")
                 
                 # Test loading a sample
                 if len(dataset) > 0:
@@ -135,20 +135,20 @@ def test_dataset_loading():
                     print(f"   - Mask unique values: {torch.unique(mask)}")
                     
         except Exception as e:
-            print(f"❌ Segmentation dataset: {e}")
+            print(f"ERROR Segmentation dataset: {e}")
     else:
-        print("⏭️ Segmentation dataset: Splits not found")
+        print("SKIP Segmentation dataset: Splits not found")
 
 def visualize_sample_augmentations(save_dir: str = "visualizations"):
     """Visualize augmentation effects on sample data."""
-    print("\n🎨 Visualizing Sample Augmentations...")
+    print("\nVisualizing Sample Augmentations...")
     
     os.makedirs(save_dir, exist_ok=True)
-    processed_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/data/processed"
+    processed_dir = Path(__file__).parent.parent.parent / "data" / "processed"
     
     # 1. Classification augmentations (APTOS)
-    aptos_images_dir = Path(processed_dir) / "aptos2019" / "images"
-    aptos_labels_path = Path(processed_dir).parent / "aptos2019-blindness-detection" / "train.csv"
+    aptos_images_dir = processed_dir / "aptos2019" / "images"
+    aptos_labels_path = processed_dir.parent / "aptos2019-blindness-detection" / "train.csv"
     
     if aptos_images_dir.exists() and aptos_labels_path.exists():
         try:
@@ -199,10 +199,10 @@ def visualize_sample_augmentations(save_dir: str = "visualizations"):
                 plt.savefig(f"{save_dir}/classification_augmentations.png", dpi=150, bbox_inches='tight')
                 plt.close()
                 
-                print(f"✅ Classification augmentations saved to {save_dir}")
+                print(f"OK Classification augmentations saved to {save_dir}")
                 
         except Exception as e:
-            print(f"❌ Classification visualization: {e}")
+            print(f"ERROR Classification visualization: {e}")
     
     # 2. Segmentation augmentations
     splits_dir = Path(processed_dir).parent / "data" / "splits"
@@ -271,19 +271,19 @@ def visualize_sample_augmentations(save_dir: str = "visualizations"):
                     plt.savefig(f"{save_dir}/segmentation_augmentations.png", dpi=150, bbox_inches='tight')
                     plt.close()
                     
-                    print(f"✅ Segmentation augmentations saved to {save_dir}")
+                    print(f"OK Segmentation augmentations saved to {save_dir}")
                     
         except Exception as e:
-            print(f"❌ Segmentation visualization: {e}")
+            print(f"ERROR Segmentation visualization: {e}")
 
 def test_dataloader_performance():
     """Test DataLoader performance and memory usage."""
-    print("\n⚡ Testing DataLoader Performance...")
+    print("\nTesting DataLoader Performance...")
     
     try:
         # Create data splits first
-        processed_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/data/processed"
-        splits_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/data/splits"
+        processed_dir = Path(__file__).parent.parent.parent / "data" / "processed"
+        splits_dir = Path(__file__).parent.parent.parent / "data" / "splits"
         
         # Create splits if they don't exist
         if not Path(splits_dir).exists():
@@ -294,7 +294,7 @@ def test_dataloader_performance():
         batch_sizes = [1, 2, 4]
         
         for batch_size in batch_sizes:
-            print(f"\n🔄 Testing batch_size={batch_size}")
+            print(f"\nTesting Testing batch_size={batch_size}")
             
             try:
                 # Create factory
@@ -337,21 +337,21 @@ def test_dataloader_performance():
                         print(f"   - Labels shape: {labels.shape}")
                 
             except Exception as e:
-                print(f"   ❌ Batch size {batch_size}: {e}")
+                print(f"   ERROR Batch size {batch_size}: {e}")
                 
     except Exception as e:
-        print(f"❌ DataLoader performance test: {e}")
+        print(f"ERROR DataLoader performance test: {e}")
 
 def check_class_distribution():
     """Check class distribution in datasets and splits."""
-    print("\n📊 Checking Class Distribution...")
+    print("\nChecking Class Distribution...")
     
-    processed_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/data/processed"
-    splits_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/data/splits"
+    processed_dir = Path(__file__).parent.parent.parent / "data" / "processed"
+    splits_dir = Path(__file__).parent.parent.parent / "data" / "splits"
     
     # Check APTOS distribution
-    aptos_labels_path = Path(processed_dir).parent / "aptos2019-blindness-detection" / "train.csv"
-    aptos_splits_path = Path(splits_dir) / "aptos2019_splits.json"
+    aptos_labels_path = processed_dir.parent / "aptos2019-blindness-detection" / "train.csv"
+    aptos_splits_path = splits_dir / "aptos2019_splits.json"
     
     if aptos_labels_path.exists() and aptos_splits_path.exists():
         try:
@@ -366,7 +366,7 @@ def check_class_distribution():
             with open(aptos_splits_path, 'r') as f:
                 split_info = json.load(f)
             
-            print("📈 APTOS 2019 Class Distribution:")
+            print("Distribution APTOS 2019 Class Distribution:")
             print(f"   Overall: {dict(overall_dist)}")
             
             # Check split distributions
@@ -378,14 +378,14 @@ def check_class_distribution():
                     print(f"   {split_name}: {dict(split_dist)}")
                     
         except Exception as e:
-            print(f"❌ APTOS distribution check: {e}")
+            print(f"ERROR APTOS distribution check: {e}")
 
 def check_mask_alignment():
     """Check image-mask alignment in segmentation data."""
-    print("\n🎯 Checking Image-Mask Alignment...")
+    print("\nChecking Image-Mask Alignment...")
     
-    processed_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/data/processed"
-    splits_dir = Path(processed_dir).parent / "data" / "splits"
+    processed_dir = Path(__file__).parent.parent.parent / "data" / "processed"
+    splits_dir = processed_dir.parent / "data" / "splits"
     seg_splits_path = splits_dir / "idrid_segmentation_splits.json"
     
     if seg_splits_path.exists():
@@ -417,7 +417,7 @@ def check_mask_alignment():
                         
                         # Check shapes match
                         if image.shape[:2] != mask.shape:
-                            print(f"   ⚠️ Size mismatch in pair {i}: image {image.shape[:2]} vs mask {mask.shape}")
+                            print(f"   WARNING Size mismatch in pair {i}: image {image.shape[:2]} vs mask {mask.shape}")
                             alignment_issues += 1
                         
                         # Check if mask has content
@@ -429,24 +429,24 @@ def check_mask_alignment():
                         print(f"   Pair {i}: image {image.shape[:2]}, mask pixels: {mask_content}")
                         
                     except Exception as e:
-                        print(f"   ❌ Error in pair {i}: {e}")
+                        print(f"   ERROR Error in pair {i}: {e}")
                         alignment_issues += 1
                 
                 if alignment_issues == 0:
-                    print("✅ All masks properly aligned")
+                    print("OK All masks properly aligned")
                 else:
-                    print(f"⚠️ Found {alignment_issues} alignment issues")
+                    print(f"WARNING Found {alignment_issues} alignment issues")
                     
         except Exception as e:
-            print(f"❌ Mask alignment check: {e}")
+            print(f"ERROR Mask alignment check: {e}")
 
 def run_full_sanity_check():
     """Run complete sanity check pipeline."""
-    print("🔍 COMPREHENSIVE DATA PIPELINE SANITY CHECK")
+    print("COMPREHENSIVE DATA PIPELINE SANITY CHECK")
     print("=" * 60)
     
     # Create visualization directory
-    viz_dir = "/home/strix/Workspace/Projects/Diabetic-Retinopathy/visualizations"
+    viz_dir = Path(__file__).parent.parent.parent / "visualizations"
     os.makedirs(viz_dir, exist_ok=True)
     
     # Run all checks
@@ -457,7 +457,7 @@ def run_full_sanity_check():
     check_class_distribution()
     check_mask_alignment()
     
-    print("\n✅ Sanity check complete!")
+    print("\nOK Sanity check complete!")
     print(f"📁 Visualizations saved to: {viz_dir}")
 
 if __name__ == "__main__":

@@ -95,16 +95,16 @@ class DataPreprocessingPipeline:
     
     def _process_segmentation_dataset(self) -> Dict:
         """Process segmentation dataset (A. Segmentation)"""
-        print("\n🔍 Processing Segmentation Dataset...")
+        print("\nProcessing Processing Segmentation Dataset...")
         
         seg_data = self.org_results.get('segmentation', {})
         if seg_data.get('status') != 'success':
-            print("❌ Segmentation data not available")
+            print("ERROR Segmentation data not available")
             return {'status': 'failed', 'reason': 'data_not_available'}
         
         pairs = seg_data.get('pairs', [])
         if not pairs:
-            print("❌ No image-mask pairs found")
+            print("ERROR No image-mask pairs found")
             return {'status': 'failed', 'reason': 'no_pairs'}
         
         print(f"Processing {len(pairs)} image-mask pairs...")
@@ -147,9 +147,9 @@ class DataPreprocessingPipeline:
         with open(metadata_file, 'w') as f:
             json.dump(metadata, f, indent=2)
         
-        print(f"✓ Processed {len(processed_pairs)}/{len(pairs)} pairs successfully")
+        print(f"OK Processed {len(processed_pairs)}/{len(pairs)} pairs successfully")
         if failed_pairs:
-            print(f"⚠️  {len(failed_pairs)} pairs failed processing")
+            print(f"WARNING  {len(failed_pairs)} pairs failed processing")
         
         return {
             'status': 'success',
@@ -262,11 +262,11 @@ class DataPreprocessingPipeline:
     
     def _process_grading_dataset(self) -> Dict:
         """Process grading dataset (B. Disease Grading)"""
-        print("\n📊 Processing Disease Grading Dataset...")
+        print("\nProcessing Processing Disease Grading Dataset...")
         
         grading_data = self.org_results.get('grading', {})
         if grading_data.get('status') != 'success':
-            print("❌ Grading data not available")
+            print("ERROR Grading data not available")
             return {'status': 'failed', 'reason': 'data_not_available'}
         
         # Find all images and labels
@@ -323,7 +323,7 @@ class DataPreprocessingPipeline:
         with open(metadata_file, 'w') as f:
             json.dump(metadata, f, indent=2)
         
-        print(f"✓ Processed {len(processed_images)}/{len(image_files)} images successfully")
+        print(f"OK Processed {len(processed_images)}/{len(image_files)} images successfully")
         
         return {
             'status': 'success',
@@ -414,12 +414,12 @@ class DataPreprocessingPipeline:
         
         loc_data = self.org_results.get('localization', {})
         if loc_data.get('status') != 'success':
-            print("❌ Localization data not available")
+            print("ERROR Localization data not available")
             return {'status': 'failed', 'reason': 'data_not_available'}
         
         bbox_pairs = loc_data.get('bbox_pairs', [])
         if not bbox_pairs:
-            print("❌ No image-annotation pairs found")
+            print("ERROR No image-annotation pairs found")
             return {'status': 'failed', 'reason': 'no_pairs'}
         
         print(f"Processing {len(bbox_pairs)} image-annotation pairs...")
@@ -457,7 +457,7 @@ class DataPreprocessingPipeline:
         with open(metadata_file, 'w') as f:
             json.dump(metadata, f, indent=2)
         
-        print(f"✓ Processed {len(processed_pairs)}/{len(bbox_pairs)} pairs successfully")
+        print(f"OK Processed {len(processed_pairs)}/{len(bbox_pairs)} pairs successfully")
         
         return {
             'status': 'success',
@@ -505,11 +505,11 @@ class DataPreprocessingPipeline:
     
     def _process_aptos_dataset(self) -> Dict:
         """Process APTOS 2019 dataset"""
-        print("\n🏆 Processing APTOS 2019 Dataset...")
+        print("\nProcessing Processing APTOS 2019 Dataset...")
         
         aptos_data = self.org_results.get('aptos2019', {})
         if aptos_data.get('status') != 'success':
-            print("❌ APTOS data not available")
+            print("ERROR APTOS data not available")
             return {'status': 'failed', 'reason': 'data_not_available'}
         
         # Process train images
@@ -572,7 +572,7 @@ class DataPreprocessingPipeline:
         with open(metadata_file, 'w') as f:
             json.dump(metadata, f, indent=2)
         
-        print(f"✓ Processed {len(processed_images)}/{len(train_image_files)} images successfully")
+        print(f"OK Processed {len(processed_images)}/{len(train_image_files)} images successfully")
         
         return {
             'status': 'success',
@@ -614,11 +614,11 @@ class DataPreprocessingPipeline:
     
     def _generate_masks_from_boxes(self) -> Dict:
         """Generate segmentation masks from bounding boxes"""
-        print("\n🎯 Generating Masks from Bounding Boxes...")
+        print("\nChecking Generating Masks from Bounding Boxes...")
         
         loc_data = self.results.get('localization', {})
         if loc_data.get('status') != 'success':
-            print("❌ No localization data to process")
+            print("ERROR No localization data to process")
             return {'status': 'failed', 'reason': 'no_localization_data'}
         
         # This is a placeholder - actual implementation depends on annotation format
@@ -627,7 +627,7 @@ class DataPreprocessingPipeline:
         output_dir = self.processed_path / "localization" / "generated_masks"
         output_dir.mkdir(parents=True, exist_ok=True)
         
-        print("⚠️  Mask generation from bounding boxes needs annotation format analysis")
+        print("WARNING  Mask generation from bounding boxes needs annotation format analysis")
         print("   This will be implemented after examining the annotation files")
         
         return {
@@ -638,7 +638,7 @@ class DataPreprocessingPipeline:
     
     def _create_training_splits(self) -> Dict:
         """Create training/validation splits for all datasets"""
-        print("\n✂️  Creating Training Splits...")
+        print("\nCreating  Creating Training Splits...")
         
         splits = {}
         
@@ -744,7 +744,7 @@ class DataPreprocessingPipeline:
     
     def _validate_processed_data(self) -> Dict:
         """Validate processed data integrity"""
-        print("\n✅ Validating Processed Data...")
+        print("\nOK Validating Processed Data...")
         
         validation = {
             'segmentation': self._validate_segmentation_data(),
@@ -807,7 +807,7 @@ class DataPreprocessingPipeline:
         with open(results_file, 'w') as f:
             json.dump(self.results, f, indent=2, default=str)
         
-        print(f"\n💾 Processing results saved to: {results_file}")
+        print(f"\nResults Processing results saved to: {results_file}")
 
 
 def main():
