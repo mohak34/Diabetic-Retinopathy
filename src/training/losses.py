@@ -480,10 +480,17 @@ class MultiTaskLoss(nn.Module):
             seg_weight = self.segmentation_weight
             
             # Progressive training: start with classification only
-            if epoch is not None and epoch < 5:
-                seg_weight = 0.0
-            elif epoch is not None and epoch < 15:
-                seg_weight = self.segmentation_weight * (epoch - 4) / 10
+            if epoch is not None:
+                # Ensure epoch is an integer
+                try:
+                    epoch_int = int(epoch)
+                except (ValueError, TypeError):
+                    epoch_int = 0
+                    
+                if epoch_int < 5:
+                    seg_weight = 0.0
+                elif epoch_int < 15:
+                    seg_weight = self.segmentation_weight * (epoch_int - 4) / 10
             
             total_loss = cls_weight * cls_loss + seg_weight * seg_loss
         

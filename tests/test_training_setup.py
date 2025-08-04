@@ -48,7 +48,8 @@ def test_model_creation():
     
     # Memory estimation
     if device.type == 'cuda':
-        memory_mb = model.estimate_memory_usage(batch_size)
+        memory_estimates = model.estimate_memory_usage(batch_size)
+        memory_mb = memory_estimates['total_estimated']
         print(f"   OK Estimated memory usage: {memory_mb:.1f} MB")
     
     return model, device

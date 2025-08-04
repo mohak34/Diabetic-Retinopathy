@@ -70,7 +70,7 @@ phase3:
   segmentation_weight_end: null
   segmentation_weight_start: null
 scheduler:
-  T_max: 50
+  T_max: 2
   eta_min: 1e-6
   factor: 0.5
   gamma: 0.1

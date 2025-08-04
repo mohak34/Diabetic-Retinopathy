@@ -180,7 +180,8 @@ class Phase4Trainer:
         # Memory estimation
         if self.device.type == 'cuda':
             try:
-                memory_mb = self.model.estimate_memory_usage(self.config.hardware.batch_size)
+                memory_estimates = self.model.estimate_memory_usage(self.config.hardware.batch_size)
+                memory_mb = memory_estimates['total_estimated']
                 self.logger.info(f"Estimated memory usage: {memory_mb:.1f} MB")
                 
                 # Check if memory usage is within limits

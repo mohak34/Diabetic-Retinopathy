@@ -1,0 +1,49 @@
+best_metric: -1.2002053260803223
+total_epochs: 2
+total_time: 1.1915721893310547
+training_history:
+  learning_rates:
+  - 0.001
+  - 0.0009990143508499217
+  train_losses:
+  - 1.257680630683899
+  - 1.2175360560417174
+  train_metrics:
+  - classification: 1.091625940799713
+    cls_weight: 1.0
+    cls_weighted: 1.257680630683899
+    epoch_time: 0.6768150329589844
+    kappa: 1.660546875
+    seg_weight: 0.0
+    seg_weighted: 0.0
+    segmentation: 0.4472686529159546
+    total: 1.257680630683899
+  - classification: 1.0545819520950317
+    cls_weight: 1.0
+    cls_weighted: 1.2175360560417174
+    epoch_time: 0.20955109596252441
+    kappa: 1.629541015625
+    seg_weight: 0.0
+    seg_weighted: 0.0
+    segmentation: 0.4474678158760071
+    total: 1.2175360560417174
+  val_losses:
+  - 1.2002053260803223
+  - 1.2015149116516113
+  val_metrics:
+  - classification: 1.0387014269828796
+    cls_weight: 1.0
+    cls_weighted: 1.2002053260803223
+    kappa: 1.6150390625
+    seg_weight: 0.0
+    seg_weighted: 0.0
+    segmentation: 0.447456556558609
+    total: 1.2002053260803223
+  - classification: 1.0398547410964967
+    cls_weight: 1.0
+    cls_weighted: 1.2015149116516113
+    kappa: 1.6166015625
+    seg_weight: 0.0
+    seg_weighted: 0.0
+    segmentation: 0.44734370708465576
+    total: 1.2015149116516113

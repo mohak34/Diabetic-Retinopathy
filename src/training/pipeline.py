@@ -79,6 +79,26 @@ class Phase4TrainingPipeline:
         self.logger.info(f"Configuration: {self.config.experiment_name}")
         if smoke_test:
             self.logger.info("Smoke test mode enabled")
+            # Modify configuration for smoke test
+            self._modify_config_for_smoke_test()
+
+    def _modify_config_for_smoke_test(self):
+        """Modify configuration for smoke test - quick validation with minimal epochs"""
+        # Reduce to 2 total epochs distributed as 1+1+0
+        self.config.phase1.epochs = 1
+        self.config.phase2.epochs = 1  
+        self.config.phase3.epochs = 0  # Skip phase 3 for smoke test
+        self.config.total_epochs = 2
+        
+        # Update scheduler T_max for reduced epochs
+        if hasattr(self.config.scheduler, 'T_max'):
+            self.config.scheduler.T_max = 2
+            
+        self.logger.info("Configuration modified for smoke test:")
+        self.logger.info(f"  Phase 1: {self.config.phase1.epochs} epochs")
+        self.logger.info(f"  Phase 2: {self.config.phase2.epochs} epochs") 
+        self.logger.info(f"  Phase 3: {self.config.phase3.epochs} epochs")
+        self.logger.info(f"  Total: {self.config.total_epochs} epochs")
     
     def _setup_logger(self) -> logging.Logger:
         """Setup comprehensive logging for the pipeline"""
@@ -551,6 +571,8 @@ def main():
     parser.add_argument('--skip-evaluation', action='store_true', 
                        help='Skip final evaluation')
     parser.add_argument('--resume', type=str, help='Resume from checkpoint')
+    parser.add_argument('--smoke-test', action='store_true',
+                       help='Run smoke test with minimal configuration')
     
     # Hardware options
     parser.add_argument('--device', type=str, choices=['auto', 'cpu', 'cuda'], 
@@ -574,7 +596,7 @@ def main():
     
     try:
         # Create pipeline
-        pipeline = Phase4TrainingPipeline(config_path=args.config)
+        pipeline = Phase4TrainingPipeline(config_path=args.config, smoke_test=args.smoke_test)
         
         # Override configuration from command line arguments
         if args.experiment_name:
@@ -586,12 +608,28 @@ def main():
         if args.batch_size:
             pipeline.config.hardware.batch_size = args.batch_size
         
-        # Run complete pipeline
-        results = pipeline.run_complete_pipeline(
-            enable_hyperparameter_optimization=not args.skip_optimization,
-            enable_evaluation=not args.skip_evaluation,
-            resume_from_checkpoint=args.resume
-        )
+        # Run appropriate pipeline based on mode
+        if args.smoke_test:
+            # For smoke test, just run training directly
+            pipeline.logger.info("🔥 RUNNING SMOKE TEST 🔥")
+            pipeline.logger.info("This is a minimal test to verify the pipeline works")
+            
+            # Setup data loaders
+            train_loader, val_loader, _ = pipeline.setup_data_loaders()
+            
+            # Run training
+            results = pipeline.run_training(
+                train_loader=train_loader,
+                val_loader=val_loader,
+                enable_checkpointing=False
+            )
+        else:
+            # Run complete pipeline
+            results = pipeline.run_complete_pipeline(
+                enable_hyperparameter_optimization=not args.skip_optimization,
+                enable_evaluation=not args.skip_evaluation,
+                resume_from_checkpoint=args.resume
+            )
         
         # Save final configuration
         pipeline.save_config()

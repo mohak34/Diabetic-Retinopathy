@@ -1,0 +1,62 @@
+checkpoint:
+  keep_best: true
+  keep_last: 3
+  mode: max
+  monitor_metric: combined_score
+  save_every: 1
+data_root: dataset/processed
+early_stopping:
+  enabled: false
+  min_delta: 0.0001
+  mode: max
+  monitor_metric: combined_score
+  patience: 10
+experiment_name: smoke_test
+hardware:
+  batch_size: 2
+  device: auto
+  gradient_accumulation_steps: 1
+  max_memory_usage: 0.8
+  mixed_precision: true
+  num_workers: 4
+  pin_memory: true
+log_dir: logs
+logging:
+  log_every: 1
+  max_images: 8
+  save_images: false
+  use_tensorboard: true
+  use_wandb: false
+  wandb_project: diabetic-retinopathy
+loss:
+  classification_weight: 1.0
+  focal_gamma: 2.0
+  kappa_weight: 0.1
+  segmentation_weight: 0.5
+  use_combined_seg: true
+  use_focal_cls: true
+  use_kappa_cls: true
+model_dir: models
+optimizer:
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  learning_rate: 0.001
+  name: adamw
+  weight_decay: 0.0001
+output_dir: experiments
+progressive:
+  phase1_epochs: 1
+  phase2_epochs: 1
+  phase3_epochs: 0
+scheduler:
+  max_epochs: 50
+  min_lr: 1.0e-06
+  name: cosine
+  patience: 10
+  warmup_epochs: 0
+seed: 42
+test_split: dataset/splits/test.json
+train_split: dataset/splits/train.json
+val_split: dataset/splits/val.json
