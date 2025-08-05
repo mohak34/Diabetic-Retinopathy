@@ -226,7 +226,7 @@ def main():
         print("\n" + "=" * 60)
         print("SUCCESS: ALL TESTS PASSED!")
         print("OK Your setup is ready for training")
-        print("\n📝 Next steps:")
+        print("\n Next steps:")
         print("   1. Replace dummy dataset with your actual data")
         print("   2. Run: python train_model.py")
         print("   3. Monitor with: python monitor_training.py")

@@ -264,7 +264,7 @@ class TrainingMonitor:
             print("   Phase 3: Multi-Task Training CURRENT (Current)")
         
         print()
-        print("🎮 CONTROLS:")
+        print(" CONTROLS:")
         print("   Ctrl+C: Stop monitoring")
         print("   Close plot window: Exit")
         print("=" * 80)

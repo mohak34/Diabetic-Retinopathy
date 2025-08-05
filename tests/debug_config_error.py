@@ -14,7 +14,7 @@ try:
     from src.training.config import AdvancedTrainingConfig
     
     print("Loading configuration...")
-    config = AdvancedTrainingConfig.from_yaml("configs/phase4_config.yaml")
+    config = AdvancedTrainingConfig.from_yaml("configs/base_config.yaml")
     
     print("Testing segmentation weight calculation...")
     

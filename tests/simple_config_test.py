@@ -7,7 +7,7 @@ import yaml
 from pathlib import Path
 
 # Load the YAML directly
-config_path = "configs/phase4_config.yaml"
+config_path = "configs/base_config.yaml"
 with open(config_path, 'r') as f:
     config_dict = yaml.safe_load(f)
 

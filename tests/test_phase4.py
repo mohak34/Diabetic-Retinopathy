@@ -11,23 +11,23 @@ sys.path.append(str(Path(__file__).parent / "src"))
 
 def test_phase4_losses():
     """Test the robust loss functions"""
-    print("🧪 Testing Phase 4 losses...")
+    print("Testing Phase 4 losses...")
     
     try:
-        from src.training.phase4_losses import test_robust_losses
+        from src.training.losses import test_robust_losses
         test_robust_losses()
-        print("✅ Phase 4 losses test passed!")
+        print(" Phase 4 losses test passed!")
         return True
     except Exception as e:
-        print(f"❌ Phase 4 losses test failed: {e}")
+        print(f" Phase 4 losses test failed: {e}")
         return False
 
 def test_phase4_config():
     """Test the configuration system"""
-    print("🧪 Testing Phase 4 configuration...")
+    print("Testing Phase 4 configuration...")
     
     try:
-        from src.training.phase4_config import Phase4Config
+        from src.training.config import Phase4Config
         
         # Test default config
         config = Phase4Config()
@@ -42,18 +42,18 @@ def test_phase4_config():
         loaded_config = Phase4Config.from_yaml("test_config.yaml")
         print(f"  - YAML save/load: {loaded_config.experiment_name}")
         
-        print("✅ Phase 4 configuration test passed!")
+        print(" Phase 4 configuration test passed!")
         return True
     except Exception as e:
-        print(f"❌ Phase 4 configuration test failed: {e}")
+        print(f" Phase 4 configuration test failed: {e}")
         return False
 
 def test_smoke_test():
     """Test the smoke test functionality"""
-    print("🧪 Testing smoke test...")
+    print("Testing smoke test...")
     
     try:
-        from src.training.phase4_pipeline import Phase4Pipeline
+        from src.training.pipeline import Phase4Pipeline
         
         # Create pipeline in smoke test mode
         pipeline = Phase4Pipeline(smoke_test=True)
@@ -62,19 +62,19 @@ def test_smoke_test():
         success = pipeline.run_smoke_test()
         
         if success:
-            print("✅ Smoke test passed!")
+            print(" Smoke test passed!")
             return True
         else:
-            print("❌ Smoke test failed!")
+            print(" Smoke test failed!")
             return False
             
     except Exception as e:
-        print(f"❌ Smoke test failed with exception: {e}")
+        print(f" Smoke test failed with exception: {e}")
         return False
 
 def main():
     """Run all tests"""
-    print("🚀 Testing Robust Phase 4 Implementation")
+    print(" Testing Robust Phase 4 Implementation")
     print("=" * 50)
     
     tests = [
@@ -85,25 +85,25 @@ def main():
     
     results = []
     for name, test_func in tests:
-        print(f"\n📋 {name}")
+        print(f"\n {name}")
         success = test_func()
         results.append((name, success))
     
     print("\n" + "=" * 50)
-    print("📊 TEST RESULTS:")
+    print(" TEST RESULTS:")
     
     all_passed = True
     for name, success in results:
-        status = "✅ PASS" if success else "❌ FAIL"
+        status = " PASS" if success else " FAIL"
         print(f"  {status} {name}")
         if not success:
             all_passed = False
     
     if all_passed:
-        print("\n🎉 All tests passed! Phase 4 is ready to use.")
+        print("\n All tests passed! Phase 4 is ready to use.")
         return 0
     else:
-        print("\n💥 Some tests failed. Check the implementation.")
+        print("\n Some tests failed. Check the implementation.")
         return 1
 
 if __name__ == "__main__":

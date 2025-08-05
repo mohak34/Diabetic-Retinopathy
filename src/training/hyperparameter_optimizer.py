@@ -35,8 +35,8 @@ except ImportError:
     RAY_AVAILABLE = False
 
 # Local imports
-from .config import AdvancedTrainingConfig, OptimizerConfig, SchedulerConfig
-from .phase4_trainer import Phase4Trainer
+from .config import Phase4Config, OptimizerConfig, SchedulerConfig
+from .trainer import RobustPhase4Trainer
 
 
 @dataclass
@@ -146,7 +146,7 @@ class HyperparameterOptimizer:
     """
     
     def __init__(self,
-                 base_config: AdvancedTrainingConfig,
+                 base_config: Phase4Config,
                  param_space: HyperparameterSpace,
                  optimization_config: OptimizationConfig,
                  logger: Optional[logging.Logger] = None):
@@ -254,10 +254,10 @@ class HyperparameterOptimizer:
         
         return params
     
-    def create_config_from_params(self, params: Dict[str, Any], trial_id: int) -> AdvancedTrainingConfig:
+    def create_config_from_params(self, params: Dict[str, Any], trial_id: int) -> Phase4Config:
         """Create training configuration from hyperparameters"""
         # Copy base config
-        config = AdvancedTrainingConfig()
+        config = Phase4Config()
         
         # Update experiment name
         config.experiment_name = f"{self.base_config.experiment_name}_trial_{trial_id:03d}"
@@ -269,21 +269,20 @@ class HyperparameterOptimizer:
         config.model.use_advanced_decoder = self.param_space.use_advanced_decoder
         
         # Update optimizer configuration
-        config.optimizer.lr = params['lr']
+        config.optimizer.learning_rate = params['lr']
         config.optimizer.weight_decay = params['weight_decay']
         
         # Update batch size
         config.hardware.batch_size = params['batch_size']
         
         # Update loss function parameters
-        config.focal_gamma = params['focal_gamma']
-        config.dice_smooth = params['dice_smooth']
+        config.loss.focal_gamma = params['focal_gamma']
+        config.loss.dice_smooth = params['dice_smooth']
         
         # Update training phases
-        config.phase1.epochs = params['phase1_epochs']
-        config.phase2.epochs = params['phase2_epochs']
-        config.phase3.epochs = params['phase3_epochs']
-        config.total_epochs = params['phase1_epochs'] + params['phase2_epochs'] + params['phase3_epochs']
+        config.progressive.phase1_epochs = params['phase1_epochs']
+        config.progressive.phase2_epochs = params['phase2_epochs']
+        config.progressive.phase3_epochs = params['phase3_epochs']
         
         # Update segmentation weight progression
         config.segmentation_weight_max = params['seg_weight_max']
@@ -293,12 +292,11 @@ class HyperparameterOptimizer:
         config.early_stopping.patience = self.opt_config.early_stopping_epochs
         
         # Limit maximum epochs for efficiency
-        if config.total_epochs > self.opt_config.max_epochs_per_trial:
-            scale_factor = self.opt_config.max_epochs_per_trial / config.total_epochs
-            config.phase1.epochs = max(1, int(config.phase1.epochs * scale_factor))
-            config.phase2.epochs = max(1, int(config.phase2.epochs * scale_factor))
-            config.phase3.epochs = max(1, int(config.phase3.epochs * scale_factor))
-            config.total_epochs = config.phase1.epochs + config.phase2.epochs + config.phase3.epochs
+        if config.progressive.total_epochs > self.opt_config.max_epochs_per_trial:
+            scale_factor = self.opt_config.max_epochs_per_trial / config.progressive.total_epochs
+            config.progressive.phase1_epochs = max(1, int(config.progressive.phase1_epochs * scale_factor))
+            config.progressive.phase2_epochs = max(1, int(config.progressive.phase2_epochs * scale_factor))
+            config.progressive.phase3_epochs = max(1, int(config.progressive.phase3_epochs * scale_factor))
         
         return config
     
@@ -316,7 +314,7 @@ class HyperparameterOptimizer:
             self.logger.info(f"Starting trial {trial.number} with params: {params}")
             
             # Create trainer
-            trainer = Phase4Trainer(config, logger=self.logger)
+            trainer = RobustPhase4Trainer(config, logger=self.logger)
             
             # Note: In a real implementation, you would need to provide train_loader and val_loader
             # For this example, we'll simulate the training process
@@ -347,7 +345,7 @@ class HyperparameterOptimizer:
             self.logger.error(f"Trial {trial.number} failed: {str(e)}")
             return -float('inf') if self.opt_config.optimization_direction == "maximize" else float('inf')
     
-    def _simulate_training(self, trainer: Phase4Trainer, config: AdvancedTrainingConfig, trial) -> float:
+    def _simulate_training(self, trainer: RobustPhase4Trainer, config: Phase4Config, trial) -> float:
         """
         Simulate training for demonstration purposes
         In real implementation, replace with actual training loop
@@ -365,7 +363,7 @@ class HyperparameterOptimizer:
             base_score += 0.05
         
         # Penalty for very high learning rates
-        if config.optimizer.lr > 0.01:
+        if config.optimizer.learning_rate > 0.01:
             base_score -= 0.1
         
         # Bonus for reasonable batch sizes
@@ -377,8 +375,8 @@ class HyperparameterOptimizer:
         
         # Simulate pruning by reporting intermediate values
         if OPTUNA_AVAILABLE and hasattr(trial, 'report'):
-            for epoch in range(min(10, config.total_epochs)):
-                intermediate_score = score * (epoch + 1) / config.total_epochs
+            for epoch in range(min(10, config.progressive.total_epochs)):
+                intermediate_score = score * (epoch + 1) / config.progressive.total_epochs
                 trial.report(intermediate_score, epoch)
                 
                 # Check if trial should be pruned
@@ -557,7 +555,7 @@ class HyperparameterOptimizer:
                 self.logger.info(f"Grid search trial {i+1}/{min(len(param_combinations), self.opt_config.n_trials)}")
                 
                 # Create trainer and simulate training
-                trainer = Phase4Trainer(config, logger=self.logger)
+                trainer = RobustPhase4Trainer(config, logger=self.logger)
                 score = self._simulate_training(trainer, config, None)
                 
                 # Check if this is the best score
@@ -819,7 +817,7 @@ class HyperparameterOptimizer:
 # Example usage
 if __name__ == "__main__":
     # Create base configuration
-    base_config = AdvancedTrainingConfig()
+    base_config = Phase4Config()
     
     # Define parameter space
     param_space = HyperparameterSpace()

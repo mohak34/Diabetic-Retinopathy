@@ -11,7 +11,7 @@ def main():
     print("=== DEBUG CONFIGURATION LOADING ===")
     
     # Load the configuration being used
-    config = AdvancedTrainingConfig.from_yaml('configs/phase4_config.yaml')
+    config = AdvancedTrainingConfig.from_yaml('configs/base_config.yaml')
     
     print("Original configuration:")
     print(f"Phase1 epochs: {config.phase1.epochs} (type: {type(config.phase1.epochs)})")

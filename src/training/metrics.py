@@ -481,7 +481,7 @@ class AdvancedMetricsCollector:
         lines.append(str(current_results))
         
         # Best performance
-        lines.append(f"\n🏆 Best Performance:")
+        lines.append(f"\n Best Performance:")
         best_epoch = self.get_best_epoch("combined_score")
         lines.append(f"  Best epoch: {best_epoch}")
         lines.append(f"  Best combined score: {max(self.history['combined']['combined_score']):.4f}")
@@ -495,7 +495,7 @@ class AdvancedMetricsCollector:
             lines.append(f"  Best dice: {best_dice:.4f}")
         
         # Trends
-        lines.append(f"\n📈 Recent Trends:")
+        lines.append(f"\n Recent Trends:")
         key_metrics = ["kappa", "dice", "combined_score"]
         for metric in key_metrics:
             if metric in self.history["classification"]:

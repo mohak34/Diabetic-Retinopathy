@@ -38,11 +38,11 @@ def debug_model_channels():
     try:
         # Try forward pass
         cls_out, seg_out = model(test_input)
-        print(f"✅ SUCCESS!")
+        print(f" SUCCESS!")
         print(f"Classification output: {cls_out.shape}")
         print(f"Segmentation output: {seg_out.shape}")
     except Exception as e:
-        print(f"❌ ERROR: {e}")
+        print(f" ERROR: {e}")
         
         # Debug step by step
         print("\n=== STEP BY STEP DEBUG ===")
@@ -61,7 +61,7 @@ def debug_model_channels():
             
             # Try classification head
             cls_out = model.classification_head(final_features)
-            print(f"✅ Classification head works: {cls_out.shape}")
+            print(f" Classification head works: {cls_out.shape}")
             
             # Try segmentation head
             print("\n=== DEBUGGING SEGMENTATION HEAD ===")
@@ -74,10 +74,10 @@ def debug_model_channels():
             
             # Try segmentation head forward
             seg_out = seg_head(final_features, skip_features)
-            print(f"✅ Segmentation head works: {seg_out.shape}")
+            print(f" Segmentation head works: {seg_out.shape}")
             
         except Exception as e2:
-            print(f"❌ Detailed error: {e2}")
+            print(f" Detailed error: {e2}")
             import traceback
             traceback.print_exc()
 

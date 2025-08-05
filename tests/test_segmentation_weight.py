@@ -13,7 +13,7 @@ try:
     from src.training.config import AdvancedTrainingConfig
     
     print("Testing segmentation weight calculation...")
-    config = AdvancedTrainingConfig.from_yaml("configs/phase4_config.yaml")
+    config = AdvancedTrainingConfig.from_yaml("configs/base_config.yaml")
     
     print(f"Phase 1 epochs: {config.phase1.epochs} (type: {type(config.phase1.epochs)})")
     print(f"Phase 2 epochs: {config.phase2.epochs} (type: {type(config.phase2.epochs)})")
@@ -40,7 +40,7 @@ try:
         except Exception as e:
             print(f"Value {val} (type {type(val)}): ERROR - {e}")
     
-    print("\n✓ All segmentation weight tests completed!")
+    print("\n All segmentation weight tests completed!")
     
 except Exception as e:
     print(f"ERROR: {e}")

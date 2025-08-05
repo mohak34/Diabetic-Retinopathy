@@ -13,7 +13,7 @@ early_stopping:
   patience: 10
 experiment_name: smoke_test
 hardware:
-  batch_size: 2
+  batch_size: 4
   device: auto
   gradient_accumulation_steps: 1
   max_memory_usage: 0.8
@@ -30,12 +30,19 @@ logging:
   wandb_project: diabetic-retinopathy
 loss:
   classification_weight: 1.0
+  dice_smooth: 1.0e-06
   focal_gamma: 2.0
   kappa_weight: 0.1
   segmentation_weight: 0.5
   use_combined_seg: true
   use_focal_cls: true
   use_kappa_cls: true
+model:
+  backbone_name: resnet50
+  num_classes: 5
+  segmentation_classes: 1
+  use_advanced_decoder: true
+  use_skip_connections: true
 model_dir: models
 optimizer:
   betas:
@@ -49,7 +56,7 @@ output_dir: experiments
 progressive:
   phase1_epochs: 1
   phase2_epochs: 1
-  phase3_epochs: 0
+  phase3_epochs: 1
 scheduler:
   max_epochs: 50
   min_lr: 1.0e-06
@@ -57,6 +64,8 @@ scheduler:
   patience: 10
   warmup_epochs: 0
 seed: 42
+segmentation_weight_max: 1.0
+segmentation_weight_warmup_epochs: 10
 test_split: dataset/splits/test.json
 train_split: dataset/splits/train.json
 val_split: dataset/splits/val.json

@@ -458,7 +458,7 @@ def run_full_sanity_check():
     check_mask_alignment()
     
     print("\nOK Sanity check complete!")
-    print(f"📁 Visualizations saved to: {viz_dir}")
+    print(f" Visualizations saved to: {viz_dir}")
 
 if __name__ == "__main__":
     run_full_sanity_check()

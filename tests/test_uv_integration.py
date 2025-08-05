@@ -22,10 +22,10 @@ def test_imports():
         from src.training.metrics import AdvancedMetricsCollector
         
         print("  OK Testing trainer...")
-        from src.training.phase4_trainer import Phase4Trainer
+        from src.training.trainer import Phase4Trainer
         
         print("  OK Testing pipeline...")
-        from src.training.pipeline import Phase4TrainingPipeline
+        from src.training.pipeline import Phase4Pipeline
         
         print("  OK Testing hyperparameter optimization...")
         from src.training.hyperparameter_optimizer import HyperparameterOptimizer

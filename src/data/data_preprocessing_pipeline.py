@@ -410,7 +410,7 @@ class DataPreprocessingPipeline:
     
     def _process_localization_dataset(self) -> Dict:
         """Process localization dataset (C. Localization)"""
-        print("\n📍 Processing Localization Dataset...")
+        print("\n Processing Localization Dataset...")
         
         loc_data = self.org_results.get('localization', {})
         if loc_data.get('status') != 'success':

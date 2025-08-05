@@ -74,7 +74,7 @@ class DataOrganizer:
     
     def _process_segmentation_data(self) -> Dict:
         """Process A. Segmentation dataset"""
-        print("\n📁 Processing A. Segmentation Dataset...")
+        print("\n Processing A. Segmentation Dataset...")
         
         seg_path = self.base_path / "A. Segmentation"
         images_path = seg_path / "1. Original Images"
@@ -132,7 +132,7 @@ class DataOrganizer:
     
     def _process_localization_data(self) -> Dict:
         """Process C. Localization dataset"""
-        print("\n📍 Processing C. Localization Dataset...")
+        print("\n Processing C. Localization Dataset...")
         
         loc_path = self.base_path / "C. Localization"
         images_path = loc_path / "1. Original Images"

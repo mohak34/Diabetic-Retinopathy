@@ -29,14 +29,14 @@ def check_dependencies():
         import timm
         logger.info(f"OK timm version: {timm.__version__}")
     except ImportError:
-        logger.error("✗ timm not found. Install with: pip install timm")
+        logger.error(" timm not found. Install with: pip install timm")
         return False
     
     try:
         import albumentations
         logger.info(f"OK albumentations version: {albumentations.__version__}")
     except ImportError:
-        logger.error("✗ albumentations not found. Install with: pip install albumentations")
+        logger.error(" albumentations not found. Install with: pip install albumentations")
         return False
     
     try:
@@ -47,7 +47,7 @@ def check_dependencies():
             logger.info(f"OK CUDA device: {torch.cuda.get_device_name()}")
             logger.info(f"OK CUDA memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
     except ImportError:
-        logger.error("✗ PyTorch not found")
+        logger.error(" PyTorch not found")
         return False
     
     return True
@@ -108,7 +108,7 @@ def test_backbone():
         return True, backbone
         
     except Exception as e:
-        logger.error(f"✗ Backbone test failed: {e}")
+        logger.error(f" Backbone test failed: {e}")
         traceback.print_exc()
         return False, None
 
@@ -194,7 +194,7 @@ def test_heads(backbone_features: int = 1280):
         return True, cls_head, seg_head
         
     except Exception as e:
-        logger.error(f"✗ Head tests failed: {e}")
+        logger.error(f" Head tests failed: {e}")
         traceback.print_exc()
         return False, None, None
 
@@ -267,7 +267,7 @@ def test_losses():
         return True
         
     except Exception as e:
-        logger.error(f"✗ Loss function tests failed: {e}")
+        logger.error(f" Loss function tests failed: {e}")
         traceback.print_exc()
         return False
 
@@ -391,7 +391,7 @@ def test_integrated_model():
         return True, model_basic
         
     except Exception as e:
-        logger.error(f"✗ Integrated model tests failed: {e}")
+        logger.error(f" Integrated model tests failed: {e}")
         traceback.print_exc()
         return False, None
 
@@ -501,7 +501,7 @@ def test_memory_constraints():
         return True
         
     except Exception as e:
-        logger.error(f"✗ Memory constraint tests failed: {e}")
+        logger.error(f" Memory constraint tests failed: {e}")
         traceback.print_exc()
         return False
 
@@ -556,7 +556,7 @@ def run_phase3_tests():
     
     all_passed = True
     for test_name, result in test_results.items():
-        status = "OK PASSED" if result else "✗ FAILED"
+        status = "OK PASSED" if result else " FAILED"
         logger.info(f"{test_name.upper()}: {status}")
         if not result:
             all_passed = False

@@ -93,11 +93,11 @@ def count_images_detailed(base_path):
         dir_path = base_path / dirname
         if dir_path.exists():
             count = count_images_in_directory(dir_path)
-            print(f"  📂 {dirname}/: {count:,} images")
+            print(f"   {dirname}/: {count:,} images")
             total_images += count
             results[dirname] = count
         else:
-            print(f"  📂 {dirname}/: 0 images (empty/not found)")
+            print(f"   {dirname}/: 0 images (empty/not found)")
             results[dirname] = 0
     
     print("\n" + "="*80)
