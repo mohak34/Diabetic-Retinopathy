@@ -12,6 +12,7 @@ dist/
 venv/
 .venv/
 dataset/
+experiments/
 
 # Documentation and test files
 readme/

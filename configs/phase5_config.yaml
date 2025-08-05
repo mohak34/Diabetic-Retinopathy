@@ -1,0 +1,34 @@
+data:
+  datasets:
+  - aptos2019
+  - idrid
+  root_path: dataset
+  test_path: dataset/processed/combined/test
+logging_level: INFO
+model:
+  backbone: efficientnet_v2_s
+  num_classes: 5
+phase5:
+  cv_folds: 5
+  early_stopping_patience: 10
+  experimental_design:
+    budget_hours: 48
+    max_parallel: 2
+    objectives:
+    - performance_optimization
+    - efficiency_analysis
+  hyperopt_trials: 50
+  min_accuracy: 0.7
+  min_dice_score: 0.5
+  monitoring_interval: 30.0
+  use_hyperopt: true
+  use_tta: true
+training:
+  batch_size: 16
+  num_workers: 4
+  optimizer:
+    learning_rate: 0.0001
+    weight_decay: 0.0001
+  phase1_epochs: 10
+  phase2_epochs: 15
+  phase3_epochs: 25

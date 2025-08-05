@@ -1,0 +1,14 @@
+data:
+  datasets:
+  - mock
+  root_path: dataset
+logging_level: INFO
+model:
+  backbone: efficientnet_v2_s
+  num_classes: 5
+phase5:
+  max_parallel: 2
+  simulation_mode: true
+training:
+  batch_size: 16
+  num_workers: 4
