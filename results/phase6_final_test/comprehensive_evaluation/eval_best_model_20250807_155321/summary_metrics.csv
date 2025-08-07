@@ -1,0 +1,2 @@
+dataset,model,combined_score,cls_accuracy,cls_kappa,cls_auc_roc,seg_dice,seg_iou,timestamp
+segmentation_test,best_model,0.0,0.0,0.0,0.0,0.0,0.0,2025-08-07T15:53:21.547788

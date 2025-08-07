@@ -1,0 +1,232 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Phase 6: Explainability & Visualization Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+                .section { margin: 20px 0; }
+                .insight { background-color: #e8f4f8; padding: 10px; margin: 10px 0; border-left: 4px solid #007bff; }
+                .metric { margin: 5px 0; }
+                table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Phase 6: Explainability & Visualization Report</h1>
+                <p><strong>Generated:</strong> 2025-08-07 15:54:02</p>
+                <p><strong>Analysis Type:</strong> t-SNE, Segmentation Overlays, Cluster Analysis</p>
+            </div>
+            
+            <div class="section">
+                <h2>Key Insights</h2>
+                
+                <div class="insight">
+                    <h3>Grade Separability</h3>
+                    <div class="metric">Most Separable: No DR vs Severe 
+                        (Distance: 88.172)</div>
+                    <div class="metric">Least Separable: Moderate vs Proliferative DR 
+                        (Distance: 23.677)</div>
+                    <div class="metric">Average Separation: 49.181</div>
+                </div>
+                
+                <div class="insight">
+                    <h3>Clustering Analysis</h3>
+                    <div class="metric">Optimal Number of Clusters: 4</div>
+                    <div class="metric">Average Cluster Purity: 0.438</div>
+        
+                    <div class="metric">Purest Cluster: cluster_1 
+                        (Purity: 0.500)</div>
+            
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>t-SNE Analysis Results</h2>
+        
+                <h3>Grade Purity in Feature Space</h3>
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Sample Count</th>
+                        <th>Mean Distance to Center</th>
+                        <th>Std Distance to Center</th>
+                    </tr>
+        
+                    <tr>
+                        <td>No DR</td>
+                        <td>4</td>
+                        <td>50.294</td>
+                        <td>0.635</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Mild</td>
+                        <td>2</td>
+                        <td>59.579</td>
+                        <td>0.000</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Moderate</td>
+                        <td>1</td>
+                        <td>0.000</td>
+                        <td>0.000</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Severe</td>
+                        <td>1</td>
+                        <td>0.000</td>
+                        <td>0.000</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Proliferative DR</td>
+                        <td>2</td>
+                        <td>39.318</td>
+                        <td>0.000</td>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Segmentation Overlay Analysis</h2>
+        <div class='metric'>Total Overlay Visualizations Created: 10</div>
+                <div class="metric">aptos2019_val: 10 overlays created</div>
+            
+                    <div class="metric">aptos2019_val Classification Accuracy: 0.200 
+                        (2/10)</div>
+                
+                <div class="metric">segmentation_test: 0 overlays created</div>
+            
+            </div>
+            
+            <div class="section">
+                <h2>Model Bias Analysis</h2>
+        
+                <h3>Bias for No DR</h3>
+                <table>
+                    <tr>
+                        <th>Confused with Grade</th>
+                        <th>Confusion Rate</th>
+                    </tr>
+            
+                    <tr>
+                        <td>Proliferative DR</td>
+                        <td>1.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Mild</td>
+                        <td>0.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Moderate</td>
+                        <td>0.000</td>
+                    </tr>
+                </table>
+                <h3>Bias for Mild</h3>
+                <table>
+                    <tr>
+                        <th>Confused with Grade</th>
+                        <th>Confusion Rate</th>
+                    </tr>
+            
+                    <tr>
+                        <td>Proliferative DR</td>
+                        <td>1.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>No DR</td>
+                        <td>0.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Moderate</td>
+                        <td>0.000</td>
+                    </tr>
+                </table>
+                <h3>Bias for Moderate</h3>
+                <table>
+                    <tr>
+                        <th>Confused with Grade</th>
+                        <th>Confusion Rate</th>
+                    </tr>
+            
+                    <tr>
+                        <td>Proliferative DR</td>
+                        <td>1.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>No DR</td>
+                        <td>0.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Mild</td>
+                        <td>0.000</td>
+                    </tr>
+                </table>
+                <h3>Bias for Severe</h3>
+                <table>
+                    <tr>
+                        <th>Confused with Grade</th>
+                        <th>Confusion Rate</th>
+                    </tr>
+            
+                    <tr>
+                        <td>Proliferative DR</td>
+                        <td>1.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>No DR</td>
+                        <td>0.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Mild</td>
+                        <td>0.000</td>
+                    </tr>
+                </table>
+                <h3>Bias for Proliferative DR</h3>
+                <table>
+                    <tr>
+                        <th>Confused with Grade</th>
+                        <th>Confusion Rate</th>
+                    </tr>
+            
+                    <tr>
+                        <td>No DR</td>
+                        <td>0.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Mild</td>
+                        <td>0.000</td>
+                    </tr>
+                
+                    <tr>
+                        <td>Moderate</td>
+                        <td>0.000</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Recommendations</h2>
+                <div class="insight">
+        <div class='metric'>• Low cluster purity (0.438) suggests mixed feature representations. Consider additional training or different architecture.</div><div class='metric'>• High confusion rates detected for: No DR, Mild, Moderate, Severe. Consider class balancing or targeted data augmentation.</div>
+                </div>
+            </div>
+        </body>
+        </html>
+        

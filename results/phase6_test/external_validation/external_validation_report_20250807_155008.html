@@ -1,0 +1,180 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Phase 6: External Validation & Generalization Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+                .section { margin: 20px 0; }
+                .risk-high { color: red; font-weight: bold; }
+                .risk-moderate { color: orange; font-weight: bold; }
+                .risk-low { color: green; font-weight: bold; }
+                .metric { margin: 5px 0; }
+                table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .recommendation { background-color: #f9f9f9; padding: 10px; margin: 5px 0; border-left: 4px solid #007bff; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Phase 6: External Validation & Generalization Report</h1>
+                <p><strong>Generated:</strong> 2025-08-07 15:50:08</p>
+                <p><strong>Generalization Score:</strong> 0.6667</p>
+                <p><strong>Overall Risk Level:</strong> 
+                    <span class="risk-high">HIGH</span>
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2>Performance Summary</h2>
+                <table>
+                    <tr>
+                        <th>Dataset Type</th>
+                        <th>Accuracy</th>
+                        <th>Kappa</th>
+                        <th>AUC-ROC</th>
+                        <th>Dice</th>
+                        <th>IoU</th>
+                    </tr>
+                    <tr>
+                        <td>Internal (Average)</td>
+                        <td>0.2000</td>
+                        <td>0.0000</td>
+                        <td>0.4958</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>segmentation_test</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Generalization Gap Analysis</h2>
+        
+                <h3>segmentation_test Generalization Gaps</h3>
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Internal Score</th>
+                        <th>External Score</th>
+                        <th>Absolute Gap</th>
+                        <th>Relative Gap</th>
+                    </tr>
+            
+                    <tr>
+                        <td>ACCURACY</td>
+                        <td>0.2000</td>
+                        <td>0.0000</td>
+                        <td>0.2000</td>
+                        <td>100.0%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>KAPPA</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>AUC_ROC</td>
+                        <td>0.4958</td>
+                        <td>0.0000</td>
+                        <td>0.4958</td>
+                        <td>100.0%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>DICE</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>IOU</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>COMBINED_SCORE</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>0.0%</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Risk Assessment</h2>
+        
+                <div class="metric">
+                    <strong>ACCURACY:</strong> 
+                    <span class="risk-high">HIGH RISK</span>
+                    (Gap: 100.0%)
+                </div>
+            
+                <div class="metric">
+                    <strong>KAPPA:</strong> 
+                    <span class="risk-low">LOW RISK</span>
+                    (Gap: 0.0%)
+                </div>
+            
+                <div class="metric">
+                    <strong>AUC_ROC:</strong> 
+                    <span class="risk-high">HIGH RISK</span>
+                    (Gap: 100.0%)
+                </div>
+            
+                <div class="metric">
+                    <strong>DICE:</strong> 
+                    <span class="risk-low">LOW RISK</span>
+                    (Gap: 0.0%)
+                </div>
+            
+                <div class="metric">
+                    <strong>IOU:</strong> 
+                    <span class="risk-low">LOW RISK</span>
+                    (Gap: 0.0%)
+                </div>
+            
+                <div class="metric">
+                    <strong>COMBINED_SCORE:</strong> 
+                    <span class="risk-low">LOW RISK</span>
+                    (Gap: 0.0%)
+                </div>
+            
+            </div>
+            
+            <div class="section">
+                <h2>Recommendations</h2>
+        <div class="recommendation">🚨 HIGH RISK: Significant generalization gaps detected</div><div class="recommendation">• Consider collecting more diverse training data</div><div class="recommendation">• Implement domain adaptation techniques</div><div class="recommendation">• Increase regularization during training</div><div class="recommendation">• Evaluate on additional external datasets</div><div class="recommendation">• Pay special attention to: accuracy, auc_roc</div>
+            </div>
+            
+            <div class="section">
+                <h2>Failure Analysis Summary</h2>
+        
+                <h3>segmentation_test Failure Analysis</h3>
+                <div class="metric">Total Samples Analyzed: 0</div>
+            
+            </div>
+        </body>
+        </html>
+        

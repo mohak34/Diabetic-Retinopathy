@@ -1,0 +1,215 @@
+# Phase 6 Evaluation Configuration
+# Configuration file for comprehensive model evaluation, external validation, and explainability analysis
+
+# Model Configuration
+model:
+  backbone: "efficientnetv2_s"
+  num_classes: 5  # DR grading classes (0-4)
+  num_segmentation_classes: 4  # microaneurysms, hemorrhages, exudates, soft_exudates
+  input_size: [512, 512]
+  pretrained: true
+
+  # Model architecture details
+  architecture:
+    classification_head:
+      dropout: 0.3
+      activation: "relu"
+    segmentation_head:
+      decoder_channels: [512, 256, 128, 64, 32]
+      dropout: 0.1
+      activation: "relu"
+
+# Dataset Configuration for Evaluation
+datasets:
+  # Internal validation datasets (used during training)
+  internal:
+    aptos2019_val:
+      type: "aptos2019"
+      split: "validation"
+      data_path: "dataset/test_phase6/aptos2019_val"
+      batch_size: 4
+      num_workers: 2
+      transform:
+        resize: [512, 512]
+        normalize:
+          mean: [0.485, 0.456, 0.406]
+          std: [0.229, 0.224, 0.225]
+  
+  # External validation datasets (never seen during training)
+  external:
+    segmentation_test:
+      type: "segmentation"
+      split: "test"
+      data_path: "dataset/test_phase6/segmentation_test"
+      batch_size: 4
+      num_workers: 2
+      transform:
+        resize: [512, 512]
+        normalize:
+          mean: [0.485, 0.456, 0.406]
+          std: [0.229, 0.224, 0.225]# Evaluation Configuration
+evaluation:
+  # Step 6.1: Comprehensive Performance Evaluation
+  comprehensive_evaluation:
+    # Statistical analysis
+    bootstrap_samples: 1000
+    confidence_level: 0.95
+
+    # Classification metrics
+    classification_metrics:
+      - "accuracy"
+      - "balanced_accuracy"
+      - "precision"
+      - "recall"
+      - "f1_score"
+      - "kappa" # Quadratic weighted kappa
+      - "auc_roc"
+      - "auc_pr"
+
+    # Segmentation metrics
+    segmentation_metrics:
+      - "dice_coefficient"
+      - "iou_score"
+      - "pixel_accuracy"
+      - "mean_iou"
+      - "hausdorff_distance"
+
+    # Per-class analysis
+    per_class_analysis: true
+    confusion_matrix: true
+
+  # Step 6.2: External Validation & Generalization Testing
+  external_validation:
+    # Generalization analysis
+    generalization_gap_threshold: 0.1 # Flag if external performance drops >10%
+    risk_assessment:
+      low_threshold: 0.05 # <5% performance drop = low risk
+      moderate_threshold: 0.15 # 5-15% drop = moderate risk
+      # >15% drop = high risk
+
+    # Distribution shift analysis
+    distribution_analysis:
+      feature_drift_detection: true
+      domain_adaptation_metrics: true
+
+    # Failure case analysis
+    failure_analysis:
+      worst_performing_samples: 50
+      error_pattern_analysis: true
+
+  # Step 6.3: Explainability & Visualization
+  explainability:
+    # Feature visualization
+    feature_visualization:
+      tsne_analysis: true
+      pca_analysis: true
+      clustering_analysis: true
+      n_components_tsne: 2
+      n_components_pca: 50
+
+    # Sample analysis
+    sample_analysis:
+      n_samples_per_class: 200
+      representative_samples: true
+      challenging_samples: true
+
+    # Visualization parameters
+    visualization:
+      figure_size: [12, 8]
+      dpi: 300
+      save_format: "png"
+      color_palette: "viridis"
+
+# Output Configuration
+output:
+  base_dir: "results/phase6_evaluation"
+
+  # Subdirectories for different analysis components
+  subdirs:
+    comprehensive_evaluation: "comprehensive_evaluation"
+    external_validation: "external_validation"
+    explainability: "explainability_analysis"
+    visualizations: "visualizations"
+    reports: "reports"
+
+  # File formats and naming
+  file_formats:
+    metrics: "json"
+    plots: "png"
+    reports: "html"
+    raw_data: "csv"
+
+  # Report generation
+  report:
+    generate_html_report: true
+    include_visualizations: true
+    include_raw_metrics: true
+    executive_summary: true
+
+# Hardware and Performance Configuration
+hardware:
+  device: "cuda" # "cuda" or "cpu"
+  mixed_precision: true
+  num_workers: 4
+  pin_memory: true
+
+  # Memory management
+  batch_size_multiplier: 1.0 # Adjust if memory issues
+  gradient_checkpointing: false
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file_output: true
+  console_output: true
+  log_file: "phase6_evaluation.log"
+
+  # Progress tracking
+  progress_bars: true
+  checkpoint_logging: true
+
+# Quality Control
+quality_control:
+  # Sanity checks
+  sanity_checks:
+    model_loading: true
+    data_loading: true
+    metric_computation: true
+
+  # Validation thresholds
+  validation_thresholds:
+    min_samples_per_class: 10
+    max_evaluation_time_hours: 24
+    min_confidence_interval_width: 0.01
+
+  # Error handling
+  error_handling:
+    continue_on_error: true
+    max_retries: 3
+    fallback_strategies: true
+
+# Advanced Configuration
+advanced:
+  # Comparative analysis (for multiple checkpoints)
+  comparative_analysis:
+    enable: true
+    statistical_testing: true
+    effect_size_calculation: true
+
+  # Model interpretation
+  model_interpretation:
+    feature_importance: true
+    attention_visualization: false # Only for transformer models
+    gradient_analysis: false # Computationally expensive
+
+  # Publication-ready outputs
+  publication:
+    high_quality_figures: true
+    statistical_reporting: true
+    clinical_interpretation: true
+
+  # Experimental features
+  experimental:
+    uncertainty_quantification: false
+    calibration_analysis: false
+    robustness_testing: false
