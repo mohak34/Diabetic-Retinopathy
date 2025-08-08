@@ -1022,7 +1022,7 @@ def validate_training_infrastructure(logger):
         logger.error(f"Training infrastructure validation failed: {e}")
         return {'status': 'failed', 'error': str(e)}
 
-def run_pipeline4_complete(log_level="INFO"):
+def run_pipeline4_complete(log_level="INFO", experiment_name: str | None = None, mode: str = "full"):
     """Run complete Pipeline 4: Training Infrastructure & Strategy"""
     logger = setup_logging(log_level)
     
@@ -1037,6 +1037,8 @@ def run_pipeline4_complete(log_level="INFO"):
     pipeline_results = {
         'pipeline': 'Pipeline 4: Training Infrastructure & Strategy',
         'start_time': datetime.now().isoformat(),
+        'experiment_name': experiment_name,
+        'mode': mode,
         'steps_completed': [],
         'status': 'running'
     }
@@ -1145,11 +1147,15 @@ def main():
     parser.add_argument('--log-level', type=str, default='INFO',
                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        help='Logging level')
+    parser.add_argument('--experiment-name', type=str,
+                       help='Optional experiment name (recorded for consistency)')
+    parser.add_argument('--mode', type=str, choices=['full', 'quick'], default='full',
+                       help='Execution mode (recorded for consistency)')
     
     args = parser.parse_args()
     
     # Run the pipeline
-    results = run_pipeline4_complete(log_level=args.log_level)
+    results = run_pipeline4_complete(log_level=args.log_level, experiment_name=args.experiment_name, mode=args.mode)
     
     # Exit with appropriate code
     if results['status'] == 'completed':

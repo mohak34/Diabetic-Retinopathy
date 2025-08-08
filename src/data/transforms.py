@@ -1,4 +1,99 @@
 """
+Project transforms for diabetic retinopathy datasets using Albumentations.
+Provides: get_training_transforms, get_validation_transforms, get_segmentation_transforms
+"""
+from __future__ import annotations
+
+import albumentations as A
+from albumentations.pytorch import ToTensorV2
+import numpy as np
+
+
+def _norm():
+    # Standard ImageNet normalization
+    return A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+
+
+def _cutout_or_dropout(
+    *,
+    image_size: int | None = None,
+    num_holes: int = 4,
+    max_size_frac: float | None = 0.08,
+    max_size_px: int | None = None,
+    p: float = 0.2,
+):
+    """
+    Version-compatible regularization: prefer A.Cutout when available,
+    otherwise fall back to A.CoarseDropout with roughly equivalent parameters.
+    """
+    if hasattr(A, "Cutout"):
+        # Compute max sizes
+        if max_size_px is None:
+            if image_size is None or max_size_frac is None:
+                raise ValueError("Provide image_size and max_size_frac or set max_size_px")
+            max_size_px = int(max_size_frac * image_size)
+        return A.Cutout(num_holes=num_holes, max_h_size=max_size_px, max_w_size=max_size_px, fill_value=0, p=p)
+    # Fallback: version-agnostic custom cutout using Lambda
+    if max_size_px is None:
+        if image_size is None or max_size_frac is None:
+            raise ValueError("Provide image_size and max_size_frac or set max_size_px")
+        max_size_px = int(max_size_frac * image_size)
+
+    def _apply_cutout_np(img: np.ndarray) -> np.ndarray:
+        h, w = img.shape[:2]
+        for _ in range(num_holes):
+            ch = np.random.randint(1, max(2, max_size_px + 1))
+            cw = np.random.randint(1, max(2, max_size_px + 1))
+            top = np.random.randint(0, max(1, h - ch + 1))
+            left = np.random.randint(0, max(1, w - cw + 1))
+            img[top:top + ch, left:left + cw] = 0
+        return img
+
+    return A.Lambda(image=_apply_cutout_np, p=p)
+
+
+def get_training_transforms(image_size: int = 512):
+    """Augmentations for training classification/multitask images."""
+    return A.Compose([
+        A.Resize(image_size, image_size),
+        A.RandomCrop(height=image_size, width=image_size, p=0.2),
+        A.HorizontalFlip(p=0.5),
+        A.VerticalFlip(p=0.2),
+        # Replace deprecated/ warned transform with recommended Affine
+        A.Affine(
+            rotate=(-20, 20),
+            translate_percent={"x": (-0.05, 0.05), "y": (-0.05, 0.05)},
+            scale=(0.9, 1.1),
+            p=0.5,
+        ),
+        A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=0.5),
+        A.HueSaturationValue(hue_shift_limit=10, sat_shift_limit=10, val_shift_limit=10, p=0.3),
+    # Version-compatible regularization op
+    _cutout_or_dropout(image_size=image_size, num_holes=4, max_size_frac=0.08, p=0.2),
+        _norm(),
+        ToTensorV2(),
+    ])
+
+
+def get_validation_transforms(image_size: int = 512):
+    """Light, deterministic preprocessing for validation/test."""
+    return A.Compose([
+        A.Resize(image_size, image_size),
+        _norm(),
+        ToTensorV2(),
+    ])
+
+
+def get_segmentation_transforms(image_size: int = 512):
+    """Segmentation transforms; keep geometry consistent for image+mask."""
+    return A.Compose([
+        A.Resize(image_size, image_size),
+        A.HorizontalFlip(p=0.5),
+        A.RandomBrightnessContrast(brightness_limit=0.15, contrast_limit=0.15, p=0.4),
+        _norm(),
+        ToTensorV2(),
+    ])
+"""
 Data Augmentation Pipelines for Diabetic Retinopathy Multi-Task Learning
 Uses albumentations for efficient and robust augmentation strategies.
 """
@@ -80,16 +175,7 @@ def get_train_transforms_classification(image_size: int = 512) -> Callable:
         A.CLAHE(clip_limit=2.0, tile_grid_size=(8, 8), p=0.5),
         
         # Cutout/Dropout for regularization
-        A.CoarseDropout(
-            max_holes=8,
-            max_height=32,
-            max_width=32,
-            min_holes=1,
-            min_height=8,
-            min_width=8,
-            fill_value=0,
-            p=0.3
-        ),
+    _cutout_or_dropout(image_size=image_size, num_holes=8, max_size_px=32, p=0.3),
         
         # Normalization and tensor conversion
         A.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),

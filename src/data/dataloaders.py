@@ -1,4 +1,57 @@
 """
+Optimized dataloader utilities for diabetic retinopathy datasets.
+Exposes: get_data_loaders, create_dataloader_factory
+"""
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Dict, Any
+
+import torch
+from torch.utils.data import DataLoader
+
+
+def _pin():
+    return torch.cuda.is_available()
+
+
+def create_dataloader_factory(batch_size: int = 4, num_workers: int = 2):
+    """Return a factory that builds dataloaders with consistent settings."""
+
+    def factory(dataset, shuffle: bool):
+        return DataLoader(
+            dataset,
+            batch_size=batch_size,
+            shuffle=shuffle,
+            num_workers=num_workers,
+            pin_memory=_pin(),
+            persistent_workers=num_workers > 0,
+        )
+
+    return factory
+
+
+def get_data_loaders(
+    train_grading,
+    val_grading,
+    train_segmentation,
+    val_segmentation,
+    train_multitask,
+    val_multitask,
+    batch_size: int = 4,
+    num_workers: int = 2,
+) -> Dict[str, DataLoader]:
+    """Create a dictionary of standard dataloaders given dataset objects."""
+    make = create_dataloader_factory(batch_size=batch_size, num_workers=num_workers)
+    return {
+        'train_grading': make(train_grading, True),
+        'val_grading': make(val_grading, False),
+        'train_segmentation': make(train_segmentation, True),
+        'val_segmentation': make(val_segmentation, False),
+        'train_multitask': make(train_multitask, True),
+        'val_multitask': make(val_multitask, False),
+    }
+"""
 PyTorch DataLoader Setup for Diabetic Retinopathy Multi-Task Learning
 Optimized for RTX 3080 mobile (8GB VRAM) with efficient batch processing.
 """

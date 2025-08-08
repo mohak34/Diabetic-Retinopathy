@@ -13,6 +13,9 @@ venv/
 .venv/
 dataset/
 experiments/
+logs/
+results/
+models/
 
 # Documentation and test files
 readme/

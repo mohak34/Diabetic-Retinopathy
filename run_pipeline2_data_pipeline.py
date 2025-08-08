@@ -463,9 +463,17 @@ def create_basic_dataloaders(logger):
         import torch
         from torch.utils.data import DataLoader
         
-        # Import our basic datasets
+        # Import our basic datasets; create them if not present
         sys.path.append(str(Path("src/data")))
-        from basic_datasets import BasicGradingDataset, BasicSegmentationDataset, BasicMultiTaskDataset
+        try:
+            from basic_datasets import BasicGradingDataset, BasicSegmentationDataset, BasicMultiTaskDataset
+        except ImportError:
+            logger.info("basic_datasets not found. Creating fallback basic dataset classes...")
+            # Ensure basic dataset classes file exists
+            creation_info = create_basic_dataset_classes(logger)
+            # Re-append path and import again
+            sys.path.append(str(Path("src/data")))
+            from basic_datasets import BasicGradingDataset, BasicSegmentationDataset, BasicMultiTaskDataset
         
         # Create datasets
         train_grading = BasicGradingDataset("dataset/processed", split='train')
@@ -609,7 +617,7 @@ def validate_pipeline_integration(logger):
         logger.error(f"Pipeline validation failed: {e}")
         return {'status': 'failed', 'error': str(e)}
 
-def run_pipeline2_complete(log_level="INFO"):
+def run_pipeline2_complete(log_level="INFO", mode: str = "full"):
     """Run complete Pipeline 2: Data Pipeline Implementation"""
     logger = setup_logging(log_level)
     
@@ -624,6 +632,7 @@ def run_pipeline2_complete(log_level="INFO"):
     pipeline_results = {
         'pipeline': 'Pipeline 2: Data Pipeline Implementation',
         'start_time': datetime.now().isoformat(),
+        'mode': mode,
         'steps_completed': [],
         'status': 'running'
     }
@@ -721,11 +730,13 @@ def main():
     parser.add_argument('--log-level', type=str, default='INFO',
                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        help='Logging level')
+    parser.add_argument('--mode', type=str, choices=['full', 'quick'], default='full',
+                       help='Execution mode (no behavioral change here; recorded for consistency)')
     
     args = parser.parse_args()
     
     # Run the pipeline
-    results = run_pipeline2_complete(log_level=args.log_level)
+    results = run_pipeline2_complete(log_level=args.log_level, mode=args.mode)
     
     # Exit with appropriate code
     if results['status'] == 'completed':

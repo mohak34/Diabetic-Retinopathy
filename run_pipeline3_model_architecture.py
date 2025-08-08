@@ -19,6 +19,7 @@ from datetime import datetime
 import json
 import torch
 import torch.nn as nn
+import importlib
 
 # Add project root to path
 project_root = Path(__file__).parent
@@ -85,10 +86,10 @@ def implement_backbone_architecture(logger):
     logger.info("="*60)
     
     try:
-        from src.models.backbone import EfficientNetBackbone, create_backbone
+        from src.models.backbone import EfficientNetBackbone, create_efficientnet_backbone
         
-        # Test backbone creation
-        backbone = create_backbone(model_name="efficientnet_v2_s", pretrained=True)
+        # Test backbone creation using correct model name and factory
+        backbone = create_efficientnet_backbone(model_name="tf_efficientnetv2_s", pretrained=True)
         
         logger.info("✅ Using existing backbone implementation")
         
@@ -98,7 +99,7 @@ def implement_backbone_architecture(logger):
         return {
             'backbone_type': 'EfficientNetV2-S',
             'pretrained': True,
-            'features_dim': 1280,
+            'features_dim': getattr(backbone, 'num_features', 1280),
             'test_results': test_results,
             'status': 'completed'
         }
@@ -134,7 +135,7 @@ except ImportError:
 class BasicEfficientNetBackbone(nn.Module):
     """Basic EfficientNet backbone implementation"""
     
-    def __init__(self, model_name="efficientnet_v2_s", pretrained=True, num_classes=0):
+    def __init__(self, model_name="tf_efficientnetv2_s", pretrained=True, num_classes=0):
         super().__init__()
         self.model_name = model_name
         
@@ -193,7 +194,7 @@ class BasicEfficientNetBackbone(nn.Module):
         """Get features dimension"""
         return self.features_dim
 
-def create_backbone(model_name="efficientnet_v2_s", pretrained=True):
+def create_backbone(model_name="tf_efficientnetv2_s", pretrained=True):
     """Create backbone model"""
     return BasicEfficientNetBackbone(model_name=model_name, pretrained=pretrained)
 '''
@@ -207,9 +208,8 @@ def create_backbone(model_name="efficientnet_v2_s", pretrained=True):
     
     # Test backbone creation
     try:
-        sys.path.append(str(models_dir))
-        from basic_backbone import create_backbone
-        
+        mod = importlib.import_module('src.models.basic_backbone')
+        create_backbone = getattr(mod, 'create_backbone')
         backbone = create_backbone()
         test_results = test_backbone_functionality(backbone, logger)
         
@@ -242,9 +242,15 @@ def test_backbone_functionality(backbone, logger):
         with torch.no_grad():
             features = backbone(dummy_input)
         
+        # Support both list-of-features and single tensor outputs
+        if isinstance(features, (list, tuple)):
+            final_features = features[-1]
+        else:
+            final_features = features
+        
         test_results = {
             'input_shape': list(dummy_input.shape),
-            'output_shape': list(features.shape),
+            'output_shape': list(final_features.shape),
             'parameters': sum(p.numel() for p in backbone.parameters()),
             'device': str(device),
             'memory_usage_mb': torch.cuda.memory_allocated() / 1024**2 if torch.cuda.is_available() else 0,
@@ -417,23 +423,23 @@ def test_existing_heads(logger):
     
     try:
         from src.models.heads import ClassificationHead, SegmentationHead
-        
-        # Create heads
-        cls_head = ClassificationHead(features_dim=1280, num_classes=5)
-        seg_head = SegmentationHead(features_dim=1280, num_classes=4)
-        
+
+        # Create heads with correct argument names
+        cls_head = ClassificationHead(in_features=1280, num_classes=5)
+        seg_head = SegmentationHead(in_features=1280, num_classes=1)
+
         # Test heads with dummy features
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         cls_head = cls_head.to(device)
         seg_head = seg_head.to(device)
-        
+
         # Dummy backbone features (batch_size=2, features=1280, height=7, width=7)
         dummy_features = torch.randn(2, 1280, 7, 7).to(device)
-        
+
         with torch.no_grad():
             cls_output = cls_head(dummy_features)
             seg_output = seg_head(dummy_features)
-        
+
         test_results = {
             'classification_output_shape': list(cls_output.shape),
             'segmentation_output_shape': list(seg_output.shape),
@@ -441,13 +447,13 @@ def test_existing_heads(logger):
             'segmentation_parameters': sum(p.numel() for p in seg_head.parameters()),
             'status': 'tested'
         }
-        
+
         logger.info(f"✅ Heads test successful")
         logger.info(f"Classification output: {test_results['classification_output_shape']}")
         logger.info(f"Segmentation output: {test_results['segmentation_output_shape']}")
-        
+
         return test_results
-        
+
     except Exception as e:
         logger.error(f"Existing heads testing failed: {e}")
         return {'status': 'failed', 'error': str(e)}
@@ -457,8 +463,9 @@ def test_basic_heads(logger):
     logger.info("Testing basic task heads...")
     
     try:
-        sys.path.append(str(Path("src/models")))
-        from basic_heads import create_classification_head, create_segmentation_head
+        mod = importlib.import_module('src.models.basic_heads')
+        create_classification_head = getattr(mod, 'create_classification_head')
+        create_segmentation_head = getattr(mod, 'create_segmentation_head')
         
         # Create heads
         cls_head = create_classification_head(features_dim=1280, num_classes=5)
@@ -503,13 +510,13 @@ def create_multi_task_model(logger):
     logger.info("="*60)
     
     try:
-        from src.models.multi_task_model import MultiTaskModel, create_multi_task_model
+        from src.models.multi_task_model import MultiTaskRetinaModel, create_multi_task_model
         
-        # Create model
+        # Create model with correct kwargs and model name
         model = create_multi_task_model(
-            backbone_name="efficientnet_v2_s",
-            num_classes=5,
-            num_segmentation_classes=4,
+            backbone_name="tf_efficientnetv2_s",
+            num_classes_cls=5,
+            num_classes_seg=1,
             pretrained=True
         )
         
@@ -526,9 +533,13 @@ def create_multi_task_model(logger):
         
     except ImportError:
         logger.warning("Multi-task model not available. Creating basic implementation...")
+        # Ensure basic heads are created first before creating basic multi-task model
+        heads_results = create_basic_task_heads(logger)
         return create_basic_multi_task_model(logger)
     except Exception as e:
         logger.error(f"Failed to use existing multi-task model: {e}")
+        # Ensure basic heads are created first before creating basic multi-task model
+        heads_results = create_basic_task_heads(logger)
         return create_basic_multi_task_model(logger)
 
 def create_basic_multi_task_model(logger):
@@ -585,14 +596,14 @@ class BasicMultiTaskModel(nn.Module):
             'total': backbone_params + cls_params + seg_params
         }
 
-def create_basic_multi_task_model(backbone_name="efficientnet_v2_s", 
+def create_basic_multi_task_model(backbone_name="tf_efficientnetv2_s", 
                                  num_classes=5, 
                                  num_segmentation_classes=4, 
                                  pretrained=True):
     """Create basic multi-task model"""
-    # Import components
-    from .basic_backbone import create_backbone
-    from .basic_heads import create_classification_head, create_segmentation_head
+    # Import components (absolute imports to work without package context)
+    from src.models.basic_backbone import create_backbone
+    from src.models.basic_heads import create_classification_head, create_segmentation_head
     
     # Create components
     backbone = create_backbone(model_name=backbone_name, pretrained=pretrained)
@@ -627,11 +638,10 @@ def create_basic_multi_task_model(backbone_name="efficientnet_v2_s",
     
     # Test model functionality
     try:
-        # Import and create model
-        sys.path.append(str(models_dir))
-        from basic_multi_task_model import create_basic_multi_task_model
-        
-        model = create_basic_multi_task_model()
+        # Import and create model dynamically
+        mod = importlib.import_module('src.models.basic_multi_task_model')
+        create_basic_multi_task_model_fn = getattr(mod, 'create_basic_multi_task_model')
+        model = create_basic_multi_task_model_fn()
         test_results = test_multi_task_model(model, logger)
         
         return {
@@ -661,6 +671,14 @@ def test_multi_task_model(model, logger):
         with torch.no_grad():
             outputs = model(dummy_input)
         
+        # Normalize outputs to dict with 'classification' and 'segmentation'
+        if isinstance(outputs, (list, tuple)) and len(outputs) >= 2:
+            out_dict = {'classification': outputs[0], 'segmentation': outputs[1]}
+        elif isinstance(outputs, dict):
+            out_dict = outputs
+        else:
+            raise ValueError("Unexpected model output format")
+        
         # Get parameter breakdown
         if hasattr(model, 'get_parameter_breakdown'):
             param_breakdown = model.get_parameter_breakdown()
@@ -669,8 +687,8 @@ def test_multi_task_model(model, logger):
         
         test_results = {
             'input_shape': list(dummy_input.shape),
-            'classification_output_shape': list(outputs['classification'].shape),
-            'segmentation_output_shape': list(outputs['segmentation'].shape),
+            'classification_output_shape': list(out_dict['classification'].shape),
+            'segmentation_output_shape': list(out_dict['segmentation'].shape),
             'parameter_breakdown': param_breakdown,
             'total_parameters': param_breakdown['total'],
             'memory_usage_mb': torch.cuda.memory_allocated() / 1024**2 if torch.cuda.is_available() else 0,
@@ -720,7 +738,7 @@ def validate_model_architecture(logger):
         logger.error(f"Model architecture validation failed: {e}")
         return {'status': 'failed', 'error': str(e)}
 
-def run_pipeline3_complete(log_level="INFO"):
+def run_pipeline3_complete(log_level="INFO", mode: str = "full"):
     """Run complete Pipeline 3: Model Architecture Development"""
     logger = setup_logging(log_level)
     
@@ -735,6 +753,7 @@ def run_pipeline3_complete(log_level="INFO"):
     pipeline_results = {
         'pipeline': 'Pipeline 3: Model Architecture Development',
         'start_time': datetime.now().isoformat(),
+        'mode': mode,
         'steps_completed': [],
         'status': 'running'
     }
@@ -838,11 +857,13 @@ def main():
     parser.add_argument('--log-level', type=str, default='INFO',
                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        help='Logging level')
+    parser.add_argument('--mode', type=str, choices=['full', 'quick'], default='full',
+                       help='Execution mode (recorded for consistency)')
     
     args = parser.parse_args()
     
     # Run the pipeline
-    results = run_pipeline3_complete(log_level=args.log_level)
+    results = run_pipeline3_complete(log_level=args.log_level, mode=args.mode)
     
     # Exit with appropriate code
     if results['status'] == 'completed':
