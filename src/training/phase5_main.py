@@ -268,9 +268,24 @@ class Phase5Pipeline:
         # Save experiment plan
         plan_file = self.experiment_dir / "experimental_plan.json"
         with open(plan_file, 'w') as f:
-            # Convert dataclass to dict using asdict
+            # Convert dataclass to dict using asdict with safe serialization
             from dataclasses import asdict
-            json.dump(asdict(plan), f, indent=2)
+            try:
+                plan_dict = asdict(plan)
+                json.dump(plan_dict, f, indent=2, default=str)
+            except (TypeError, ValueError) as e:
+                # Fallback to string representation for complex objects
+                self.logger.warning(f"Could not serialize plan as JSON: {e}. Using string representation.")
+                plan_dict = {
+                    'name': plan.name,
+                    'description': plan.description,
+                    'total_budget_hours': plan.total_budget_hours,
+                    'parallel_experiments': plan.parallel_experiments,
+                    'experiment_groups_count': len(plan.experiment_groups),
+                    'estimated_experiments': plan.get_total_experiments(),
+                    'estimated_runtime': plan.estimate_total_runtime()
+                }
+                json.dump(plan_dict, f, indent=2)
         
         return plan
     
@@ -323,7 +338,7 @@ class Phase5Pipeline:
                     )
                     
                     # Run training
-                    results = trainer.run_complete_training()
+                    results = trainer.run_complete_training_pipeline()
                     results['experiment_id'] = exp_id
                     results['group_name'] = group.name
                     
@@ -409,7 +424,7 @@ class Phase5Pipeline:
             datasets=merged_config['data']['datasets'],
             
             # Model configuration
-            model_name=merged_config['model']['backbone'],
+            model_name=merged_config['model']['backbone_name'],
             num_classes=merged_config['model']['num_classes'],
             
             # Training configuration
@@ -426,7 +441,7 @@ class Phase5Pipeline:
             num_workers=merged_config['training'].get('num_workers', 4),
             
             # Phase 5 specific
-            use_hyperparameter_optimization=merged_config['phase5'].get('use_hyperopt', True),
+            enable_hyperparameter_optimization=merged_config['phase5'].get('use_hyperopt', True),
             hyperopt_trials=merged_config['phase5'].get('hyperopt_trials', 50),
             early_stopping_patience=merged_config['phase5'].get('early_stopping_patience', 10),
             
@@ -710,7 +725,20 @@ class Phase5Pipeline:
         # Save main results
         results_file = self.experiment_dir / "phase5_pipeline_results.json"
         with open(results_file, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
+            try:
+                json.dump(results, f, indent=2, default=str)
+            except (TypeError, ValueError) as e:
+                # Handle circular references or other serialization issues
+                self.logger.warning(f"Could not serialize full results: {e}. Saving minimal results.")
+                safe_results = {
+                    'timestamp': results.get('timestamp', str(datetime.now())),
+                    'total_experiments': len(results.get('training_results', [])),
+                    'successful_experiments': len([r for r in results.get('training_results', []) if not r.get('failed', False)]),
+                    'experiment_names': [r.get('experiment_id', 'unknown') for r in results.get('training_results', [])],
+                    'pipeline_phases': list(results.keys()),
+                    'status': 'completed_with_warnings'
+                }
+                json.dump(safe_results, f, indent=2)
         
         # Create summary report
         self._create_summary_report(results)

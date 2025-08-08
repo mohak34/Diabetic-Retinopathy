@@ -406,6 +406,39 @@ def create_multi_task_model(
     
     return MultiTaskRetinaModel(**model_config)
 
+def create_multi_task_model(
+    num_classes: int = 5,
+    backbone_name: str = 'efficientnetv2_s',
+    pretrained: bool = True,
+    segmentation_classes: int = 1,
+    **kwargs
+) -> MultiTaskRetinaModel:
+    """
+    Factory function to create a multi-task model with proper parameter mapping.
+    
+    Args:
+        num_classes: Number of classification classes (mapped to num_classes_cls)
+        backbone_name: Name of the backbone model
+        pretrained: Whether to use pretrained weights
+        segmentation_classes: Number of segmentation classes (mapped to num_classes_seg)
+        **kwargs: Additional arguments passed to MultiTaskRetinaModel
+    
+    Returns:
+        MultiTaskRetinaModel: Configured multi-task model
+    """
+    
+    # Map parameters to the correct names expected by MultiTaskRetinaModel
+    model_config = {
+        'num_classes_cls': num_classes,
+        'num_classes_seg': segmentation_classes,
+        'backbone_name': backbone_name,
+        'pretrained': pretrained,
+        **kwargs
+    }
+    
+    return MultiTaskRetinaModel(**model_config)
+
+
 def test_multi_task_model():
     """Test the multi-task model implementation."""
     logger.info("Testing MultiTaskRetinaModel...")

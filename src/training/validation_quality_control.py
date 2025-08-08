@@ -155,8 +155,14 @@ class ClassificationValidator(BaseValidator):
         
         with torch.no_grad():
             for batch_idx, batch in enumerate(data_loader):
-                images = batch['image'].to(device)
-                targets = batch['grade'].to(device)
+                # Handle both tuple and dictionary batch formats
+                if isinstance(batch, dict):
+                    images = batch['image'].to(device)
+                    targets = batch['grade'].to(device)
+                elif isinstance(batch, (tuple, list)) and len(batch) >= 2:
+                    images, targets = batch[0].to(device), batch[1].to(device)
+                else:
+                    raise ValueError(f"Unsupported batch format: {type(batch)}")
                 
                 # Forward pass
                 if hasattr(model, 'classify'):
@@ -318,11 +324,21 @@ class ClassificationValidator(BaseValidator):
         all_data = []
         all_targets = []
         
-        for batch in data_loader:
-            for i in range(batch['image'].size(0)):
-                all_data.append(batch['image'][i])
-                all_targets.append(batch['grade'][i].item())
-        
+        with torch.no_grad():
+            for batch in data_loader:
+                # Handle both tuple and dictionary batch formats
+                if isinstance(batch, dict):
+                    images = batch['image']
+                    targets = batch['grade']
+                elif isinstance(batch, (tuple, list)) and len(batch) >= 2:
+                    images, targets = batch[0], batch[1]
+                else:
+                    raise ValueError(f"Unsupported batch format: {type(batch)}")
+                
+                for i in range(images.size(0)):
+                    all_data.append(images[i])
+                    all_targets.append(targets[i].item())
+                    
         all_targets = np.array(all_targets)
         
         # Setup cross-validation
@@ -394,8 +410,14 @@ class ClassificationValidator(BaseValidator):
         
         with torch.no_grad():
             for batch in data_loader:
-                images = batch['image'].to(device)
-                targets = batch['grade'].to(device)
+                # Handle both tuple and dictionary batch formats
+                if isinstance(batch, dict):
+                    images = batch['image'].to(device)
+                    targets = batch['grade'].to(device)
+                elif isinstance(batch, (tuple, list)) and len(batch) >= 2:
+                    images, targets = batch[0].to(device), batch[1].to(device)
+                else:
+                    raise ValueError(f"Unsupported batch format: {type(batch)}")
                 
                 # Apply multiple augmentations and average predictions
                 tta_predictions = []
@@ -650,8 +672,17 @@ class SegmentationValidator(BaseValidator):
         
         with torch.no_grad():
             for batch_idx, batch in enumerate(data_loader):
-                images = batch['image'].to(device)
-                masks = batch['mask'].to(device)  # Assuming multi-channel masks
+                # Handle both tuple and dictionary batch formats
+                if isinstance(batch, dict):
+                    images = batch['image'].to(device)
+                    masks = batch['mask'].to(device)  # Assuming multi-channel masks
+                elif isinstance(batch, (tuple, list)) and len(batch) >= 3:
+                    images, _, masks = batch[0].to(device), batch[1], batch[2].to(device)
+                elif isinstance(batch, (tuple, list)) and len(batch) == 2:
+                    # If only 2 items, assume second is mask
+                    images, masks = batch[0].to(device), batch[1].to(device)
+                else:
+                    raise ValueError(f"Unsupported batch format: {type(batch)}")
                 
                 # Forward pass
                 if hasattr(model, 'segment'):

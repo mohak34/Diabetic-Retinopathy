@@ -23,6 +23,9 @@ try:
     from optuna.pruners import MedianPruner
     OPTUNA_AVAILABLE = True
 except ImportError:
+    optuna = None
+    TPESampler = None
+    MedianPruner = None
     OPTUNA_AVAILABLE = False
 
 try:
@@ -32,6 +35,10 @@ try:
     from ray.tune.suggest.optuna import OptunaSearch
     RAY_AVAILABLE = True
 except ImportError:
+    ray = None
+    tune = None
+    ASHAScheduler = None
+    OptunaSearch = None
     RAY_AVAILABLE = False
 
 # Local imports

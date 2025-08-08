@@ -11,7 +11,7 @@ import warnings
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any, Union
 from datetime import datetime
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field, fields, MISSING
 import shutil
 import copy
 
@@ -61,10 +61,19 @@ class Phase5Config:
     phase2_epochs: int = 15  # Progressive multi-task
     phase3_epochs: int = 20  # Full multi-task optimization
     
+    # Progressive training parameters (from experimental design)
+    segmentation_weight_max: float = 1.0
+    segmentation_weight_warmup_epochs: int = 10
+    
     # Optimization settings
     enable_hyperparameter_optimization: bool = False
     hyperopt_trials: int = 30
     hyperopt_timeout_hours: float = 12.0
+    
+    # Hyperparameter optimization parameters (from experimental design)
+    hyperopt_search_method: str = "optuna"
+    hyperopt_pruning: bool = True
+    optimization_objective: str = "val_combined_score"
     
     # Quality control
     enable_quality_monitoring: bool = True
@@ -85,15 +94,100 @@ class Phase5Config:
     data_root: str = "dataset/processed"
     splits_dir: str = "dataset/splits"
     use_combined_dataset: bool = True
+    datasets: Optional[Dict[str, Any]] = None
+    
+    # Model configuration - NOT optional since they're required
+    model: Dict[str, Any] = field(default_factory=lambda: {
+        'backbone_name': 'tf_efficientnetv2_s',
+        'num_classes': 5,
+        'pretrained': True
+    })
+    model_name: Optional[str] = None
+    
+    # Direct model parameters (from experimental design)
+    num_classes: int = 5
+    backbone_name: str = "tf_efficientnetv2_s"
+    pretrained: bool = True
+    
+    # Optimizer configuration - NOT optional
+    optimizer: Dict[str, Any] = field(default_factory=lambda: {
+        'learning_rate': 1e-3,
+        'weight_decay': 1e-4
+    })
+    
+    # Direct optimizer parameters (from experimental design)
+    learning_rate: float = 1e-3
+    weight_decay: float = 1e-4
+    
+    # Hardware configuration - NOT optional
+    hardware: Dict[str, Any] = field(default_factory=lambda: {
+        'batch_size': 16,
+        'mixed_precision': True,
+        'num_workers': 4
+    })
+    
+    # Direct hardware parameters (from experimental design)
+    batch_size: int = 16
+    mixed_precision: bool = True
+    num_workers: int = 4
+    
+    # Loss configuration
+    loss: Optional[Dict[str, Any]] = None
+    
+    # Data augmentation
+    augmentation: Optional[Dict[str, Any]] = None
     
     # Output configuration
     output_dir: str = "experiments"
     save_detailed_logs: bool = True
     generate_training_report: bool = True
+    save_intermediate_models: bool = True
+    detailed_logging: bool = True
+    
+    # Flexible storage for additional experimental parameters
+    additional_config: Dict[str, Any] = field(default_factory=dict)
+    
+    def __init__(self, **kwargs):
+        # Set default values for all defined fields
+        for field_info in fields(self):
+            if field_info.name in kwargs:
+                setattr(self, field_info.name, kwargs.pop(field_info.name))
+            elif field_info.default != MISSING:
+                setattr(self, field_info.name, field_info.default)
+            elif field_info.default_factory != MISSING:
+                setattr(self, field_info.name, field_info.default_factory())
+        
+        # Store any additional parameters that aren't defined fields
+        self.additional_config = kwargs
+        
+        # Run post-init
+        self.__post_init__()
     
     def __post_init__(self):
         if self.experiment_tags is None:
             self.experiment_tags = ["phase5", "multi-task", "end-to-end"]
+        
+        # Sync direct parameters with nested dictionaries
+        self.model['backbone_name'] = self.backbone_name
+        self.model['num_classes'] = self.num_classes
+        self.model['pretrained'] = self.pretrained
+        
+        self.optimizer['learning_rate'] = self.learning_rate
+        self.optimizer['weight_decay'] = self.weight_decay
+        
+        self.hardware['batch_size'] = self.batch_size
+        self.hardware['mixed_precision'] = self.mixed_precision
+        self.hardware['num_workers'] = self.num_workers
+        
+        # Handle nested parameters from experimental design
+        for key, value in self.additional_config.items():
+            if '.' in key:
+                # Handle nested parameters like 'model.use_skip_connections'
+                keys = key.split('.')
+                target = getattr(self, keys[0], {})
+                if isinstance(target, dict):
+                    target[keys[1]] = value
+            # Note: Non-nested additional parameters are already stored in additional_config
 
 
 class ResourceMonitor:
@@ -276,8 +370,10 @@ class Phase5Trainer:
     - Research-grade result documentation
     """
     
-    def __init__(self, config: Phase5Config):
+    def __init__(self, config: Phase5Config, experiment_id: str = None, monitor = None):
         self.config = config
+        self.experiment_id = experiment_id or config.experiment_name
+        self.monitor = monitor
         self.start_time = time.time()
         
         # Create experiment directory
@@ -352,9 +448,17 @@ class Phase5Trainer:
         # Checkpointing
         phase4_config.checkpoint.save_every = self.config.save_every_n_epochs
         
-        # Paths
-        phase4_config.data_root = self.config.data_root
+        # Paths - ensure we have valid paths
+        phase4_config.data_root = self.config.data_root or "dataset/processed"
         phase4_config.output_dir = str(self.experiment_dir)
+        phase4_config.experiment_dir = str(self.experiment_dir)  # Fix: Set experiment_dir explicitly
+        
+        # Ensure data_root is absolute path and exists
+        if not os.path.isabs(phase4_config.data_root):
+            phase4_config.data_root = os.path.abspath(phase4_config.data_root)
+        
+        # Create directory if it doesn't exist
+        os.makedirs(phase4_config.data_root, exist_ok=True)
         
         # Apply hyperparameters if provided
         if hyperparams:

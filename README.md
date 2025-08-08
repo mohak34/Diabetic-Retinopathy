@@ -66,7 +66,7 @@ uv run python run_pipeline4_training_infrastructure.py --experiment-name test_tr
 **Pipeline 5 - Training & Optimization**:
 
 ```bash
-uv run python run_pipeline5_training_optimization.py --experiment-name production_training --mode full
+uv run python run_pipeline5_training_optimization.py --mode quick --experiment-name test_real_training
 ```
 
 **Pipeline 6 - Evaluation & Analysis**:

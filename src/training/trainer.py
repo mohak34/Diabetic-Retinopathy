@@ -216,11 +216,26 @@ class RobustPhase4Trainer:
         
         epoch_start_time = time.time()
         
-        for batch_idx, (images, cls_labels, seg_masks) in enumerate(train_loader):
+        for batch_idx, batch in enumerate(train_loader):
+            # Handle both tuple and dictionary batch formats
+            if isinstance(batch, dict):
+                images = batch.get('image', batch.get('images'))
+                cls_labels = batch.get('label', batch.get('labels'))
+                seg_masks = batch.get('mask', batch.get('masks'))
+            elif isinstance(batch, (tuple, list)) and len(batch) >= 3:
+                images, cls_labels, seg_masks = batch[0], batch[1], batch[2]
+            elif isinstance(batch, (tuple, list)) and len(batch) == 2:
+                images, cls_labels = batch[0], batch[1]
+                seg_masks = None
+            else:
+                raise ValueError(f"Unsupported batch format: {type(batch)}, length: {len(batch) if hasattr(batch, '__len__') else 'unknown'}")
+            
             # Move data to device
             images = images.to(self.device, non_blocking=True)
-            cls_labels = cls_labels.to(self.device, non_blocking=True)
-            seg_masks = seg_masks.to(self.device, non_blocking=True)
+            if cls_labels is not None:
+                cls_labels = cls_labels.to(self.device, non_blocking=True)
+            if seg_masks is not None:
+                seg_masks = seg_masks.to(self.device, non_blocking=True)
             
             # Forward pass with mixed precision
             if self.scaler is not None:
@@ -306,11 +321,26 @@ class RobustPhase4Trainer:
         self.model.eval()
         self.val_metrics.reset()
         
-        for images, cls_labels, seg_masks in val_loader:
+        for batch in val_loader:
+            # Handle both tuple and dictionary batch formats
+            if isinstance(batch, dict):
+                images = batch.get('image', batch.get('images'))
+                cls_labels = batch.get('label', batch.get('labels'))
+                seg_masks = batch.get('mask', batch.get('masks'))
+            elif isinstance(batch, (tuple, list)) and len(batch) >= 3:
+                images, cls_labels, seg_masks = batch[0], batch[1], batch[2]
+            elif isinstance(batch, (tuple, list)) and len(batch) == 2:
+                images, cls_labels = batch[0], batch[1]
+                seg_masks = None
+            else:
+                raise ValueError(f"Unsupported batch format: {type(batch)}, length: {len(batch) if hasattr(batch, '__len__') else 'unknown'}")
+            
             # Move data to device
             images = images.to(self.device, non_blocking=True)
-            cls_labels = cls_labels.to(self.device, non_blocking=True)
-            seg_masks = seg_masks.to(self.device, non_blocking=True)
+            if cls_labels is not None:
+                cls_labels = cls_labels.to(self.device, non_blocking=True)
+            if seg_masks is not None:
+                seg_masks = seg_masks.to(self.device, non_blocking=True)
             
             # Forward pass
             if self.scaler is not None:

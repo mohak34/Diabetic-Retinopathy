@@ -724,10 +724,22 @@ def run_pipeline5_complete(experiment_name=None, mode="full", log_level="INFO"):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         results_file = results_dir / f"pipeline5_results_{timestamp}.json"
         
-        with open(results_file, 'w') as f:
-            json.dump(pipeline_results, f, indent=2, default=str)
-        
-        logger.info(f"📄 Pipeline results saved to: {results_file}")
+        try:
+            with open(results_file, 'w') as f:
+                json.dump(pipeline_results, f, indent=2, default=str)
+            logger.info(f"📄 Pipeline results saved to: {results_file}")
+        except (TypeError, ValueError) as e:
+            # Handle circular references or other serialization issues
+            logger.warning(f"Could not serialize full results: {e}. Saving minimal results.")
+            safe_results = {
+                'timestamp': pipeline_results.get('timestamp', str(datetime.now())),
+                'status': pipeline_results.get('status', 'completed'),
+                'steps_completed': pipeline_results.get('steps_completed', []),
+                'error_handling': 'Used safe serialization due to circular reference'
+            }
+            with open(results_file, 'w') as f:
+                json.dump(safe_results, f, indent=2, default=str)
+            logger.info(f"📄 Safe pipeline results saved to: {results_file}")
         
         # Print summary
         print_pipeline_summary(pipeline_results, logger)

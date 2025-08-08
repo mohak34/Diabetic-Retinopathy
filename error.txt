@@ -1,0 +1,925 @@
+2025-08-09 00:53:58,457 - Pipeline5_TrainingOptimization - INFO - 🚀 Starting Pipeline 5: Model Training & Optimization
+2025-08-09 00:53:58,457 - Pipeline5_TrainingOptimization - INFO - ================================================================================
+2025-08-09 00:53:59,699 - Pipeline5_TrainingOptimization - INFO - ✅ PyTorch 2.7.1+cu128 available
+2025-08-09 00:53:59,738 - Pipeline5_TrainingOptimization - INFO - ✅ CUDA available: NVIDIA GeForce RTX 3080 Laptop GPU
+2025-08-09 00:53:59,738 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:53:59,738 - Pipeline5_TrainingOptimization - INFO - STEP 1: Running Phase 5 Training Pipeline
+2025-08-09 00:53:59,739 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:03,561 - Pipeline5_TrainingOptimization - INFO - ✅ Using existing Phase 5 training pipeline
+2025-08-09 00:54:03,563 - Phase5Pipeline - INFO - Phase 5 Pipeline initialized: diabetic_retinopathy_pipeline5_20250809_005403
+2025-08-09 00:54:03,563 - Phase5Pipeline - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403
+2025-08-09 00:54:03,563 - Pipeline5_TrainingOptimization - INFO - Running quick test mode...
+2025-08-09 00:54:03,563 - Phase5Pipeline - INFO - Running Phase 5 quick test
+2025-08-09 00:54:03,563 - Phase5Pipeline - INFO - Starting Phase 5 comprehensive training pipeline
+2025-08-09 00:54:03,563 - Phase5Pipeline - INFO - Phase 1: Setup and Initialization
+2025-08-09 00:54:03,564 - RealTimeMonitor - INFO - Real-time monitoring started
+2025-08-09 00:54:03,564 - Phase5Pipeline - INFO - Component initialization completed (some components may be skipped)
+2025-08-09 00:54:03,564 - Phase5Pipeline - INFO - Phase 2: Experimental Design
+2025-08-09 00:54:03,564 - Phase5Pipeline - INFO - Experimental plan created with 1 groups
+2025-08-09 00:54:03,565 - Phase5Pipeline - INFO - Phase 3: Training Experiments
+2025-08-09 00:54:03,565 - Phase5Pipeline - INFO - Running experiment group 1/1: quick_validation
+2025-08-09 00:54:03,565 - Phase5Pipeline - INFO - Starting experiment: quick_validation_exp_1
+2025-08-09 00:54:03,565 - RealTimeMonitor - INFO - Added experiment to monitoring: quick_validation_exp_1
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment: quick_validation_exp_1
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment: quick_validation_exp_1
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Mode: full
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Mode: full
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Device: cuda
+2025-08-09 00:54:03,565 - Phase5Trainer_quick_validation_exp_1 - INFO - Device: cuda
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment: quick_validation_exp_1
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment: quick_validation_exp_1
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Mode: full
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Mode: full
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Target epochs: 50
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - Target epochs: 50
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:03,566 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:03,768 - timm.models._builder - INFO - Loading pretrained weights from Hugging Face hub (timm/resnet50.a1_in1k)
+2025-08-09 00:54:04,482 - timm.models._hub - INFO - [timm/resnet50.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-08-09 00:54:04,504 - timm.models._builder - INFO - Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-08-09 00:54:04,510 - src.models.backbone - INFO - Successfully loaded resnet50 backbone
+2025-08-09 00:54:04,510 - src.models.backbone - INFO - Feature dimensions: [64, 256, 512, 1024, 2048]
+2025-08-09 00:54:04,510 - src.models.backbone - INFO - Feature reduction ratios: [2, 4, 8, 16, 32]
+2025-08-09 00:54:04,515 - src.models.heads - INFO - ClassificationHead: 2048 -> 256 -> 5
+2025-08-09 00:54:04,686 - src.models.heads - INFO - SegmentationHead: 2048 -> [512, 256, 128, 64] -> 1
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO - MultiTaskRetinaModel Configuration:
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO -   - Backbone: resnet50
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO -   - Classification classes: 5
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO -   - Segmentation classes: 1
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO -   - Backbone features: 2048
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO -   - Skip connections: False
+2025-08-09 00:54:04,686 - src.models.multi_task_model - INFO -   - Advanced decoder: False
+2025-08-09 00:54:04,686 - Phase5Trainer_quick_validation_exp_1 - INFO - Creating data loaders...
+2025-08-09 00:54:04,686 - Phase5Trainer_quick_validation_exp_1 - INFO - Creating data loaders...
+2025-08-09 00:54:04,686 - src.data.dataloaders - INFO - DataLoader config: batch_size=4, num_workers=2, pin_memory=True, persistent_workers=True
+2025-08-09 00:54:04,691 - src.data.dataloaders - WARNING - Failed to create real dataloaders: [Errno 2] No such file or directory: 'dataset/labels.csv'
+2025-08-09 00:54:04,691 - src.training.pipeline - INFO - DummyDataset: 40 samples, 5 classes, 512x512 images
+2025-08-09 00:54:04,691 - src.training.pipeline - INFO - DummyDataset: 20 samples, 5 classes, 512x512 images
+2025-08-09 00:54:04,691 - Phase5Trainer_quick_validation_exp_1 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:04,691 - Phase5Trainer_quick_validation_exp_1 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:04,845 - src.training.losses - INFO - MultiTaskLoss initialized: cls_weight=1.0, seg_weight=0.5
+2025-08-09 00:54:04,846 - src.training.trainer - INFO - RobustPhase4Trainer initialized on cuda
+2025-08-09 00:54:04,847 - src.training.trainer - INFO - Mixed precision: True
+2025-08-09 00:54:04,847 - src.training.trainer - INFO - Gradient accumulation steps: 4
+2025-08-09 00:54:04,867 - Phase5Trainer_quick_validation_exp_1 - INFO - Initial resource usage: CPU=11.6%, Memory=69.1%
+2025-08-09 00:54:04,867 - Phase5Trainer_quick_validation_exp_1 - INFO - Initial resource usage: CPU=11.6%, Memory=69.1%
+2025-08-09 00:54:04,867 - Phase5Trainer_quick_validation_exp_1 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:04,867 - Phase5Trainer_quick_validation_exp_1 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:04,867 - src.training.trainer - INFO - Starting Phase 4 Training
+2025-08-09 00:54:04,867 - src.training.trainer - INFO - Total epochs: 5
+2025-08-09 00:54:04,867 - src.training.trainer - INFO - Progressive phases: 2 + 2 + 1
+2025-08-09 00:54:04,867 - src.training.trainer - INFO - 
+Epoch 1/5 - Phase 1 (Classification Only)
+2025-08-09 00:54:05,217 - Phase5Trainer_quick_validation_exp_1 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:05,217 - Phase5Trainer_quick_validation_exp_1 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - Search method: optuna
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - Search method: optuna
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - Number of trials: 5
+2025-08-09 00:54:05,218 - Phase5Trainer_quick_validation_exp_1 - INFO - Number of trials: 5
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1/hyperparameter_optimization
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1/hyperparameter_optimization
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Method: optuna
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Method: optuna
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Number of trials: 5
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Number of trials: 5
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Optimization direction: maximize
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Optimization direction: maximize
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting Optuna optimization...
+2025-08-09 00:54:05,219 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting Optuna optimization...
+[I 2025-08-09 00:54:05,219] A new study created in memory with name: quick_validation_exp_1_hyperopt
+2025-08-09 00:54:05,221 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 0 with params: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,221 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 0 with params: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,221 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,221 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,221] Trial 0 finished with value: -inf and parameters: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,222 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 1 with params: {'lr': 0.0005824781499328539, 'batch_size': 16, 'weight_decay': 0.000968326112369631, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 0.4892026647308534, 'dice_smooth': 0.5433002346200088, 'phase1_epochs': 5, 'phase2_epochs': 6, 'phase3_epochs': 10, 'seg_weight_max': 0.7730292568883836, 'seg_weight_warmup': 7}
+2025-08-09 00:54:05,222 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 1 with params: {'lr': 0.0005824781499328539, 'batch_size': 16, 'weight_decay': 0.000968326112369631, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 0.4892026647308534, 'dice_smooth': 0.5433002346200088, 'phase1_epochs': 5, 'phase2_epochs': 6, 'phase3_epochs': 10, 'seg_weight_max': 0.7730292568883836, 'seg_weight_warmup': 7}
+2025-08-09 00:54:05,222 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,222 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,222] Trial 1 finished with value: -inf and parameters: {'lr': 0.0005824781499328539, 'batch_size': 16, 'weight_decay': 0.000968326112369631, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 0.4892026647308534, 'dice_smooth': 0.5433002346200088, 'phase1_epochs': 5, 'phase2_epochs': 6, 'phase3_epochs': 10, 'seg_weight_max': 0.7730292568883836, 'seg_weight_warmup': 7}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,223 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 2 with params: {'lr': 0.0035790552028512187, 'batch_size': 24, 'weight_decay': 0.0010935328371495037, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.7313853153317913, 'dice_smooth': 0.9536794264762477, 'phase1_epochs': 9, 'phase2_epochs': 8, 'phase3_epochs': 23, 'seg_weight_max': 0.47633877338608865, 'seg_weight_warmup': 15}
+2025-08-09 00:54:05,223 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 2 with params: {'lr': 0.0035790552028512187, 'batch_size': 24, 'weight_decay': 0.0010935328371495037, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.7313853153317913, 'dice_smooth': 0.9536794264762477, 'phase1_epochs': 9, 'phase2_epochs': 8, 'phase3_epochs': 23, 'seg_weight_max': 0.47633877338608865, 'seg_weight_warmup': 15}
+2025-08-09 00:54:05,223 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,223 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,223] Trial 2 finished with value: -inf and parameters: {'lr': 0.0035790552028512187, 'batch_size': 24, 'weight_decay': 0.0010935328371495037, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.7313853153317913, 'dice_smooth': 0.9536794264762477, 'phase1_epochs': 9, 'phase2_epochs': 8, 'phase3_epochs': 23, 'seg_weight_max': 0.47633877338608865, 'seg_weight_warmup': 15}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 3 with params: {'lr': 0.00018823310383234455, 'batch_size': 32, 'weight_decay': 1.4751558146020927e-06, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.2835569903289055, 'dice_smooth': 0.38563552113183336, 'phase1_epochs': 5, 'phase2_epochs': 14, 'phase3_epochs': 22, 'seg_weight_max': 0.9159051551398052, 'seg_weight_warmup': 14}
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 3 with params: {'lr': 0.00018823310383234455, 'batch_size': 32, 'weight_decay': 1.4751558146020927e-06, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.2835569903289055, 'dice_smooth': 0.38563552113183336, 'phase1_epochs': 5, 'phase2_epochs': 14, 'phase3_epochs': 22, 'seg_weight_max': 0.9159051551398052, 'seg_weight_warmup': 14}
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,224] Trial 3 finished with value: -inf and parameters: {'lr': 0.00018823310383234455, 'batch_size': 32, 'weight_decay': 1.4751558146020927e-06, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.2835569903289055, 'dice_smooth': 0.38563552113183336, 'phase1_epochs': 5, 'phase2_epochs': 14, 'phase3_epochs': 22, 'seg_weight_max': 0.9159051551398052, 'seg_weight_warmup': 14}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 4 with params: {'lr': 0.0019131195156478827, 'batch_size': 32, 'weight_decay': 1.3657972891649255e-06, 'backbone_name': 'resnet50', 'focal_gamma': 0.4048725303465581, 'dice_smooth': 0.3490020154202952, 'phase1_epochs': 5, 'phase2_epochs': 9, 'phase3_epochs': 17, 'seg_weight_max': 0.8880321132188809, 'seg_weight_warmup': 14}
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - INFO - Starting trial 4 with params: {'lr': 0.0019131195156478827, 'batch_size': 32, 'weight_decay': 1.3657972891649255e-06, 'backbone_name': 'resnet50', 'focal_gamma': 0.4048725303465581, 'dice_smooth': 0.3490020154202952, 'phase1_epochs': 5, 'phase2_epochs': 9, 'phase3_epochs': 17, 'seg_weight_max': 0.8880321132188809, 'seg_weight_warmup': 14}
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,224 - Phase5Trainer_quick_validation_exp_1 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,224] Trial 4 finished with value: -inf and parameters: {'lr': 0.0019131195156478827, 'batch_size': 32, 'weight_decay': 1.3657972891649255e-06, 'backbone_name': 'resnet50', 'focal_gamma': 0.4048725303465581, 'dice_smooth': 0.3490020154202952, 'phase1_epochs': 5, 'phase2_epochs': 9, 'phase3_epochs': 17, 'seg_weight_max': 0.8880321132188809, 'seg_weight_warmup': 14}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,225 - Phase5Trainer_quick_validation_exp_1 - INFO - Optuna optimization completed!
+2025-08-09 00:54:05,225 - Phase5Trainer_quick_validation_exp_1 - INFO - Optuna optimization completed!
+2025-08-09 00:54:05,225 - Phase5Trainer_quick_validation_exp_1 - INFO - Best score: -inf
+2025-08-09 00:54:05,225 - Phase5Trainer_quick_validation_exp_1 - INFO - Best score: -inf
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best params: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best params: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1/hyperparameter_optimization
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1/hyperparameter_optimization
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Trials completed: 5
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Trials completed: 5
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best score: -inf
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best score: -inf
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - WARNING - No trial results available for analysis
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - WARNING - No trial results available for analysis
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best parameters: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best parameters: {'lr': 0.002272738482022614, 'batch_size': 24, 'weight_decay': 0.0038509210466177103, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.81734154336129, 'dice_smooth': 0.612030645409155, 'phase1_epochs': 13, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.5753864156759535, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best score: -inf
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - Best score: -inf
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:05,226 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - Training configuration:
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - Training configuration:
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Total epochs: 6
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Total epochs: 6
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Learning rate: 0.002272738482022614
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Learning rate: 0.002272738482022614
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Batch size: 24
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Batch size: 24
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Backbone: efficientnet-b0
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO -   Backbone: efficientnet-b0
+2025-08-09 00:54:05,227 - src.models.backbone - ERROR - Failed to load efficientnet-b0: Unknown model (efficientnet-b0)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b0)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b0)
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - INFO - ================================================================================
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - WARNING - No training history found for plotting
+2025-08-09 00:54:05,227 - Phase5Trainer_quick_validation_exp_1 - WARNING - No training history found for plotting
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1/phase5_training_report.json
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1/phase5_training_report.json
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1/quick_validation_exp_1
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Best model performance: N/A
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - Best model performance: N/A
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_1 - INFO - ====================================================================================================
+2025-08-09 00:54:05,228 - Phase5Pipeline - INFO - Experiment quick_validation_exp_1 completed successfully
+2025-08-09 00:54:05,228 - Phase5Pipeline - INFO - Starting experiment: quick_validation_exp_2
+2025-08-09 00:54:05,228 - RealTimeMonitor - INFO - Added experiment to monitoring: quick_validation_exp_2
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment: quick_validation_exp_2
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment: quick_validation_exp_2
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Mode: full
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Mode: full
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Device: cuda
+2025-08-09 00:54:05,228 - Phase5Trainer_quick_validation_exp_2 - INFO - Device: cuda
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment: quick_validation_exp_2
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment: quick_validation_exp_2
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Mode: full
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Mode: full
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Target epochs: 50
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - Target epochs: 50
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,229 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,425 - timm.models._builder - INFO - Loading pretrained weights from Hugging Face hub (timm/resnet50.a1_in1k)
+2025-08-09 00:54:05,683 - timm.models._hub - INFO - [timm/resnet50.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-08-09 00:54:05,700 - timm.models._builder - INFO - Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-08-09 00:54:05,706 - src.models.backbone - INFO - Successfully loaded resnet50 backbone
+2025-08-09 00:54:05,706 - src.models.backbone - INFO - Feature dimensions: [64, 256, 512, 1024, 2048]
+2025-08-09 00:54:05,706 - src.models.backbone - INFO - Feature reduction ratios: [2, 4, 8, 16, 32]
+2025-08-09 00:54:05,710 - src.models.heads - INFO - ClassificationHead: 2048 -> 256 -> 5
+2025-08-09 00:54:05,870 - src.models.heads - INFO - SegmentationHead: 2048 -> [512, 256, 128, 64] -> 1
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO - MultiTaskRetinaModel Configuration:
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO -   - Backbone: resnet50
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO -   - Classification classes: 5
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO -   - Segmentation classes: 1
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO -   - Backbone features: 2048
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO -   - Skip connections: False
+2025-08-09 00:54:05,871 - src.models.multi_task_model - INFO -   - Advanced decoder: False
+2025-08-09 00:54:05,871 - Phase5Trainer_quick_validation_exp_2 - INFO - Creating data loaders...
+2025-08-09 00:54:05,871 - Phase5Trainer_quick_validation_exp_2 - INFO - Creating data loaders...
+2025-08-09 00:54:05,871 - src.data.dataloaders - INFO - DataLoader config: batch_size=4, num_workers=2, pin_memory=True, persistent_workers=True
+2025-08-09 00:54:05,874 - src.data.dataloaders - WARNING - Failed to create real dataloaders: [Errno 2] No such file or directory: 'dataset/labels.csv'
+2025-08-09 00:54:05,874 - src.training.pipeline - INFO - DummyDataset: 40 samples, 5 classes, 512x512 images
+2025-08-09 00:54:05,874 - src.training.pipeline - INFO - DummyDataset: 20 samples, 5 classes, 512x512 images
+2025-08-09 00:54:05,875 - Phase5Trainer_quick_validation_exp_2 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:05,875 - Phase5Trainer_quick_validation_exp_2 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:05,905 - src.training.losses - INFO - MultiTaskLoss initialized: cls_weight=1.0, seg_weight=0.5
+2025-08-09 00:54:05,906 - src.training.trainer - INFO - RobustPhase4Trainer initialized on cuda
+2025-08-09 00:54:05,906 - src.training.trainer - INFO - Mixed precision: True
+2025-08-09 00:54:05,906 - src.training.trainer - INFO - Gradient accumulation steps: 4
+2025-08-09 00:54:05,926 - Phase5Trainer_quick_validation_exp_2 - INFO - Initial resource usage: CPU=12.2%, Memory=72.9%
+2025-08-09 00:54:05,926 - Phase5Trainer_quick_validation_exp_2 - INFO - Initial resource usage: CPU=12.2%, Memory=72.9%
+2025-08-09 00:54:05,926 - Phase5Trainer_quick_validation_exp_2 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:05,926 - Phase5Trainer_quick_validation_exp_2 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:05,926 - src.training.trainer - INFO - Starting Phase 4 Training
+2025-08-09 00:54:05,926 - src.training.trainer - INFO - Total epochs: 5
+2025-08-09 00:54:05,926 - src.training.trainer - INFO - Progressive phases: 2 + 2 + 1
+2025-08-09 00:54:05,926 - src.training.trainer - INFO - 
+Epoch 1/5 - Phase 1 (Classification Only)
+2025-08-09 00:54:05,953 - Phase5Trainer_quick_validation_exp_2 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:05,953 - Phase5Trainer_quick_validation_exp_2 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Search method: optuna
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Search method: optuna
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Number of trials: 5
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Number of trials: 5
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2/hyperparameter_optimization
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2/hyperparameter_optimization
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Method: optuna
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Method: optuna
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Number of trials: 5
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Number of trials: 5
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:05,954 - Phase5Trainer_quick_validation_exp_2 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:05,955 - Phase5Trainer_quick_validation_exp_2 - INFO - Optimization direction: maximize
+2025-08-09 00:54:05,955 - Phase5Trainer_quick_validation_exp_2 - INFO - Optimization direction: maximize
+2025-08-09 00:54:05,955 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,955 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,955 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting Optuna optimization...
+2025-08-09 00:54:05,955 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting Optuna optimization...
+[I 2025-08-09 00:54:05,955] A new study created in memory with name: quick_validation_exp_2_hyperopt
+2025-08-09 00:54:05,956 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 0 with params: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,956 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 0 with params: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,956 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,956 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,956] Trial 0 finished with value: -inf and parameters: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,957 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 1 with params: {'lr': 9.928905319847514e-05, 'batch_size': 32, 'weight_decay': 1.1936658795023495e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.12387723521368432, 'dice_smooth': 0.5602836071596651, 'phase1_epochs': 14, 'phase2_epochs': 13, 'phase3_epochs': 12, 'seg_weight_max': 0.373847599811527, 'seg_weight_warmup': 13}
+2025-08-09 00:54:05,957 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 1 with params: {'lr': 9.928905319847514e-05, 'batch_size': 32, 'weight_decay': 1.1936658795023495e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.12387723521368432, 'dice_smooth': 0.5602836071596651, 'phase1_epochs': 14, 'phase2_epochs': 13, 'phase3_epochs': 12, 'seg_weight_max': 0.373847599811527, 'seg_weight_warmup': 13}
+2025-08-09 00:54:05,957 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,957 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,957] Trial 1 finished with value: -inf and parameters: {'lr': 9.928905319847514e-05, 'batch_size': 32, 'weight_decay': 1.1936658795023495e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.12387723521368432, 'dice_smooth': 0.5602836071596651, 'phase1_epochs': 14, 'phase2_epochs': 13, 'phase3_epochs': 12, 'seg_weight_max': 0.373847599811527, 'seg_weight_warmup': 13}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,958 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 2 with params: {'lr': 0.0007689383372222945, 'batch_size': 24, 'weight_decay': 0.00283206593229926, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9886852448366783, 'dice_smooth': 0.9859392424407131, 'phase1_epochs': 5, 'phase2_epochs': 15, 'phase3_epochs': 24, 'seg_weight_max': 0.911468805640961, 'seg_weight_warmup': 12}
+2025-08-09 00:54:05,958 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 2 with params: {'lr': 0.0007689383372222945, 'batch_size': 24, 'weight_decay': 0.00283206593229926, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9886852448366783, 'dice_smooth': 0.9859392424407131, 'phase1_epochs': 5, 'phase2_epochs': 15, 'phase3_epochs': 24, 'seg_weight_max': 0.911468805640961, 'seg_weight_warmup': 12}
+2025-08-09 00:54:05,958 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,958 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,958] Trial 2 finished with value: -inf and parameters: {'lr': 0.0007689383372222945, 'batch_size': 24, 'weight_decay': 0.00283206593229926, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9886852448366783, 'dice_smooth': 0.9859392424407131, 'phase1_epochs': 5, 'phase2_epochs': 15, 'phase3_epochs': 24, 'seg_weight_max': 0.911468805640961, 'seg_weight_warmup': 12}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,959 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 3 with params: {'lr': 1.1479413768454991e-05, 'batch_size': 8, 'weight_decay': 0.00014404004979867968, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.665042861718169, 'dice_smooth': 0.21203596704124503, 'phase1_epochs': 12, 'phase2_epochs': 14, 'phase3_epochs': 16, 'seg_weight_max': 0.9575367060397355, 'seg_weight_warmup': 9}
+2025-08-09 00:54:05,959 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 3 with params: {'lr': 1.1479413768454991e-05, 'batch_size': 8, 'weight_decay': 0.00014404004979867968, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.665042861718169, 'dice_smooth': 0.21203596704124503, 'phase1_epochs': 12, 'phase2_epochs': 14, 'phase3_epochs': 16, 'seg_weight_max': 0.9575367060397355, 'seg_weight_warmup': 9}
+2025-08-09 00:54:05,959 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,959 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,959] Trial 3 finished with value: -inf and parameters: {'lr': 1.1479413768454991e-05, 'batch_size': 8, 'weight_decay': 0.00014404004979867968, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.665042861718169, 'dice_smooth': 0.21203596704124503, 'phase1_epochs': 12, 'phase2_epochs': 14, 'phase3_epochs': 16, 'seg_weight_max': 0.9575367060397355, 'seg_weight_warmup': 9}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,960 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 4 with params: {'lr': 0.00014498986662228169, 'batch_size': 24, 'weight_decay': 0.0018222355690190489, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.7513164519545712, 'dice_smooth': 0.8529965517777238, 'phase1_epochs': 11, 'phase2_epochs': 8, 'phase3_epochs': 12, 'seg_weight_max': 0.937915495925131, 'seg_weight_warmup': 12}
+2025-08-09 00:54:05,960 - Phase5Trainer_quick_validation_exp_2 - INFO - Starting trial 4 with params: {'lr': 0.00014498986662228169, 'batch_size': 24, 'weight_decay': 0.0018222355690190489, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.7513164519545712, 'dice_smooth': 0.8529965517777238, 'phase1_epochs': 11, 'phase2_epochs': 8, 'phase3_epochs': 12, 'seg_weight_max': 0.937915495925131, 'seg_weight_warmup': 12}
+2025-08-09 00:54:05,960 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:05,960 - Phase5Trainer_quick_validation_exp_2 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:05,960] Trial 4 finished with value: -inf and parameters: {'lr': 0.00014498986662228169, 'batch_size': 24, 'weight_decay': 0.0018222355690190489, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.7513164519545712, 'dice_smooth': 0.8529965517777238, 'phase1_epochs': 11, 'phase2_epochs': 8, 'phase3_epochs': 12, 'seg_weight_max': 0.937915495925131, 'seg_weight_warmup': 12}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Optuna optimization completed!
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Optuna optimization completed!
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Best score: -inf
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Best score: -inf
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Best params: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Best params: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2/hyperparameter_optimization
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2/hyperparameter_optimization
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:05,961 - Phase5Trainer_quick_validation_exp_2 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Trials completed: 5
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Trials completed: 5
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Best score: -inf
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Best score: -inf
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - WARNING - No trial results available for analysis
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - WARNING - No trial results available for analysis
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Best parameters: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Best parameters: {'lr': 0.00025852398680871474, 'batch_size': 24, 'weight_decay': 1.0144945285446718e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 0.29974731321030323, 'dice_smooth': 0.9916409776087562, 'phase1_epochs': 10, 'phase2_epochs': 11, 'phase3_epochs': 23, 'seg_weight_max': 0.4768975879448262, 'seg_weight_warmup': 10}
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Best score: -inf
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Best score: -inf
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Training configuration:
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - Training configuration:
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Total epochs: 6
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Total epochs: 6
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Learning rate: 0.00025852398680871474
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Learning rate: 0.00025852398680871474
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Batch size: 24
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Batch size: 24
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Backbone: efficientnet-b1
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO -   Backbone: efficientnet-b1
+2025-08-09 00:54:05,962 - src.models.backbone - ERROR - Failed to load efficientnet-b1: Unknown model (efficientnet-b1)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b1)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b1)
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:05,962 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ================================================================================
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - WARNING - No training history found for plotting
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - WARNING - No training history found for plotting
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2/phase5_training_report.json
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2/phase5_training_report.json
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2/quick_validation_exp_2
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:05,963 - Phase5Trainer_quick_validation_exp_2 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_2 - INFO - Best model performance: N/A
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_2 - INFO - Best model performance: N/A
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_2 - INFO - ====================================================================================================
+2025-08-09 00:54:05,964 - Phase5Pipeline - INFO - Experiment quick_validation_exp_2 completed successfully
+2025-08-09 00:54:05,964 - Phase5Pipeline - INFO - Starting experiment: quick_validation_exp_3
+2025-08-09 00:54:05,964 - RealTimeMonitor - INFO - Added experiment to monitoring: quick_validation_exp_3
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment: quick_validation_exp_3
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment: quick_validation_exp_3
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Mode: full
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Mode: full
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Device: cuda
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Device: cuda
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment: quick_validation_exp_3
+2025-08-09 00:54:05,964 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment: quick_validation_exp_3
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - Mode: full
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - Mode: full
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - Target epochs: 50
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - Target epochs: 50
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:05,965 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,163 - timm.models._builder - INFO - Loading pretrained weights from Hugging Face hub (timm/resnet50.a1_in1k)
+2025-08-09 00:54:06,413 - timm.models._hub - INFO - [timm/resnet50.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-08-09 00:54:06,432 - timm.models._builder - INFO - Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-08-09 00:54:06,438 - src.models.backbone - INFO - Successfully loaded resnet50 backbone
+2025-08-09 00:54:06,438 - src.models.backbone - INFO - Feature dimensions: [64, 256, 512, 1024, 2048]
+2025-08-09 00:54:06,438 - src.models.backbone - INFO - Feature reduction ratios: [2, 4, 8, 16, 32]
+2025-08-09 00:54:06,443 - src.models.heads - INFO - ClassificationHead: 2048 -> 256 -> 5
+2025-08-09 00:54:06,648 - src.models.heads - INFO - SegmentationHead: 2048 -> [512, 256, 128, 64] -> 1
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO - MultiTaskRetinaModel Configuration:
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO -   - Backbone: resnet50
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO -   - Classification classes: 5
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO -   - Segmentation classes: 1
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO -   - Backbone features: 2048
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO -   - Skip connections: False
+2025-08-09 00:54:06,648 - src.models.multi_task_model - INFO -   - Advanced decoder: False
+2025-08-09 00:54:06,648 - Phase5Trainer_quick_validation_exp_3 - INFO - Creating data loaders...
+2025-08-09 00:54:06,648 - Phase5Trainer_quick_validation_exp_3 - INFO - Creating data loaders...
+2025-08-09 00:54:06,648 - src.data.dataloaders - INFO - DataLoader config: batch_size=4, num_workers=2, pin_memory=True, persistent_workers=True
+2025-08-09 00:54:06,653 - src.data.dataloaders - WARNING - Failed to create real dataloaders: [Errno 2] No such file or directory: 'dataset/labels.csv'
+2025-08-09 00:54:06,653 - src.training.pipeline - INFO - DummyDataset: 40 samples, 5 classes, 512x512 images
+2025-08-09 00:54:06,653 - src.training.pipeline - INFO - DummyDataset: 20 samples, 5 classes, 512x512 images
+2025-08-09 00:54:06,653 - Phase5Trainer_quick_validation_exp_3 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:06,653 - Phase5Trainer_quick_validation_exp_3 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:06,686 - src.training.losses - INFO - MultiTaskLoss initialized: cls_weight=1.0, seg_weight=0.5
+2025-08-09 00:54:06,688 - src.training.trainer - INFO - RobustPhase4Trainer initialized on cuda
+2025-08-09 00:54:06,688 - src.training.trainer - INFO - Mixed precision: True
+2025-08-09 00:54:06,688 - src.training.trainer - INFO - Gradient accumulation steps: 4
+2025-08-09 00:54:06,711 - Phase5Trainer_quick_validation_exp_3 - INFO - Initial resource usage: CPU=13.9%, Memory=72.5%
+2025-08-09 00:54:06,711 - Phase5Trainer_quick_validation_exp_3 - INFO - Initial resource usage: CPU=13.9%, Memory=72.5%
+2025-08-09 00:54:06,711 - Phase5Trainer_quick_validation_exp_3 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:06,711 - Phase5Trainer_quick_validation_exp_3 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:06,711 - src.training.trainer - INFO - Starting Phase 4 Training
+2025-08-09 00:54:06,712 - src.training.trainer - INFO - Total epochs: 5
+2025-08-09 00:54:06,712 - src.training.trainer - INFO - Progressive phases: 2 + 2 + 1
+2025-08-09 00:54:06,712 - src.training.trainer - INFO - 
+Epoch 1/5 - Phase 1 (Classification Only)
+2025-08-09 00:54:06,745 - Phase5Trainer_quick_validation_exp_3 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:06,745 - Phase5Trainer_quick_validation_exp_3 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:06,746 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:06,746 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Search method: optuna
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Search method: optuna
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Number of trials: 5
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Number of trials: 5
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3/hyperparameter_optimization
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3/hyperparameter_optimization
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Method: optuna
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Method: optuna
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Number of trials: 5
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Number of trials: 5
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Optimization direction: maximize
+2025-08-09 00:54:06,747 - Phase5Trainer_quick_validation_exp_3 - INFO - Optimization direction: maximize
+2025-08-09 00:54:06,748 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,748 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,748 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting Optuna optimization...
+2025-08-09 00:54:06,748 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting Optuna optimization...
+[I 2025-08-09 00:54:06,748] A new study created in memory with name: quick_validation_exp_3_hyperopt
+2025-08-09 00:54:06,749 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 0 with params: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}
+2025-08-09 00:54:06,749 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 0 with params: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}
+2025-08-09 00:54:06,749 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:06,749 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:06,749] Trial 0 finished with value: -inf and parameters: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:06,751 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 1 with params: {'lr': 0.0016906199058202695, 'batch_size': 8, 'weight_decay': 2.7115202504178043e-06, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.04744435312747, 'dice_smooth': 0.14474944983233723, 'phase1_epochs': 12, 'phase2_epochs': 14, 'phase3_epochs': 13, 'seg_weight_max': 0.6359291909813523, 'seg_weight_warmup': 12}
+2025-08-09 00:54:06,751 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 1 with params: {'lr': 0.0016906199058202695, 'batch_size': 8, 'weight_decay': 2.7115202504178043e-06, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.04744435312747, 'dice_smooth': 0.14474944983233723, 'phase1_epochs': 12, 'phase2_epochs': 14, 'phase3_epochs': 13, 'seg_weight_max': 0.6359291909813523, 'seg_weight_warmup': 12}
+2025-08-09 00:54:06,751 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:06,751 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:06,751] Trial 1 finished with value: -inf and parameters: {'lr': 0.0016906199058202695, 'batch_size': 8, 'weight_decay': 2.7115202504178043e-06, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.04744435312747, 'dice_smooth': 0.14474944983233723, 'phase1_epochs': 12, 'phase2_epochs': 14, 'phase3_epochs': 13, 'seg_weight_max': 0.6359291909813523, 'seg_weight_warmup': 12}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:06,752 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 2 with params: {'lr': 4.732464171584362e-05, 'batch_size': 8, 'weight_decay': 4.110294790785208e-06, 'backbone_name': 'resnet50', 'focal_gamma': 1.485997076057707, 'dice_smooth': 0.9151893008887451, 'phase1_epochs': 11, 'phase2_epochs': 14, 'phase3_epochs': 20, 'seg_weight_max': 0.3806997294722184, 'seg_weight_warmup': 11}
+2025-08-09 00:54:06,752 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 2 with params: {'lr': 4.732464171584362e-05, 'batch_size': 8, 'weight_decay': 4.110294790785208e-06, 'backbone_name': 'resnet50', 'focal_gamma': 1.485997076057707, 'dice_smooth': 0.9151893008887451, 'phase1_epochs': 11, 'phase2_epochs': 14, 'phase3_epochs': 20, 'seg_weight_max': 0.3806997294722184, 'seg_weight_warmup': 11}
+2025-08-09 00:54:06,752 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:06,752 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:06,752] Trial 2 finished with value: -inf and parameters: {'lr': 4.732464171584362e-05, 'batch_size': 8, 'weight_decay': 4.110294790785208e-06, 'backbone_name': 'resnet50', 'focal_gamma': 1.485997076057707, 'dice_smooth': 0.9151893008887451, 'phase1_epochs': 11, 'phase2_epochs': 14, 'phase3_epochs': 20, 'seg_weight_max': 0.3806997294722184, 'seg_weight_warmup': 11}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:06,753 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 3 with params: {'lr': 0.0074057732480609095, 'batch_size': 8, 'weight_decay': 3.475657923162538e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.2681026348056204, 'dice_smooth': 0.5433396680380982, 'phase1_epochs': 5, 'phase2_epochs': 13, 'phase3_epochs': 12, 'seg_weight_max': 0.6087762935793175, 'seg_weight_warmup': 6}
+2025-08-09 00:54:06,753 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 3 with params: {'lr': 0.0074057732480609095, 'batch_size': 8, 'weight_decay': 3.475657923162538e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.2681026348056204, 'dice_smooth': 0.5433396680380982, 'phase1_epochs': 5, 'phase2_epochs': 13, 'phase3_epochs': 12, 'seg_weight_max': 0.6087762935793175, 'seg_weight_warmup': 6}
+2025-08-09 00:54:06,753 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:06,753 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:06,753] Trial 3 finished with value: -inf and parameters: {'lr': 0.0074057732480609095, 'batch_size': 8, 'weight_decay': 3.475657923162538e-05, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 1.2681026348056204, 'dice_smooth': 0.5433396680380982, 'phase1_epochs': 5, 'phase2_epochs': 13, 'phase3_epochs': 12, 'seg_weight_max': 0.6087762935793175, 'seg_weight_warmup': 6}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:06,754 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 4 with params: {'lr': 0.0017563854859645222, 'batch_size': 32, 'weight_decay': 0.0009310003890674558, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 1.0206312908201296, 'dice_smooth': 0.34187513254787005, 'phase1_epochs': 11, 'phase2_epochs': 8, 'phase3_epochs': 25, 'seg_weight_max': 0.7907585599674356, 'seg_weight_warmup': 11}
+2025-08-09 00:54:06,754 - Phase5Trainer_quick_validation_exp_3 - INFO - Starting trial 4 with params: {'lr': 0.0017563854859645222, 'batch_size': 32, 'weight_decay': 0.0009310003890674558, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 1.0206312908201296, 'dice_smooth': 0.34187513254787005, 'phase1_epochs': 11, 'phase2_epochs': 8, 'phase3_epochs': 25, 'seg_weight_max': 0.7907585599674356, 'seg_weight_warmup': 11}
+2025-08-09 00:54:06,754 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:06,754 - Phase5Trainer_quick_validation_exp_3 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:06,754] Trial 4 finished with value: -inf and parameters: {'lr': 0.0017563854859645222, 'batch_size': 32, 'weight_decay': 0.0009310003890674558, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 1.0206312908201296, 'dice_smooth': 0.34187513254787005, 'phase1_epochs': 11, 'phase2_epochs': 8, 'phase3_epochs': 25, 'seg_weight_max': 0.7907585599674356, 'seg_weight_warmup': 11}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Optuna optimization completed!
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Optuna optimization completed!
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Best score: -inf
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Best score: -inf
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Best params: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Best params: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3/hyperparameter_optimization
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3/hyperparameter_optimization
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,756 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Trials completed: 5
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Trials completed: 5
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Best score: -inf
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Best score: -inf
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - WARNING - No trial results available for analysis
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - WARNING - No trial results available for analysis
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Best parameters: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Best parameters: {'lr': 0.00010880950630809497, 'batch_size': 24, 'weight_decay': 0.0003403660861058801, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 2.9788614427231734, 'dice_smooth': 0.5752742375425796, 'phase1_epochs': 10, 'phase2_epochs': 13, 'phase3_epochs': 23, 'seg_weight_max': 0.7966236941553944, 'seg_weight_warmup': 8}
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Best score: -inf
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Best score: -inf
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Training configuration:
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO - Training configuration:
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Total epochs: 6
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Total epochs: 6
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Learning rate: 0.00010880950630809497
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Learning rate: 0.00010880950630809497
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Batch size: 24
+2025-08-09 00:54:06,757 - Phase5Trainer_quick_validation_exp_3 - INFO -   Batch size: 24
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - INFO -   Backbone: efficientnet-b0
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - INFO -   Backbone: efficientnet-b0
+2025-08-09 00:54:06,758 - src.models.backbone - ERROR - Failed to load efficientnet-b0: Unknown model (efficientnet-b0)
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b0)
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b0)
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - INFO - ================================================================================
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - WARNING - No training history found for plotting
+2025-08-09 00:54:06,758 - Phase5Trainer_quick_validation_exp_3 - WARNING - No training history found for plotting
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3/phase5_training_report.json
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3/phase5_training_report.json
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3/quick_validation_exp_3
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Best model performance: N/A
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - Best model performance: N/A
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:06,759 - Phase5Trainer_quick_validation_exp_3 - INFO - ====================================================================================================
+2025-08-09 00:54:06,759 - Phase5Pipeline - INFO - Experiment quick_validation_exp_3 completed successfully
+2025-08-09 00:54:06,759 - Phase5Pipeline - INFO - Starting experiment: quick_validation_exp_4
+2025-08-09 00:54:06,759 - RealTimeMonitor - INFO - Added experiment to monitoring: quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Phase 5 Trainer initialized
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment: quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment: quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Mode: full
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Mode: full
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Device: cuda
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Device: cuda
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - End-to-end training system with comprehensive monitoring and optimization
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment: quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment: quick_validation_exp_4
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Mode: full
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Mode: full
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Target epochs: 50
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - Target epochs: 50
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.1: INITIAL TRAINING RUNS & DEBUGGING
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:06,760 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:06,995 - timm.models._builder - INFO - Loading pretrained weights from Hugging Face hub (timm/resnet50.a1_in1k)
+2025-08-09 00:54:07,249 - timm.models._hub - INFO - [timm/resnet50.a1_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-08-09 00:54:07,269 - timm.models._builder - INFO - Missing keys (fc.weight, fc.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-08-09 00:54:07,276 - src.models.backbone - INFO - Successfully loaded resnet50 backbone
+2025-08-09 00:54:07,276 - src.models.backbone - INFO - Feature dimensions: [64, 256, 512, 1024, 2048]
+2025-08-09 00:54:07,276 - src.models.backbone - INFO - Feature reduction ratios: [2, 4, 8, 16, 32]
+2025-08-09 00:54:07,282 - src.models.heads - INFO - ClassificationHead: 2048 -> 256 -> 5
+2025-08-09 00:54:07,486 - src.models.heads - INFO - SegmentationHead: 2048 -> [512, 256, 128, 64] -> 1
+2025-08-09 00:54:07,486 - src.models.multi_task_model - INFO - MultiTaskRetinaModel Configuration:
+2025-08-09 00:54:07,486 - src.models.multi_task_model - INFO -   - Backbone: resnet50
+2025-08-09 00:54:07,486 - src.models.multi_task_model - INFO -   - Classification classes: 5
+2025-08-09 00:54:07,486 - src.models.multi_task_model - INFO -   - Segmentation classes: 1
+2025-08-09 00:54:07,486 - src.models.multi_task_model - INFO -   - Backbone features: 2048
+2025-08-09 00:54:07,487 - src.models.multi_task_model - INFO -   - Skip connections: False
+2025-08-09 00:54:07,487 - src.models.multi_task_model - INFO -   - Advanced decoder: False
+2025-08-09 00:54:07,487 - Phase5Trainer_quick_validation_exp_4 - INFO - Creating data loaders...
+2025-08-09 00:54:07,487 - Phase5Trainer_quick_validation_exp_4 - INFO - Creating data loaders...
+2025-08-09 00:54:07,487 - src.data.dataloaders - INFO - DataLoader config: batch_size=4, num_workers=2, pin_memory=True, persistent_workers=True
+2025-08-09 00:54:07,491 - src.data.dataloaders - WARNING - Failed to create real dataloaders: [Errno 2] No such file or directory: 'dataset/labels.csv'
+2025-08-09 00:54:07,491 - src.training.pipeline - INFO - DummyDataset: 40 samples, 5 classes, 512x512 images
+2025-08-09 00:54:07,491 - src.training.pipeline - INFO - DummyDataset: 20 samples, 5 classes, 512x512 images
+2025-08-09 00:54:07,491 - Phase5Trainer_quick_validation_exp_4 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:07,491 - Phase5Trainer_quick_validation_exp_4 - INFO - Created data loaders: train=10 batches, val=5 batches
+2025-08-09 00:54:07,526 - src.training.losses - INFO - MultiTaskLoss initialized: cls_weight=1.0, seg_weight=0.5
+2025-08-09 00:54:07,528 - src.training.trainer - INFO - RobustPhase4Trainer initialized on cuda
+2025-08-09 00:54:07,528 - src.training.trainer - INFO - Mixed precision: True
+2025-08-09 00:54:07,528 - src.training.trainer - INFO - Gradient accumulation steps: 4
+2025-08-09 00:54:07,550 - Phase5Trainer_quick_validation_exp_4 - INFO - Initial resource usage: CPU=12.3%, Memory=72.0%
+2025-08-09 00:54:07,550 - Phase5Trainer_quick_validation_exp_4 - INFO - Initial resource usage: CPU=12.3%, Memory=72.0%
+2025-08-09 00:54:07,550 - Phase5Trainer_quick_validation_exp_4 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:07,550 - Phase5Trainer_quick_validation_exp_4 - INFO - Running debug training (5 epochs)...
+2025-08-09 00:54:07,550 - src.training.trainer - INFO - Starting Phase 4 Training
+2025-08-09 00:54:07,550 - src.training.trainer - INFO - Total epochs: 5
+2025-08-09 00:54:07,550 - src.training.trainer - INFO - Progressive phases: 2 + 2 + 1
+2025-08-09 00:54:07,550 - src.training.trainer - INFO - 
+Epoch 1/5 - Phase 1 (Classification Only)
+2025-08-09 00:54:07,590 - Phase5Trainer_quick_validation_exp_4 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:07,590 - Phase5Trainer_quick_validation_exp_4 - ERROR - ❌ Debug training failed: tuple indices must be integers or slices, not str
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.2: HYPERPARAMETER OPTIMIZATION
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Hyperparameter Optimizer initialized
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Search method: optuna
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Search method: optuna
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Number of trials: 5
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Number of trials: 5
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4/hyperparameter_optimization
+2025-08-09 00:54:07,591 - Phase5Trainer_quick_validation_exp_4 - INFO - Optimization directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4/hyperparameter_optimization
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - SEARCH HYPERPARAMETER OPTIMIZATION STARTED
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Method: optuna
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Method: optuna
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Number of trials: 5
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Number of trials: 5
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Primary metric: val_combined_score
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Optimization direction: maximize
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Optimization direction: maximize
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting Optuna optimization...
+2025-08-09 00:54:07,592 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting Optuna optimization...
+[I 2025-08-09 00:54:07,592] A new study created in memory with name: quick_validation_exp_4_hyperopt
+2025-08-09 00:54:07,594 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 0 with params: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}
+2025-08-09 00:54:07,594 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 0 with params: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}
+2025-08-09 00:54:07,594 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:07,594 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 0 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:07,594] Trial 0 finished with value: -inf and parameters: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:07,595 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 1 with params: {'lr': 0.0006548719838753591, 'batch_size': 32, 'weight_decay': 0.0005873338430045088, 'backbone_name': 'resnet50', 'focal_gamma': 2.2615594708629456, 'dice_smooth': 0.6061134080200422, 'phase1_epochs': 12, 'phase2_epochs': 6, 'phase3_epochs': 25, 'seg_weight_max': 0.6946888065369681, 'seg_weight_warmup': 14}
+2025-08-09 00:54:07,595 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 1 with params: {'lr': 0.0006548719838753591, 'batch_size': 32, 'weight_decay': 0.0005873338430045088, 'backbone_name': 'resnet50', 'focal_gamma': 2.2615594708629456, 'dice_smooth': 0.6061134080200422, 'phase1_epochs': 12, 'phase2_epochs': 6, 'phase3_epochs': 25, 'seg_weight_max': 0.6946888065369681, 'seg_weight_warmup': 14}
+2025-08-09 00:54:07,595 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:07,595 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 1 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:07,595] Trial 1 finished with value: -inf and parameters: {'lr': 0.0006548719838753591, 'batch_size': 32, 'weight_decay': 0.0005873338430045088, 'backbone_name': 'resnet50', 'focal_gamma': 2.2615594708629456, 'dice_smooth': 0.6061134080200422, 'phase1_epochs': 12, 'phase2_epochs': 6, 'phase3_epochs': 25, 'seg_weight_max': 0.6946888065369681, 'seg_weight_warmup': 14}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:07,596 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 2 with params: {'lr': 9.768118473244247e-05, 'batch_size': 32, 'weight_decay': 0.0007801967015980669, 'backbone_name': 'resnet50', 'focal_gamma': 1.869779711696827, 'dice_smooth': 0.8584855169927199, 'phase1_epochs': 11, 'phase2_epochs': 7, 'phase3_epochs': 11, 'seg_weight_max': 0.8538403070313958, 'seg_weight_warmup': 15}
+2025-08-09 00:54:07,596 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 2 with params: {'lr': 9.768118473244247e-05, 'batch_size': 32, 'weight_decay': 0.0007801967015980669, 'backbone_name': 'resnet50', 'focal_gamma': 1.869779711696827, 'dice_smooth': 0.8584855169927199, 'phase1_epochs': 11, 'phase2_epochs': 7, 'phase3_epochs': 11, 'seg_weight_max': 0.8538403070313958, 'seg_weight_warmup': 15}
+2025-08-09 00:54:07,596 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:07,596 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 2 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:07,596] Trial 2 finished with value: -inf and parameters: {'lr': 9.768118473244247e-05, 'batch_size': 32, 'weight_decay': 0.0007801967015980669, 'backbone_name': 'resnet50', 'focal_gamma': 1.869779711696827, 'dice_smooth': 0.8584855169927199, 'phase1_epochs': 11, 'phase2_epochs': 7, 'phase3_epochs': 11, 'seg_weight_max': 0.8538403070313958, 'seg_weight_warmup': 15}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:07,598 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 3 with params: {'lr': 6.820504002409293e-05, 'batch_size': 24, 'weight_decay': 5.7265530365235746e-05, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 0.5499461547991363, 'dice_smooth': 0.8564719849565126, 'phase1_epochs': 11, 'phase2_epochs': 15, 'phase3_epochs': 19, 'seg_weight_max': 0.34425346163759024, 'seg_weight_warmup': 14}
+2025-08-09 00:54:07,598 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 3 with params: {'lr': 6.820504002409293e-05, 'batch_size': 24, 'weight_decay': 5.7265530365235746e-05, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 0.5499461547991363, 'dice_smooth': 0.8564719849565126, 'phase1_epochs': 11, 'phase2_epochs': 15, 'phase3_epochs': 19, 'seg_weight_max': 0.34425346163759024, 'seg_weight_warmup': 14}
+2025-08-09 00:54:07,598 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:07,598 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 3 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:07,598] Trial 3 finished with value: -inf and parameters: {'lr': 6.820504002409293e-05, 'batch_size': 24, 'weight_decay': 5.7265530365235746e-05, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 0.5499461547991363, 'dice_smooth': 0.8564719849565126, 'phase1_epochs': 11, 'phase2_epochs': 15, 'phase3_epochs': 19, 'seg_weight_max': 0.34425346163759024, 'seg_weight_warmup': 14}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:07,599 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 4 with params: {'lr': 0.0001491505731738967, 'batch_size': 16, 'weight_decay': 0.002718429817084423, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 1.0925974797438767, 'dice_smooth': 0.7742030999104749, 'phase1_epochs': 13, 'phase2_epochs': 5, 'phase3_epochs': 15, 'seg_weight_max': 0.3357834957623541, 'seg_weight_warmup': 14}
+2025-08-09 00:54:07,599 - Phase5Trainer_quick_validation_exp_4 - INFO - Starting trial 4 with params: {'lr': 0.0001491505731738967, 'batch_size': 16, 'weight_decay': 0.002718429817084423, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 1.0925974797438767, 'dice_smooth': 0.7742030999104749, 'phase1_epochs': 13, 'phase2_epochs': 5, 'phase3_epochs': 15, 'seg_weight_max': 0.3357834957623541, 'seg_weight_warmup': 14}
+2025-08-09 00:54:07,599 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+2025-08-09 00:54:07,599 - Phase5Trainer_quick_validation_exp_4 - ERROR - Trial 4 failed: RobustPhase4Trainer.__init__() got an unexpected keyword argument 'logger'
+[I 2025-08-09 00:54:07,599] Trial 4 finished with value: -inf and parameters: {'lr': 0.0001491505731738967, 'batch_size': 16, 'weight_decay': 0.002718429817084423, 'backbone_name': 'efficientnet-b0', 'focal_gamma': 1.0925974797438767, 'dice_smooth': 0.7742030999104749, 'phase1_epochs': 13, 'phase2_epochs': 5, 'phase3_epochs': 15, 'seg_weight_max': 0.3357834957623541, 'seg_weight_warmup': 14}. Best is trial 0 with value: -inf.
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Optuna optimization completed!
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Optuna optimization completed!
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Best score: -inf
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Best score: -inf
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Best params: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Best params: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4/hyperparameter_optimization
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Optimization results saved to experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4/hyperparameter_optimization
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - TARGET HYPERPARAMETER OPTIMIZATION COMPLETED
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Total time: 0.00 hours
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Trials completed: 5
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Trials completed: 5
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Best score: -inf
+2025-08-09 00:54:07,601 - Phase5Trainer_quick_validation_exp_4 - INFO - Best score: -inf
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - WARNING - No trial results available for analysis
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - WARNING - No trial results available for analysis
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - ✅ Hyperparameter optimization completed
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - Best parameters: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - Best parameters: {'lr': 0.00014157669235040336, 'batch_size': 8, 'weight_decay': 0.002688917997509431, 'backbone_name': 'efficientnet-b1', 'focal_gamma': 2.3280299922486343, 'dice_smooth': 0.42541249809393833, 'phase1_epochs': 9, 'phase2_epochs': 10, 'phase3_epochs': 11, 'seg_weight_max': 0.6484141751788814, 'seg_weight_warmup': 8}
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - Best score: -inf
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - Best score: -inf
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.3: FULL MODEL TRAINING
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - Training configuration:
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO - Training configuration:
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Total epochs: 6
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Total epochs: 6
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Phase 1: 2 epochs (classification only)
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Phase 2: 2 epochs (progressive multi-task)
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Phase 3: 2 epochs (full multi-task)
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Learning rate: 0.00014157669235040336
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Learning rate: 0.00014157669235040336
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Batch size: 8
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Batch size: 8
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Backbone: efficientnet-b1
+2025-08-09 00:54:07,602 - Phase5Trainer_quick_validation_exp_4 - INFO -   Backbone: efficientnet-b1
+2025-08-09 00:54:07,602 - src.models.backbone - ERROR - Failed to load efficientnet-b1: Unknown model (efficientnet-b1)
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b1)
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - ERROR - ❌ Full model training failed: Unknown model (efficientnet-b1)
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5.6: GENERATING TRAINING REPORT
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - ================================================================================
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - WARNING - No training history found for plotting
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - WARNING - No training history found for plotting
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4/phase5_training_report.json
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - ✅ Training report saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4/phase5_training_report.json
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:07,603 - Phase5Trainer_quick_validation_exp_4 - INFO - PHASE 5 TRAINING PIPELINE COMPLETED SUCCESSFULLY
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Total execution time: 0.00 hours
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Experiment directory: experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4/quick_validation_exp_4
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Results saved with 4 phases completed
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Best model performance: N/A
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - Best model performance: N/A
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:07,604 - Phase5Trainer_quick_validation_exp_4 - INFO - ====================================================================================================
+2025-08-09 00:54:07,604 - Phase5Pipeline - INFO - Experiment quick_validation_exp_4 completed successfully
+2025-08-09 00:54:07,604 - Phase5Pipeline - INFO - Completed 4 training experiments
+2025-08-09 00:54:07,604 - Phase5Pipeline - INFO - Phase 4: Model Validation
+2025-08-09 00:54:07,604 - Phase5Pipeline - INFO - Validating model from experiment: quick_validation_exp_1
+2025-08-09 00:54:07,604 - Phase5Pipeline - WARNING - No model checkpoint found for quick_validation_exp_1
+2025-08-09 00:54:07,604 - Phase5Pipeline - INFO - Validating model from experiment: quick_validation_exp_2
+2025-08-09 00:54:07,604 - Phase5Pipeline - WARNING - No model checkpoint found for quick_validation_exp_2
+2025-08-09 00:54:07,604 - Phase5Pipeline - INFO - Validating model from experiment: quick_validation_exp_3
+2025-08-09 00:54:07,605 - Phase5Pipeline - WARNING - No model checkpoint found for quick_validation_exp_3
+2025-08-09 00:54:07,605 - Phase5Pipeline - INFO - Validating model from experiment: quick_validation_exp_4
+2025-08-09 00:54:07,605 - Phase5Pipeline - WARNING - No model checkpoint found for quick_validation_exp_4
+2025-08-09 00:54:07,605 - Phase5Pipeline - INFO - Phase 5: Analysis and Reporting
+2025-08-09 00:54:07,605 - Phase5Pipeline - INFO - Analyzing experimental results
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - INFO - Analyzing 4 experiments
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - ERROR - No valid experiment data found
+2025-08-09 00:54:07,605 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_1
+2025-08-09 00:54:07,606 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_2
+2025-08-09 00:54:07,606 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_3
+2025-08-09 00:54:07,606 - AdvancedAnalyzer - WARNING - No results file found in experiments/diabetic_retinopathy_pipeline5_20250809_005403/quick_validation_exp_4
+2025-08-09 00:54:07,606 - AdvancedAnalyzer - WARNING - Failed to create performance comparison plot: 'NoneType' object has no attribute 'get'
+2025-08-09 00:54:07,622 - AdvancedAnalyzer - WARNING - Failed to create learning curves plot: 'NoneType' object has no attribute 'get'
+2025-08-09 00:54:07,622 - AdvancedAnalyzer - WARNING - Failed to create parameter effects plot: 'NoneType' object has no attribute 'get'
+2025-08-09 00:54:07,622 - AdvancedAnalyzer - WARNING - Failed to create resource usage plot: 'NoneType' object has no attribute 'get'
+2025-08-09 00:54:07,622 - AdvancedAnalyzer - INFO - Analysis plots saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/analysis/plots
+2025-08-09 00:54:07,622 - Phase5Pipeline - INFO - Analysis completed successfully
+2025-08-09 00:54:07,623 - Phase5Pipeline - INFO - Phase 6: Final Model Selection
+2025-08-09 00:54:07,623 - Phase5Pipeline - INFO - Selecting final models
+2025-08-09 00:54:07,623 - Phase5Pipeline - WARNING - No valid model candidates found
+2025-08-09 00:54:07,623 - Phase5Pipeline - INFO - Phase 5 pipeline completed successfully
+2025-08-09 00:54:07,623 - Phase5Pipeline - WARNING - Could not serialize full results: Circular reference detected. Saving minimal results.
+2025-08-09 00:54:07,623 - Phase5Pipeline - INFO - Summary report created: experiments/diabetic_retinopathy_pipeline5_20250809_005403/PHASE5_SUMMARY_REPORT.md
+2025-08-09 00:54:07,623 - Phase5Pipeline - INFO - Pipeline results saved to: experiments/diabetic_retinopathy_pipeline5_20250809_005403/phase5_pipeline_results.json
+2025-08-09 00:54:07,624 - RealTimeMonitor - INFO - Real-time monitoring stopped
+2025-08-09 00:54:07,624 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:07,624 - Pipeline5_TrainingOptimization - INFO - STEP 2: Running Hyperparameter Optimization
+2025-08-09 00:54:07,624 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:07,624 - Pipeline5_TrainingOptimization - INFO - ✅ Using existing hyperparameter optimizer
+2025-08-09 00:54:10,624 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:10,624 - Pipeline5_TrainingOptimization - INFO - STEP 3: Running Cross-Validation
+2025-08-09 00:54:10,624 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:10,624 - Pipeline5_TrainingOptimization - INFO - ✅ Using existing validation system
+2025-08-09 00:54:14,624 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:14,624 - Pipeline5_TrainingOptimization - INFO - STEP 4: Training Final Model
+2025-08-09 00:54:14,624 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:14,625 - Pipeline5_TrainingOptimization - WARNING - Training infrastructure not available. Running basic final training...
+2025-08-09 00:54:14,625 - Pipeline5_TrainingOptimization - INFO - Running basic final model training...
+2025-08-09 00:54:14,625 - Pipeline5_TrainingOptimization - INFO - Training final model with optimized parameters...
+2025-08-09 00:54:14,625 - Pipeline5_TrainingOptimization - INFO - Classification Phase: 15 epochs...
+2025-08-09 00:54:16,625 - Pipeline5_TrainingOptimization - INFO - Multi-task Warmup: 25 epochs...
+2025-08-09 00:54:19,625 - Pipeline5_TrainingOptimization - INFO - Full Multi-task: 25 epochs...
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO - ✅ Final model training completed:
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO -   Accuracy: 0.851
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO -   Dice Score: 0.712
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO -   Combined Score: 0.781
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO -   Model saved to: experiments/final_model/best_model.pth
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO - STEP 5: Generating Training Analysis
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO - ============================================================
+2025-08-09 00:54:22,626 - Pipeline5_TrainingOptimization - INFO - ✅ Using existing analysis system
+2025-08-09 00:54:24,626 - Pipeline5_TrainingOptimization - INFO - ================================================================================
+2025-08-09 00:54:24,627 - Pipeline5_TrainingOptimization - INFO - ✅ Pipeline 5 completed successfully!
+2025-08-09 00:54:24,627 - Pipeline5_TrainingOptimization - INFO - ================================================================================
+2025-08-09 00:54:24,627 - Pipeline5_TrainingOptimization - WARNING - Could not serialize full results: Circular reference detected. Saving minimal results.
+2025-08-09 00:54:24,627 - Pipeline5_TrainingOptimization - INFO - 📄 Safe pipeline results saved to: results/pipeline5_training_optimization/pipeline5_results_20250809_005424.json
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - 
+📊 PIPELINE 5 SUMMARY
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - ==================================================
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - Hyperparameter Optimization - Best Score: 0.850
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - Trials Completed: 20
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - Cross-Validation - Mean Score: 0.820 ± 0.020
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - CV Folds: 5
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - Final Model - Accuracy: 0.851, Dice: 0.712, Combined: 0.781
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - 
+🔧 Pipeline Components Completed:
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   ✅ Training Pipeline
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   ✅ Hyperparameter Optimization
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   ✅ Cross Validation
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   ✅ Final Model Training
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   ✅ Training Analysis
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - 
+📈 Key Achievements:
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   • Comprehensive multi-task training completed
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   • Hyperparameter optimization performed
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   • Cross-validation conducted for robustness
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   • Final optimized model trained and saved
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO -   • Performance analysis and recommendations generated
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - 
+💾 Best Model Saved: experiments/final_model/best_model.pth
+2025-08-09 00:54:24,628 - Pipeline5_TrainingOptimization - INFO - 
+✅ Ready for Pipeline 6: Comprehensive Model Evaluation
+
+🎉 Pipeline 5 completed successfully!
+📄 Check results in: results/pipeline5_training_optimization/
+💾 Best model: experiments/final_model/best_model.pth

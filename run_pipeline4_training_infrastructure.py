@@ -503,6 +503,8 @@ class BasicTrainer:
     def _init_optimizer(self):
         """Initialize optimizer"""
         if self.model is None:
+            # Create placeholder optimizer for testing
+            self.optimizer = None
             return
         
         if self.config.optimizer_type.lower() == "adamw":
@@ -555,7 +557,7 @@ class BasicTrainer:
         """Initialize mixed precision training"""
         if self.config.use_mixed_precision and torch.cuda.is_available():
             try:
-                self.scaler = torch.cuda.amp.GradScaler()
+                self.scaler = torch.amp.GradScaler('cuda')
                 self.use_amp = True
             except AttributeError:
                 self.scaler = None
@@ -754,6 +756,7 @@ def test_basic_training_config(logger):
             'num_epochs': config.num_epochs,
             'mixed_precision_available': trainer.use_amp,
             'device': str(trainer.device),
+            'optimizer_initialized': trainer.optimizer is not None,
             'progressive_training': True,
             'status': 'tested'
         }
