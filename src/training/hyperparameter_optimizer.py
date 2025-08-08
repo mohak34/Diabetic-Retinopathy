@@ -307,6 +307,11 @@ class HyperparameterOptimizer:
         
         return config
     
+    def _create_model(self, config: Phase4Config):
+        """Create model instance from config"""
+        from ..models.multi_task_model import create_multi_task_model
+        return create_multi_task_model(config.model)
+    
     def objective_function(self, trial) -> float:
         """Objective function for a single trial"""
         trial_start_time = time.time()
@@ -321,7 +326,7 @@ class HyperparameterOptimizer:
             self.logger.info(f"Starting trial {trial.number} with params: {params}")
             
             # Create trainer
-            trainer = RobustPhase4Trainer(config, logger=self.logger)
+            trainer = RobustPhase4Trainer(model=self._create_model(config), config=config)
             
             # Note: In a real implementation, you would need to provide train_loader and val_loader
             # For this example, we'll simulate the training process
@@ -562,7 +567,7 @@ class HyperparameterOptimizer:
                 self.logger.info(f"Grid search trial {i+1}/{min(len(param_combinations), self.opt_config.n_trials)}")
                 
                 # Create trainer and simulate training
-                trainer = RobustPhase4Trainer(config, logger=self.logger)
+                trainer = RobustPhase4Trainer(model=self._create_model(config), config=config)
                 score = self._simulate_training(trainer, config, None)
                 
                 # Check if this is the best score

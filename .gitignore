@@ -17,6 +17,8 @@ logs/
 results/
 models/
 
+error.txt
+
 # Documentation and test files
 readme/
 

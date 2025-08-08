@@ -240,7 +240,7 @@ class RobustPhase4Trainer:
             # Forward pass with mixed precision
             if self.scaler is not None:
                 with autocast('cuda'):
-                    outputs = self.model(images)
+                    outputs = self.model(images, return_features=True)
                     cls_logits = outputs['classification']
                     seg_logits = outputs['segmentation']
                     
@@ -264,7 +264,7 @@ class RobustPhase4Trainer:
                     self.global_step += 1
             else:
                 # Without mixed precision
-                outputs = self.model(images)
+                outputs = self.model(images, return_features=True)
                 cls_logits = outputs['classification']
                 seg_logits = outputs['segmentation']
                 
@@ -345,7 +345,7 @@ class RobustPhase4Trainer:
             # Forward pass
             if self.scaler is not None:
                 with autocast('cuda'):
-                    outputs = self.model(images)
+                    outputs = self.model(images, return_features=True)
                     cls_logits = outputs['classification']
                     seg_logits = outputs['segmentation']
                     
@@ -353,7 +353,7 @@ class RobustPhase4Trainer:
                         cls_logits, seg_logits, cls_labels, seg_masks, epoch=self.epoch
                     )
             else:
-                outputs = self.model(images)
+                outputs = self.model(images, return_features=True)
                 cls_logits = outputs['classification']
                 seg_logits = outputs['segmentation']
                 

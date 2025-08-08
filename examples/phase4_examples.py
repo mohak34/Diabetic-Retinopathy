@@ -48,7 +48,7 @@ def example_1_basic_configuration():
     
     # Demonstrate configuration customization
     config.experiment_name = "example_experiment"
-    config.model.backbone_name = "efficientnet-b2"
+    config.model.backbone_name = "tf_efficientnet_b2_ns"
     config.hardware.batch_size = 32
     config.optimizer.lr = 0.0005
     
@@ -200,7 +200,7 @@ def example_5_complete_pipeline():
     config_dict = {
         'experiment_name': 'pipeline_example',
         'model': {
-            'backbone_name': 'efficientnet-b0',
+            'backbone_name': 'tf_efficientnet_b0_ns',
             'num_classes': 5
         },
         'phase1': {'epochs': 2},

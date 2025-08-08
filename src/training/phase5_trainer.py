@@ -602,7 +602,7 @@ class Phase5Trainer:
                 lr_min=1e-5,
                 lr_max=1e-2,
                 batch_sizes=[8, 16, 24, 32],
-                backbone_names=['efficientnet-b0', 'efficientnet-b1', 'resnet50'],
+                backbone_names=['tf_efficientnet_b0_ns', 'tf_efficientnet_b1_ns', 'resnet50'],
                 phase1_epochs_range=(5, 15),
                 phase2_epochs_range=(5, 15),
                 phase3_epochs_range=(10, 25)
