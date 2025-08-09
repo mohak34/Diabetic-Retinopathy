@@ -142,7 +142,7 @@ class ExperimentDesigner:
             'phase3_epochs': 20,
             'enable_hyperparameter_optimization': False,
             'model': {
-                'backbone_name': 'tf_efficientnetv2_s',
+                'backbone_name': 'tf_efficientnet_b0_ns',
                 'num_classes': 5,
                 'pretrained': True
             },
@@ -160,7 +160,7 @@ class ExperimentDesigner:
         parameter_variations = {
             'optimizer.learning_rate': [5e-4, 1e-3, 2e-3],
             'hardware.batch_size': [8, 16, 24],
-            'model.backbone_name': ['tf_efficientnetv2_s', 'resnet50']
+            'model.backbone_name': ['tf_efficientnet_b0_ns', 'resnet50']
         }
         
         return ExperimentGroup(
@@ -181,7 +181,7 @@ class ExperimentDesigner:
             'training_mode': 'full',
             'enable_hyperparameter_optimization': False,
             'model': {
-                'backbone_name': 'tf_efficientnetv2_s',
+                'backbone_name': 'tf_efficientnet_b0_ns',
                 'num_classes': 5,
                 'pretrained': True
             },
@@ -237,9 +237,9 @@ class ExperimentDesigner:
         # Architecture variations
         parameter_variations = {
             'model.backbone_name': [
-                'tf_efficientnetv2_s', 
-                'tf_efficientnetv2_b0',
-                'tf_efficientnetv2_b1',
+                'tf_efficientnet_b0_ns', 
+                'tf_efficientnet_b1_ns',
+                'tf_efficientnet_b2_ns',
                 'resnet50',
                 'resnet101'
             ],
@@ -270,7 +270,7 @@ class ExperimentDesigner:
             'phase3_epochs': 20,
             'enable_hyperparameter_optimization': False,
             'model': {
-                'backbone_name': 'tf_efficientnetv2_s',
+                'backbone_name': 'tf_efficientnet_b0_ns',
                 'num_classes': 5,
                 'pretrained': True
             },
@@ -315,7 +315,7 @@ class ExperimentDesigner:
             'phase3_epochs': 20,
             'enable_hyperparameter_optimization': False,
             'model': {
-                'backbone_name': 'tf_efficientnetv2_s',
+                'backbone_name': 'tf_efficientnet_b0_ns',
                 'num_classes': 5,
                 'pretrained': True
             },
@@ -414,7 +414,7 @@ class ExperimentDesigner:
             'phase3_epochs': 1,
             'enable_hyperparameter_optimization': False,
             'model': {
-                'backbone_name': 'tf_efficientnetv2_s',
+                'backbone_name': 'tf_efficientnet_b0_ns',
                 'num_classes': 5,
                 'pretrained': True
             },

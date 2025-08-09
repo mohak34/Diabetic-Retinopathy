@@ -63,7 +63,7 @@ def test_model_creation():
         model = MultiTaskRetinaModel(
             num_classes_cls=5,
             num_classes_seg=4,
-            backbone_name='efficientnetv2_s',
+            backbone_name='tf_efficientnet_b0_ns',
             pretrained=False  # Don't download weights for test
         )
         

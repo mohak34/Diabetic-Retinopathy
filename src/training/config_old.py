@@ -91,7 +91,7 @@ class CheckpointConfig:
 @dataclass
 class ModelConfig:
     """Model configuration"""
-    backbone_name: str = "efficientnetv2_s"
+    backbone_name: str = "tf_efficientnet_b0_ns"
     num_classes: int = 5
     pretrained: bool = True
     use_skip_connections: bool = True
@@ -336,7 +336,7 @@ class AdvancedTrainingConfig:
             model_dict = config_dict['model'].copy()
             # Map fields from YAML to ModelConfig
             if 'backbone_name' not in model_dict and 'backbone_name' in model_dict:
-                model_dict['backbone_name'] = model_dict.get('backbone_name', 'efficientnetv2_s')
+                model_dict['backbone_name'] = model_dict.get('backbone_name', 'tf_efficientnet_b0_ns')
             # Remove unknown fields
             model_dict.pop('use_advanced_decoder', None)
             model_dict.pop('freeze_early_layers', None)
@@ -442,7 +442,7 @@ class AdvancedTrainingConfig:
             cls_head_config = model_config.get('classification_head', {})
             
             config_kwargs['model'] = ModelConfig(
-                backbone_name=backbone_config.get('name', 'efficientnetv2_s'),
+                backbone_name=backbone_config.get('name', 'tf_efficientnet_b0_ns'),
                 num_classes=cls_head_config.get('num_classes', 5),
                 pretrained=backbone_config.get('pretrained', True),
                 dropout=cls_head_config.get('dropout', 0.3)

@@ -89,7 +89,7 @@ def implement_backbone_architecture(logger):
         from src.models.backbone import EfficientNetBackbone, create_efficientnet_backbone
         
         # Test backbone creation using correct model name and factory
-        backbone = create_efficientnet_backbone(model_name="tf_efficientnetv2_s", pretrained=True)
+        backbone = create_efficientnet_backbone(model_name="tf_efficientnet_b0_ns", pretrained=True)
         
         logger.info("✅ Using existing backbone implementation")
         
@@ -135,7 +135,7 @@ except ImportError:
 class BasicEfficientNetBackbone(nn.Module):
     """Basic EfficientNet backbone implementation"""
     
-    def __init__(self, model_name="tf_efficientnetv2_s", pretrained=True, num_classes=0):
+    def __init__(self, model_name="tf_efficientnet_b0_ns", pretrained=True, num_classes=0):
         super().__init__()
         self.model_name = model_name
         
@@ -194,7 +194,7 @@ class BasicEfficientNetBackbone(nn.Module):
         """Get features dimension"""
         return self.features_dim
 
-def create_backbone(model_name="tf_efficientnetv2_s", pretrained=True):
+def create_backbone(model_name="tf_efficientnet_b0_ns", pretrained=True):
     """Create backbone model"""
     return BasicEfficientNetBackbone(model_name=model_name, pretrained=pretrained)
 '''
@@ -514,7 +514,7 @@ def create_multi_task_model(logger):
         
         # Create model with correct kwargs and model name
         model = create_multi_task_model(
-            backbone_name="tf_efficientnetv2_s",
+            backbone_name="tf_efficientnet_b0_ns",
             num_classes_cls=5,
             num_classes_seg=1,
             pretrained=True
@@ -596,7 +596,7 @@ class BasicMultiTaskModel(nn.Module):
             'total': backbone_params + cls_params + seg_params
         }
 
-def create_basic_multi_task_model(backbone_name="tf_efficientnetv2_s", 
+def create_basic_multi_task_model(backbone_name="tf_efficientnet_b0_ns", 
                                  num_classes=5, 
                                  num_segmentation_classes=4, 
                                  pretrained=True):

@@ -20,7 +20,7 @@ def create_dummy_checkpoint():
     model = MultiTaskRetinaModel(
         num_classes_cls=5,
         num_classes_seg=4,
-        backbone_name='efficientnetv2_s',
+        backbone_name='tf_efficientnet_b0_ns',
         pretrained=False  # Use False for testing to avoid download
     )
     
@@ -36,7 +36,7 @@ def create_dummy_checkpoint():
         'config': {
             'num_classes': 5,
             'num_segmentation_classes': 4,
-            'backbone': 'efficientnetv2_s'
+            'backbone': 'tf_efficientnet_b0_ns'
         }
     }
     

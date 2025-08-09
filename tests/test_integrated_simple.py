@@ -36,7 +36,7 @@ try:
     model = create_multi_task_model(
         num_classes_cls=5,
         num_classes_seg=1,
-        backbone_name='efficientnetv2_s',
+        backbone_name='tf_efficientnet_b0_ns',
         pretrained=False,  # Faster for testing
         use_skip_connections=False
     )

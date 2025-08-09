@@ -56,7 +56,7 @@ data:
 # Model configuration
 model:
   backbone:
-    name: "efficientnetv2_s"
+    name: "tf_efficientnet_b0_ns"
     pretrained: true
     freeze_early_layers: false
 

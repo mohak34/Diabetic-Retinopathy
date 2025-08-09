@@ -29,7 +29,7 @@ try:
     # Test backbone creation
     print("\n2. Testing backbone creation...")
     backbone = create_efficientnet_backbone(
-        model_name='efficientnetv2_s', 
+        model_name='tf_efficientnet_b0_ns', 
         pretrained=False  # Use False to avoid downloading
     )
     print("   OK Backbone created successfully")

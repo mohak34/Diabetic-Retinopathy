@@ -34,7 +34,7 @@ from .config import Phase4Config
 from .trainer import RobustPhase4Trainer
 from .hyperparameter_optimizer import HyperparameterOptimizer, HyperparameterSpace, OptimizationConfig
 from .losses import RobustMultiTaskLoss
-from ..models.multi_task_model import create_multi_task_model
+from ..models.multi_task_model import create_multi_task_model  # Keep for compatibility
 from ..data.dataloaders import DataLoaderFactory
 
 # Setup logging
@@ -98,7 +98,7 @@ class Phase5Config:
     
     # Model configuration - NOT optional since they're required
     model: Dict[str, Any] = field(default_factory=lambda: {
-        'backbone_name': 'tf_efficientnetv2_s',
+        'backbone_name': 'tf_efficientnet_b0_ns',
         'num_classes': 5,
         'pretrained': True
     })
@@ -106,7 +106,7 @@ class Phase5Config:
     
     # Direct model parameters (from experimental design)
     num_classes: int = 5
-    backbone_name: str = "tf_efficientnetv2_s"
+    backbone_name: str = "tf_efficientnet_b0_ns"
     pretrained: bool = True
     
     # Optimizer configuration - NOT optional
@@ -534,6 +534,11 @@ class Phase5Trainer:
         
         debug_results = {}
         
+        # Clear CUDA cache before debug training
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            torch.cuda.synchronize()
+        
         # Create short debug configuration
         debug_config = self.create_training_config()
         debug_config.progressive.phase1_epochs = 2
@@ -541,11 +546,17 @@ class Phase5Trainer:
         debug_config.progressive.phase3_epochs = 1
         debug_config.experiment_name = f"{self.config.experiment_name}_debug"
         
+        # Use very small batch size for debug to avoid memory issues
+        debug_config.hardware.batch_size = 2
+        
         try:
-            # Create model
-            model = create_multi_task_model(
-                num_classes=5,
+            # Create model - using SIMPLE model for bulletproof operation
+            from ..models.simple_multi_task_model import SimpleMultiTaskModel
+            
+            model = SimpleMultiTaskModel(
                 backbone_name=debug_config.model.backbone_name,
+                num_classes_cls=5,
+                num_classes_seg=1,
                 pretrained=True
             )
             
@@ -578,9 +589,19 @@ class Phase5Trainer:
             
             self.logger.info("✅ Debug training completed successfully")
             
+            # Clear CUDA cache after debug training
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                torch.cuda.synchronize()
+            
         except Exception as e:
             self.logger.error(f"❌ Debug training failed: {e}")
             debug_results['error'] = str(e)
+        
+        # Ensure cleanup even if error occurred
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            torch.cuda.synchronize()
         
         return debug_results
     
@@ -636,6 +657,11 @@ class Phase5Trainer:
             self.logger.info(f"Best parameters: {optimization_results['best_params']}")
             self.logger.info(f"Best score: {optimization_results['best_score']:.4f}")
             
+            # Clear CUDA cache after optimization
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                torch.cuda.synchronize()
+            
             return {
                 "status": "completed",
                 "best_params": optimization_results['best_params'],
@@ -653,9 +679,20 @@ class Phase5Trainer:
         self.logger.info("=" * 80)
         
         try:
+            # Clear CUDA cache before full training
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                torch.cuda.synchronize()
+            
             # Create training configuration with best hyperparameters
             training_config = self.create_training_config(best_hyperparams)
             training_config.experiment_name = f"{self.config.experiment_name}_final"
+            
+            # Override batch size to avoid memory issues in full training
+            # Use smaller batch size for full training to be safe
+            if training_config.hardware.batch_size > 8:
+                self.logger.info(f"Reducing batch size from {training_config.hardware.batch_size} to 4 for full training to avoid memory issues")
+                training_config.hardware.batch_size = 4
             
             # Log training configuration
             self.logger.info("Training configuration:")
@@ -667,12 +704,14 @@ class Phase5Trainer:
             self.logger.info(f"  Batch size: {training_config.hardware.batch_size}")
             self.logger.info(f"  Backbone: {training_config.model.backbone_name}")
             
-            # Create model
-            model = create_multi_task_model(
-                num_classes=5,
+            # Create model - using SIMPLE model for bulletproof operation
+            from ..models.simple_multi_task_model import SimpleMultiTaskModel
+            
+            model = SimpleMultiTaskModel(
                 backbone_name=training_config.model.backbone_name,
-                pretrained=True,
-                segmentation_classes=1
+                num_classes_cls=5,
+                num_classes_seg=1,
+                pretrained=True
             )
             
             # Create data loaders
@@ -911,6 +950,14 @@ class Phase5Trainer:
     
     def run_complete_training_pipeline(self) -> Dict[str, Any]:
         """Run the complete Phase 5 training pipeline"""
+        # Set up CUDA memory optimization
+        os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
+        
+        # Clear any existing CUDA cache
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            torch.cuda.synchronize()
+        
         self.logger.info("STARTING PHASE 5: COMPLETE MODEL TRAINING & OPTIMIZATION")
         self.logger.info("=" * 100)
         self.logger.info("End-to-end training system with comprehensive monitoring and optimization")

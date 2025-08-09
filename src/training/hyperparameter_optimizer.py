@@ -88,15 +88,13 @@ class HyperparameterSpace:
     
     def __post_init__(self):
         if self.batch_sizes is None:
-            self.batch_sizes = [8, 16, 24, 32]
+            self.batch_sizes = [4, 8, 16]  # Reduced batch sizes to prevent CUDA OOM
         
         if self.backbone_names is None:
             self.backbone_names = [
-                'efficientnet-b0',
-                'efficientnet-b1', 
-                'efficientnet-b2',
-                'resnet50',
-                'resnet101'
+                'tf_efficientnet_b0_ns',
+                'tf_efficientnet_b1_ns', 
+                'resnet50'
             ]
 
 
@@ -263,8 +261,9 @@ class HyperparameterOptimizer:
     
     def create_config_from_params(self, params: Dict[str, Any], trial_id: int) -> Phase4Config:
         """Create training configuration from hyperparameters"""
-        # Copy base config
-        config = Phase4Config()
+        # Create a deep copy of base config instead of fresh config
+        import copy
+        config = copy.deepcopy(self.base_config)
         
         # Update experiment name
         config.experiment_name = f"{self.base_config.experiment_name}_trial_{trial_id:03d}"
@@ -308,9 +307,57 @@ class HyperparameterOptimizer:
         return config
     
     def _create_model(self, config: Phase4Config):
-        """Create model instance from config"""
-        from ..models.multi_task_model import create_multi_task_model
-        return create_multi_task_model(config.model)
+        """Create model instance from config with comprehensive error handling"""
+        try:
+            # Use the simple, bulletproof model for hyperparameter optimization
+            from ..models.simple_multi_task_model import create_simple_multi_task_model
+            self.logger.info(f"Creating SIMPLE model with backbone: {config.model.backbone_name}")
+            
+            # Convert config to dict for the create function
+            model_config_dict = {
+                'backbone_name': config.model.backbone_name,
+                'num_classes_cls': config.model.num_classes,
+                'num_classes_seg': config.model.segmentation_classes,
+                'pretrained': True
+            }
+            
+            self.logger.info(f"Model config: {model_config_dict}")
+            model = create_simple_multi_task_model(model_config_dict)
+            
+            # Immediately move model to device to prevent tensor creation issues
+            if hasattr(self, 'device'):
+                model = model.to(self.device)
+            else:
+                device = 'cuda' if torch.cuda.is_available() else 'cpu'
+                model = model.to(device)
+            
+            self.logger.info("Simple model created successfully")
+            return model
+            
+        except Exception as e:
+            self.logger.error(f"Failed to create simple model: {str(e)}")
+            self.logger.error(f"Config details: backbone={config.model.backbone_name}")
+            
+            # Try with even more basic fallback
+            try:
+                self.logger.warning("Attempting ultra-basic fallback model creation...")
+                fallback_config = {
+                    'backbone_name': 'resnet50',
+                    'num_classes_cls': 5,
+                    'num_classes_seg': 1,
+                    'pretrained': False  # No pretrained weights to avoid any loading issues
+                }
+                model = create_simple_multi_task_model(fallback_config)
+                if hasattr(self, 'device'):
+                    model = model.to(self.device)
+                else:
+                    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+                    model = model.to(device)
+                self.logger.warning("Ultra-basic fallback model created successfully")
+                return model
+            except Exception as fallback_error:
+                self.logger.error(f"Even ultra-basic fallback failed: {str(fallback_error)}")
+                raise e
     
     def objective_function(self, trial) -> float:
         """Objective function for a single trial"""

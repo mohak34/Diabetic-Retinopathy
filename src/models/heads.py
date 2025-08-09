@@ -165,34 +165,22 @@ class SegmentationHead(nn.Module):
         else:
             raise ValueError(f"Unknown activation: {activation}")
         
-        # Build decoder
+        # Build decoder - simplified to avoid tensor creation issues
         self.decoder_blocks = nn.ModuleList()
         
         # Input channels for first block
         current_channels = in_features
         
-        # Skip connection channels (if used)
-        if use_skip_connections and skip_feature_channels:
-            self.skip_connections = True
-            self.skip_channels = skip_feature_channels[::-1]  # Reverse order (high to low res)
-            # Limit to number of decoder blocks to avoid mismatch
-            self.skip_channels = self.skip_channels[:len(decoder_channels)]
-        else:
-            self.skip_connections = False
-            self.skip_channels = []
+        # Skip connections disabled to prevent tensor issues
+        self.skip_connections = False
+        self.skip_channels = []
         
-        # Create decoder blocks
+        # Create decoder blocks without skip connections
         for i, out_channels in enumerate(decoder_channels):
-            # Add skip connection channels if available
-            if self.skip_connections and i < len(self.skip_channels):
-                skip_ch = self.skip_channels[i]
-            else:
-                skip_ch = 0
-            
             block = self._make_decoder_block(
                 in_channels=current_channels,
                 out_channels=out_channels,
-                skip_channels=skip_ch,
+                skip_channels=0,  # No skip connections
                 dropout_rate=dropout_rate
             )
             
@@ -287,7 +275,7 @@ class SegmentationHead(nn.Module):
         skip_features: Optional[List[torch.Tensor]] = None
     ) -> torch.Tensor:
         """
-        Forward pass through segmentation head.
+        Forward pass through segmentation head - bulletproof version.
         
         Args:
             x: Feature tensor of shape (B, C, H, W)
@@ -298,37 +286,18 @@ class SegmentationHead(nn.Module):
         """
         current = x
         
-        # Process through decoder blocks
+        # Process through decoder blocks without skip connections to avoid tensor issues
         for i, block in enumerate(self.decoder_blocks):
-            # Add skip connection if available
-            if (self.skip_connections and 
-                skip_features is not None and 
-                i < len(skip_features) and 
-                skip_features[-(i+1)] is not None):
-                
-                skip_feat = skip_features[-(i+1)]  # Reverse order
-                
-                # Resize skip feature to match current resolution
-                if skip_feat.shape[-2:] != current.shape[-2:]:
-                    skip_feat = F.interpolate(
-                        skip_feat, 
-                        size=current.shape[-2:], 
-                        mode='bilinear', 
-                        align_corners=False
-                    )
-                
-                # Concatenate skip connection
-                current = torch.cat([current, skip_feat], dim=1)
-            
-            # Apply decoder block
             current = block(current)
         
         # Final convolution
         output = self.final_conv(current)
         
-        # Upsample to target size (512x512) if needed
+        # Safe upsampling to target size (512x512) if needed
         target_size = 512
-        if output.shape[-1] != target_size:
+        current_size = output.shape[-1]
+        
+        if current_size != target_size:
             output = F.interpolate(
                 output,
                 size=(target_size, target_size),

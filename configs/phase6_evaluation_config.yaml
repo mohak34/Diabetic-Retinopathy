@@ -3,7 +3,7 @@
 
 # Model Configuration
 model:
-  backbone: "efficientnetv2_s"
+  backbone: "tf_efficientnet_b0_ns"
   num_classes: 5  # DR grading classes (0-4)
   num_segmentation_classes: 4  # microaneurysms, hemorrhages, exudates, soft_exudates
   input_size: [512, 512]

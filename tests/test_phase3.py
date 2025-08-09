@@ -64,7 +64,7 @@ def test_backbone():
         # Test backbone creation
         logger.info("Creating EfficientNetV2-S backbone...")
         backbone = create_efficientnet_backbone(
-            model_name='efficientnetv2_s',
+            model_name='tf_efficientnet_b0_ns',
             pretrained=True,
             freeze_stages=0
         )

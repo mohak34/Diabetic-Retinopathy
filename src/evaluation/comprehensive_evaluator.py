@@ -272,7 +272,7 @@ class ComprehensiveEvaluator:
             model = MultiTaskRetinaModel(
                 num_classes_cls=model_config.get('num_classes', self.num_classes),
                 num_classes_seg=model_config.get('num_segmentation_classes', len(self.lesion_types)),
-                backbone_name=model_config.get('backbone', 'efficientnetv2_s'),
+                backbone_name=model_config.get('backbone', 'tf_efficientnet_b0_ns'),
                 pretrained=False  # Don't load pretrained weights when loading from checkpoint
             )
         else:
@@ -280,7 +280,7 @@ class ComprehensiveEvaluator:
             model = MultiTaskRetinaModel(
                 num_classes_cls=self.num_classes,
                 num_classes_seg=len(self.lesion_types),
-                backbone_name='efficientnetv2_s',
+                backbone_name='tf_efficientnet_b0_ns',
                 pretrained=False
             )
         

@@ -22,7 +22,7 @@ class EfficientNetBackbone(nn.Module):
     
     def __init__(
         self,
-        model_name: str = 'efficientnetv2_s',
+        model_name: str = 'tf_efficientnet_b0_ns',
         pretrained: bool = True,
         features_only: bool = True,
         drop_rate: float = 0.0,
@@ -223,7 +223,7 @@ class BackboneWithAdaptivePool(nn.Module):
         return pooled
 
 def create_efficientnet_backbone(
-    model_name: str = 'efficientnetv2_s',
+    model_name: str = 'tf_efficientnet_b0_ns',
     pretrained: bool = True,
     freeze_stages: int = 0
 ) -> EfficientNetBackbone:
