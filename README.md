@@ -65,8 +65,24 @@ uv run python run_pipeline4_training_infrastructure.py --experiment-name test_tr
 
 **Pipeline 5 - Training & Optimization**:
 
+### For Normal Training (RECOMMENDED)
+
 ```bash
-uv run python run_pipeline5_training_optimization.py --mode quick --experiment-name test_real_training
+# Quick test (5-10 minutes)
+uv run run_focused_training.py --mode quick
+
+# Full training (1-2 hours)
+uv run run_focused_training.py --mode full
+```
+
+### For Research Experiments (CAUTION!)
+
+```bash
+# Quick test with experimental design
+uv run run_pipeline5_training_optimization.py --mode quick
+
+# Full experimental design (WARNING: Creates 292 experiments, 36+ days runtime! on a RTX 3080 and saves models with more than 300GB disk)
+uv run run_pipeline5_training_optimization.py --mode full
 ```
 
 **Pipeline 6 - Evaluation & Analysis**:

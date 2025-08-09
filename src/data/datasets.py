@@ -811,9 +811,19 @@ class MultiTaskRetinaDataset(Dataset):
         image_exts = {'.jpg', '.jpeg', '.png', '.tiff', '.tif', '.bmp'}
         
         if image_ids is not None:
+            # Extract actual image IDs from potentially prefixed IDs (e.g., "aptos_2579_f06e7a9df795" -> "f06e7a9df795")
+            clean_image_ids = set()
+            for img_id in image_ids:
+                if '_' in img_id:
+                    # Split by underscore and take the last part as the actual image ID
+                    clean_id = img_id.split('_')[-1]
+                    clean_image_ids.add(clean_id)
+                else:
+                    clean_image_ids.add(img_id)
+            
             self.image_files = [f for f in os.listdir(self.images_dir) 
                                if Path(f).suffix.lower() in image_exts
-                               and Path(f).stem in image_ids]
+                               and Path(f).stem in clean_image_ids]
         else:
             self.image_files = [f for f in os.listdir(self.images_dir) 
                                if Path(f).suffix.lower() in image_exts]
@@ -911,6 +921,39 @@ class MultiTaskRetinaDataset(Dataset):
             else:
                 augmented = self.transform(image=sample['image'])
                 sample['image'] = augmented['image']
+        
+        # CRITICAL FIX: Ensure all data is in tensor format
+        # Convert image to tensor if not already
+        if not isinstance(sample['image'], torch.Tensor):
+            if isinstance(sample['image'], np.ndarray):
+                # Convert HWC to CHW format and normalize to [0, 1]
+                if len(sample['image'].shape) == 3 and sample['image'].shape[2] == 3:
+                    sample['image'] = sample['image'].transpose(2, 0, 1)  # HWC -> CHW
+                sample['image'] = torch.from_numpy(sample['image'].astype(np.float32)) / 255.0
+            else:
+                # Handle PIL Image or other formats
+                import torchvision.transforms.functional as TF
+                sample['image'] = TF.to_tensor(sample['image'])
+        
+        # Convert masks to tensors if available
+        if 'masks' in sample:
+            for i, mask in enumerate(sample['masks']):
+                if not isinstance(mask, torch.Tensor):
+                    if isinstance(mask, np.ndarray):
+                        # Ensure mask is 2D and normalize to [0, 1]
+                        if len(mask.shape) == 3:
+                            mask = mask[:, :, 0] if mask.shape[2] > 0 else mask.reshape(mask.shape[:2])
+                        sample['masks'][i] = torch.from_numpy(mask.astype(np.float32)) / 255.0
+                    else:
+                        import torchvision.transforms.functional as TF
+                        mask_tensor = TF.to_tensor(mask)
+                        if len(mask_tensor.shape) == 3 and mask_tensor.shape[0] == 1:
+                            mask_tensor = mask_tensor.squeeze(0)  # Remove channel dimension
+                        sample['masks'][i] = mask_tensor
+        
+        # Convert label to tensor if available
+        if 'label' in sample and not isinstance(sample['label'], torch.Tensor):
+            sample['label'] = torch.tensor(sample['label'], dtype=torch.long)
         
         return sample
     

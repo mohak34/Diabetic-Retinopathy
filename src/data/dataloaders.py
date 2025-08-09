@@ -416,7 +416,7 @@ class DataLoaderFactory:
             batch: List of sample dictionaries
             
         Returns:
-            Collated batch dictionary
+            Tuple (images, labels, masks) compatible with trainer
         """
         # Separate different data types
         images = []
@@ -424,27 +424,69 @@ class DataLoaderFactory:
         masks = []
         
         for sample in batch:
-            images.append(sample['image'])
+            # Handle images
+            if 'image' in sample:
+                images.append(sample['image'])
+            else:
+                raise ValueError(f"Sample missing 'image' key: {sample.keys()}")
             
+            # Handle labels
             if 'label' in sample:
                 labels.append(sample['label'])
+            else:
+                labels.append(0)  # Default label
             
+            # Handle masks - CRITICAL FIX: Always provide a mask, even if dummy
             if 'masks' in sample and sample['masks']:
                 # Take first mask if multiple available
-                masks.append(sample['masks'][0])
+                if isinstance(sample['masks'], list):
+                    masks.append(sample['masks'][0])
+                else:
+                    masks.append(sample['masks'])
+            else:
+                # Create dummy mask if no mask available - prevents NoneType errors
+                image_shape = sample['image'].shape
+                if len(image_shape) == 3 and image_shape[0] <= 4:  # CHW format (C, H, W)
+                    dummy_mask = torch.zeros((image_shape[1], image_shape[2]), dtype=torch.float32)
+                elif len(image_shape) == 3:  # HWC format (H, W, C)
+                    dummy_mask = torch.zeros((image_shape[0], image_shape[1]), dtype=torch.float32)
+                else:  # Already 2D
+                    dummy_mask = torch.zeros_like(sample['image'][:, :, 0] if len(sample['image'].shape) == 3 else sample['image'], dtype=torch.float32)
+                masks.append(dummy_mask)
         
-        # Stack tensors
-        batch_dict = {
-            'images': torch.stack(images)
-        }
+        # Ensure all inputs are tensors
+        try:
+            images_tensor = torch.stack(images)
+        except Exception as e:
+            logger.error(f"Error stacking images: {e}")
+            logger.error(f"Image shapes: {[img.shape for img in images]}")
+            raise
         
-        if labels:
-            batch_dict['labels'] = torch.LongTensor(labels)
+        try:
+            labels_tensor = torch.LongTensor(labels)
+        except Exception as e:
+            logger.error(f"Error creating labels tensor: {e}")
+            logger.error(f"Labels: {labels}")
+            raise
         
-        if masks:
-            batch_dict['masks'] = torch.stack(masks)
+        try:
+            masks_tensor = torch.stack(masks)
+        except Exception as e:
+            logger.error(f"Error stacking masks: {e}")
+            logger.error(f"Mask shapes: {[mask.shape for mask in masks]}")
+            # Create uniform dummy masks if stacking fails
+            if images:
+                img_shape = images[0].shape
+                if len(img_shape) == 3 and img_shape[0] <= 4:  # CHW
+                    uniform_masks = [torch.zeros((img_shape[1], img_shape[2]), dtype=torch.float32) for _ in range(len(images))]
+                else:  # HWC or other
+                    uniform_masks = [torch.zeros((img_shape[-2], img_shape[-1]), dtype=torch.float32) for _ in range(len(images))]
+                masks_tensor = torch.stack(uniform_masks)
+            else:
+                raise
         
-        return batch_dict
+        # Return in tuple format expected by trainer
+        return images_tensor, labels_tensor, masks_tensor
     
     def get_optimal_batch_size(self, model, sample_input_shape: Tuple[int, int, int, int]) -> int:
         """

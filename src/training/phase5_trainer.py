@@ -968,7 +968,7 @@ class Phase5Trainer:
         
         try:
             # Phase 5.1: Initial training runs & debugging
-            if self.config.training_mode in ["debug", "full"]:
+            if self.config.training_mode in ["debug", "full", "research_full"]:
                 self.training_results['debug'] = self.run_initial_training_debug()
             
             # Phase 5.2: Hyperparameter optimization
@@ -977,7 +977,7 @@ class Phase5Trainer:
             
             # Phase 5.3: Full model training
             best_hyperparams = hyperopt_results.get('best_params', {})
-            if self.config.training_mode in ["full"]:
+            if self.config.training_mode in ["full", "research_full"]:
                 self.training_results['full_training'] = self.run_full_model_training(best_hyperparams)
             
             # Phase 5.6: Generate comprehensive report

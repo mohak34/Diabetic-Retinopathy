@@ -217,7 +217,7 @@ class RobustPhase4Trainer:
         epoch_start_time = time.time()
         
         for batch_idx, batch in enumerate(train_loader):
-            # Handle both tuple and dictionary batch formats
+            # Handle both tuple and dictionary batch formats - COMPREHENSIVE FIX
             if isinstance(batch, dict):
                 images = batch.get('image', batch.get('images'))
                 cls_labels = batch.get('label', batch.get('labels'))
@@ -226,16 +226,21 @@ class RobustPhase4Trainer:
                 images, cls_labels, seg_masks = batch[0], batch[1], batch[2]
             elif isinstance(batch, (tuple, list)) and len(batch) == 2:
                 images, cls_labels = batch[0], batch[1]
-                seg_masks = None
+                # Create dummy masks for classification-only batches
+                seg_masks = torch.zeros((images.size(0), images.size(2), images.size(3)), dtype=torch.float32)
             else:
                 raise ValueError(f"Unsupported batch format: {type(batch)}, length: {len(batch) if hasattr(batch, '__len__') else 'unknown'}")
             
-            # Move data to device
+            # Move data to device - CRITICAL FIX: Handle None values properly
             images = images.to(self.device, non_blocking=True)
             if cls_labels is not None:
                 cls_labels = cls_labels.to(self.device, non_blocking=True)
             if seg_masks is not None:
                 seg_masks = seg_masks.to(self.device, non_blocking=True)
+            else:
+                # Create dummy masks on the correct device if None
+                seg_masks = torch.zeros((images.size(0), images.size(2), images.size(3)), 
+                                      dtype=torch.float32, device=self.device)
             
             # Forward pass with mixed precision
             if self.scaler is not None:
@@ -322,7 +327,7 @@ class RobustPhase4Trainer:
         self.val_metrics.reset()
         
         for batch in val_loader:
-            # Handle both tuple and dictionary batch formats
+            # Handle both tuple and dictionary batch formats - COMPREHENSIVE FIX
             if isinstance(batch, dict):
                 images = batch.get('image', batch.get('images'))
                 cls_labels = batch.get('label', batch.get('labels'))
@@ -331,16 +336,21 @@ class RobustPhase4Trainer:
                 images, cls_labels, seg_masks = batch[0], batch[1], batch[2]
             elif isinstance(batch, (tuple, list)) and len(batch) == 2:
                 images, cls_labels = batch[0], batch[1]
-                seg_masks = None
+                # Create dummy masks for classification-only batches
+                seg_masks = torch.zeros((images.size(0), images.size(2), images.size(3)), dtype=torch.float32)
             else:
                 raise ValueError(f"Unsupported batch format: {type(batch)}, length: {len(batch) if hasattr(batch, '__len__') else 'unknown'}")
             
-            # Move data to device
+            # Move data to device - CRITICAL FIX: Handle None values properly
             images = images.to(self.device, non_blocking=True)
             if cls_labels is not None:
                 cls_labels = cls_labels.to(self.device, non_blocking=True)
             if seg_masks is not None:
                 seg_masks = seg_masks.to(self.device, non_blocking=True)
+            else:
+                # Create dummy masks on the correct device if None
+                seg_masks = torch.zeros((images.size(0), images.size(2), images.size(3)), 
+                                      dtype=torch.float32, device=self.device)
             
             # Forward pass
             if self.scaler is not None:
@@ -376,7 +386,7 @@ class RobustPhase4Trainer:
         return avg_metrics
     
     def save_checkpoint(self, checkpoint_path: str, is_best: bool = False):
-        """Save model checkpoint"""
+        """Save model checkpoint with storage optimization"""
         checkpoint = {
             'epoch': self.epoch,
             'global_step': self.global_step,
@@ -389,12 +399,64 @@ class RobustPhase4Trainer:
         }
         
         os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
-        torch.save(checkpoint, checkpoint_path)
         
-        if is_best:
-            best_path = str(Path(checkpoint_path).parent / 'best_model.pth')
-            torch.save(checkpoint, best_path)
-            logger.info(f"✅ Best model saved: {best_path}")
+        # Storage optimization: Only save best models if checkpoint strategy is 'best_only'
+        checkpoint_strategy = getattr(self.config, 'checkpoint_strategy', 'all')
+        if hasattr(self.config, 'monitoring') and hasattr(self.config.monitoring, 'save_checkpoints'):
+            checkpoint_strategy = self.config.monitoring.save_checkpoints
+        
+        if checkpoint_strategy == 'best_only':
+            # Only save if this is the best model
+            if is_best:
+                best_path = str(Path(checkpoint_path).parent / 'best_model.pth')
+                torch.save(checkpoint, best_path)
+                logger.info(f"✅ Best model saved: {best_path}")
+                
+                # Cleanup old checkpoints to save storage
+                self._cleanup_old_checkpoints(Path(checkpoint_path).parent)
+            else:
+                logger.debug(f"Skipping checkpoint save (not best model, strategy=best_only)")
+        else:
+            # Default behavior: save all checkpoints
+            torch.save(checkpoint, checkpoint_path)
+            
+            if is_best:
+                best_path = str(Path(checkpoint_path).parent / 'best_model.pth')
+                torch.save(checkpoint, best_path)
+                logger.info(f"✅ Best model saved: {best_path}")
+                
+                # Still cleanup old checkpoints if requested
+                if hasattr(self.config, 'monitoring') and getattr(self.config.monitoring, 'cleanup_old_checkpoints', False):
+                    self._cleanup_old_checkpoints(Path(checkpoint_path).parent)
+    
+    def _cleanup_old_checkpoints(self, checkpoint_dir: Path):
+        """Clean up old checkpoint files to save storage"""
+        try:
+            # Find all checkpoint files
+            checkpoint_files = list(checkpoint_dir.glob('checkpoint_epoch_*.pth'))
+            
+            # Keep only the most recent N checkpoints
+            max_checkpoints = 3  # Default
+            if hasattr(self.config, 'monitoring') and hasattr(self.config.monitoring, 'max_checkpoints_to_keep'):
+                max_checkpoints = self.config.monitoring.max_checkpoints_to_keep
+            
+            if len(checkpoint_files) > max_checkpoints:
+                # Sort by modification time and keep only the newest
+                checkpoint_files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+                files_to_remove = checkpoint_files[max_checkpoints:]
+                
+                for file_path in files_to_remove:
+                    try:
+                        file_path.unlink()
+                        logger.debug(f"Cleaned up old checkpoint: {file_path}")
+                    except Exception as e:
+                        logger.warning(f"Could not remove old checkpoint {file_path}: {e}")
+                        
+                if files_to_remove:
+                    logger.info(f"Cleaned up {len(files_to_remove)} old checkpoint files")
+                    
+        except Exception as e:
+            logger.warning(f"Checkpoint cleanup failed: {e}")
     
     def load_checkpoint(self, checkpoint_path: str):
         """Load model checkpoint"""
@@ -495,8 +557,20 @@ class RobustPhase4Trainer:
             if is_best:
                 logger.info("New best model!")
             
-            # Save checkpoint
-            if (epoch + 1) % self.config.checkpoint.save_every == 0 or is_best:
+            # Save checkpoint with storage optimization
+            checkpoint_strategy = getattr(self.config, 'checkpoint_strategy', 'all')
+            if hasattr(self.config, 'monitoring') and hasattr(self.config.monitoring, 'save_checkpoints'):
+                checkpoint_strategy = self.config.monitoring.save_checkpoints
+            
+            should_save_checkpoint = False
+            if checkpoint_strategy == 'best_only':
+                # Only save best models
+                should_save_checkpoint = is_best
+            else:
+                # Default: save every N epochs or if best
+                should_save_checkpoint = (epoch + 1) % self.config.checkpoint.save_every == 0 or is_best
+            
+            if should_save_checkpoint:
                 checkpoint_path = os.path.join(save_dir, f'checkpoint_epoch_{epoch+1}.pth')
                 self.save_checkpoint(checkpoint_path, is_best=is_best)
             

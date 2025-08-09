@@ -81,11 +81,21 @@ def run_phase5_training_pipeline(logger, experiment_name=None, mode="full"):
     logger.info("STEP 1: Running Phase 5 Training Pipeline")
     logger.info("="*60)
     
+    # CRITICAL WARNING: Check for experimental design usage
+    logger.warning("⚠️  WARNING: This pipeline may use experimental design system")
+    logger.warning("⚠️  This creates hundreds of experiments and uses massive storage!")
+    logger.warning("⚠️  For focused training, use: python run_focused_training.py")
+    logger.warning("⚠️  Continuing in 5 seconds... Press Ctrl+C to cancel")
+    
+    import time
+    time.sleep(5)
+    
     try:
         from src.training.phase5_main import Phase5Pipeline
         
         # Use existing Phase 5 pipeline
         logger.info("✅ Using existing Phase 5 training pipeline")
+        logger.warning("⚠️  This will create experimental design experiments!")
         
         # Set experiment name
         if experiment_name is None:
@@ -110,6 +120,7 @@ def run_phase5_training_pipeline(logger, experiment_name=None, mode="full"):
             results = pipeline.run_quick_test()
         else:
             logger.info("Running full training pipeline...")
+            logger.warning("⚠️  FULL MODE CREATES 292 EXPERIMENTS (36+ DAYS RUNTIME)!")
             results = pipeline.run_full_pipeline()
         
         return {
