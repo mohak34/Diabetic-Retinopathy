@@ -10,9 +10,6 @@
 
    # Or using curl (Linux/macOS)
    curl -LsSf https://astral.sh/uv/install.sh | sh
-
-   # Or using PowerShell (Windows)
-   powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 
 2. **Clone and setup**:
