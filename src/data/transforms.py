@@ -217,13 +217,13 @@ def get_train_transforms_segmentation(image_size: int = 512) -> Callable:
         # Geometric transformations (applied to both image and mask)
         A.HorizontalFlip(p=0.5),
         A.VerticalFlip(p=0.3),
-        A.Rotate(limit=15, border_mode=cv2.BORDER_CONSTANT, value=0, p=0.7),
-        A.ShiftScaleRotate(
-            shift_limit=0.1,
-            scale_limit=0.1, 
-            rotate_limit=10,
+        A.Rotate(limit=15, border_mode=cv2.BORDER_CONSTANT, p=0.7),
+        A.Affine(
+            translate_percent=0.1,
+            scale=(0.9, 1.1),
+            rotate=(-10, 10),
+            shear=(-5, 5),
             border_mode=cv2.BORDER_CONSTANT,
-            value=0,
             p=0.6
         ),
         
@@ -231,9 +231,7 @@ def get_train_transforms_segmentation(image_size: int = 512) -> Callable:
         A.ElasticTransform(
             alpha=50,
             sigma=5,
-            alpha_affine=10,
             border_mode=cv2.BORDER_CONSTANT,
-            value=0,
             p=0.3
         ),
         
@@ -242,7 +240,6 @@ def get_train_transforms_segmentation(image_size: int = 512) -> Callable:
             num_steps=3,
             distort_limit=0.05,
             border_mode=cv2.BORDER_CONSTANT,
-            value=0,
             p=0.2
         ),
         

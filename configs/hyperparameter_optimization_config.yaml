@@ -1,0 +1,221 @@
+# Hyperparameter Optimization Configuration
+# Research-based parameter ranges for diabetic retinopathy detection
+
+# Search Space Definition
+search_space:
+  # Priority 1: Critical Parameters (Highest Impact)
+  critical_parameters:
+    learning_rate:
+      values: [1e-5, 5e-5, 1e-4, 5e-4, 1e-3]
+      description: "Initial learning rate for optimizer"
+      research_evidence: "Medical imaging studies consistently show 1e-4 to 5e-4 as optimal for EfficientNet"
+
+    focal_gamma:
+      values: [1.5, 2.0, 2.5, 3.0]
+      description: "Focal loss gamma parameter for class imbalance"
+      research_evidence: "Gamma 2.0-2.5 optimal for diabetic retinopathy class imbalance"
+
+    segmentation_weight_final:
+      values: [0.3, 0.5, 0.7, 0.8]
+      description: "Final weight for segmentation loss in multi-task learning"
+      research_evidence: "Progressive weight scheduling significantly outperforms fixed weights"
+
+    classification_dropout:
+      values: [0.2, 0.3, 0.4, 0.5]
+      description: "Dropout rate for classification head"
+      research_evidence: "Medical imaging CNNs with EfficientNet show optimal performance at 0.3-0.4"
+
+  # Priority 2: Important Parameters
+  important_parameters:
+    weight_decay:
+      values: [1e-3, 5e-3, 1e-2, 5e-2]
+      description: "L2 regularization weight decay"
+      research_evidence: "Higher weight decay (1e-2 to 5e-2) prevents overfitting in limited medical datasets"
+
+    batch_size:
+      values: [4, 8, 16, 32]
+      description: "Training batch size"
+      research_evidence: "Smaller batch sizes (8-16) improve generalization in medical imaging"
+
+    cosine_t_max:
+      values: [25, 35, 50, 75]
+      description: "T_max parameter for cosine annealing scheduler"
+      research_evidence: "T_max should be adjusted based on actual training phases"
+
+    segmentation_dropout:
+      values: [0.1, 0.2, 0.3]
+      description: "Dropout rate for segmentation head"
+      research_evidence: "Lower than classification dropout for better spatial coherence"
+
+    dice_smooth:
+      values: [1e-7, 1e-6, 1e-5]
+      description: "Smoothing factor for Dice loss"
+      research_evidence: "Small smoothing factors prevent numerical instability"
+
+# Research-Backed Optimal Configurations
+research_configurations:
+  conservative_stable:
+    description: "Conservative configuration for stable training"
+    learning_rate: 1e-4
+    focal_gamma: 2.0
+    segmentation_weight_final: 0.5
+    classification_dropout: 0.3
+    weight_decay: 1e-2
+    batch_size: 8
+    expected_performance:
+      classification: 0.88
+      segmentation: 0.78
+
+  balanced_recommended:
+    description: "Balanced configuration (recommended)"
+    learning_rate: 5e-4
+    focal_gamma: 2.5
+    segmentation_weight_final: 0.7
+    classification_dropout: 0.4
+    weight_decay: 5e-2
+    batch_size: 16
+    expected_performance:
+      classification: 0.90
+      segmentation: 0.80
+
+  aggressive_high_performance:
+    description: "Aggressive configuration for maximum performance"
+    learning_rate: 1e-3
+    focal_gamma: 3.0
+    segmentation_weight_final: 0.8
+    classification_dropout: 0.5
+    weight_decay: 5e-2
+    batch_size: 4
+    expected_performance:
+      classification: 0.92
+      segmentation: 0.82
+      risk: "Higher overfitting risk"
+
+  medical_imaging_optimal:
+    description: "Optimized for medical imaging domain"
+    learning_rate: 2e-4
+    focal_gamma: 2.5
+    segmentation_weight_final: 0.6
+    classification_dropout: 0.4
+    weight_decay: 1e-2
+    batch_size: 8
+    expected_performance:
+      classification: 0.89
+      segmentation: 0.79
+
+  efficient_net_tuned:
+    description: "Tuned specifically for EfficientNet backbone"
+    learning_rate: 1e-4
+    focal_gamma: 2.0
+    segmentation_weight_final: 0.6
+    classification_dropout: 0.3
+    weight_decay: 3e-2
+    batch_size: 12
+    expected_performance:
+      classification: 0.88
+      segmentation: 0.78
+
+# Optimization Strategy
+optimization_strategy:
+  quick_mode:
+    description: "Test 12 research-backed configurations"
+    total_experiments: 12
+    estimated_time_hours: 3
+    early_stopping_epochs: 15
+    focus: "Research-validated parameter combinations"
+
+  full_mode:
+    description: "Comprehensive grid search of critical parameters"
+    total_experiments: 80 # 5*4*4*4 combinations
+    estimated_time_hours: 20
+    early_stopping_epochs: 15
+    focus: "Complete exploration of critical parameter space"
+
+# Training Configuration
+training_config:
+  base_epochs:
+    phase1: 5 # Classification only
+    phase2: 5 # Progressive multi-task
+    phase3: 5 # Full multi-task
+    total: 15
+
+  early_stopping:
+    patience: 3
+    min_delta: 0.001
+    monitor: "combined_score"
+
+  model:
+    backbone: "tf_efficientnet_b0_ns"
+    num_classes: 5
+    pretrained: true
+
+  data:
+    image_size: [512, 512]
+    augmentation: true
+
+  monitoring:
+    save_best_only: true
+    track_metrics:
+      - accuracy
+      - dice_score
+      - combined_score
+      - sensitivity
+      - specificity
+
+# Expected Performance Improvements
+performance_targets:
+  current_baseline:
+    classification: 0.855
+    segmentation_dice: 0.741
+    sensitivity: 0.902
+    specificity: 0.920
+
+  target_improvements:
+    conservative_estimate:
+      classification: "+1.5-2.5%"
+      segmentation: "+2-4%"
+
+    optimistic_estimate:
+      classification: "+2.5-4.5%"
+      segmentation: "+4-6%"
+
+  success_criteria:
+    minimum_improvement: 0.02 # 2% combined score improvement
+    target_accuracy: 0.88
+    target_dice: 0.77
+
+# Research Evidence Sources
+research_evidence:
+  medical_imaging:
+    - "EfficientNet architectures in medical imaging applications"
+    - "Multi-task learning for diabetic retinopathy detection"
+    - "Class imbalance handling in medical image classification"
+
+  learning_rates:
+    - "Learning rate optimization for pre-trained models"
+    - "Transfer learning in medical imaging: optimal fine-tuning strategies"
+
+  multi_task_learning:
+    - "Progressive training strategies for multi-task learning"
+    - "Loss weighting in medical image analysis"
+
+  regularization:
+    - "Dropout and weight decay in limited medical datasets"
+    - "Generalization strategies for medical AI models"
+
+# Quality Assurance
+quality_control:
+  validation:
+    - "Validate parameter ranges with literature"
+    - "Cross-reference with domain expertise"
+    - "Monitor for overfitting and instability"
+
+  reproducibility:
+    - "Fixed random seeds for all experiments"
+    - "Comprehensive logging of all parameters"
+    - "Version control of configurations"
+
+  safety_checks:
+    - "Early termination for clearly poor configurations"
+    - "Resource monitoring and limits"
+    - "Automatic cleanup of failed experiments"

@@ -88,6 +88,26 @@ uv run run_pipeline5_training_optimization.py --mode full
 uv run python run_pipeline6_evaluation_analysis.py
 ```
 
+### Hyperparameter Optimization (NEW)
+
+**Quick optimization** (12 research-based configurations, ~3 hours):
+
+```bash
+uv run python run_hyperparameter_optimization.py --mode quick
+```
+
+**Full optimization** (comprehensive parameter search):
+
+```bash
+uv run python run_hyperparameter_optimization.py --mode full
+```
+
+**Analyze optimization results**:
+
+```bash
+uv run python scripts/analyze_hyperparameter_results.py experiments/hyperopt_*/optimization_results.json
+```
+
 ### Selective Execution
 
 **Run specific phase via main**:

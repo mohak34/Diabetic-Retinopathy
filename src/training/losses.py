@@ -103,6 +103,14 @@ class RobustDiceLoss(nn.Module):
             else:
                 targets = targets.float()
         
+        # Handle size mismatch by resizing targets to match inputs
+        if inputs.shape[-2:] != targets.shape[-2:]:
+            targets = F.interpolate(
+                targets, 
+                size=inputs.shape[-2:], 
+                mode='nearest'
+            )
+        
         # Flatten spatial dimensions
         inputs_flat = inputs.view(inputs.shape[0], inputs.shape[1], -1)
         targets_flat = targets.view(targets.shape[0], targets.shape[1], -1)
@@ -223,6 +231,14 @@ class RobustMultiTaskLoss(nn.Module):
             seg_pred = seg_pred.to(device)
         if seg_target.device != device:
             seg_target = seg_target.to(device)
+        
+        # Handle size mismatch between prediction and target
+        if seg_pred.shape[-2:] != seg_target.shape[-2:]:
+            seg_target = F.interpolate(
+                seg_target.float(), 
+                size=seg_pred.shape[-2:], 
+                mode='nearest'
+            )
         
         # Classification loss
         cls_loss = self.cls_loss(cls_pred, cls_target)
